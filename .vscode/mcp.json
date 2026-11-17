@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "words-cpp": {
+      "type": "http",
+      "url": "https://YOUR_MCP_HOST/words/cpp/mcp/v1/streamable-http"
+    }
+  }
+}

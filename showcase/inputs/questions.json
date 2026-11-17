@@ -1,0 +1,65 @@
+{
+  "description": "C++ evaluation prompts; no generated answers or pass claims.",
+  "cases": [
+    {
+      "query_id": "create-document",
+      "group": "words-cpp",
+      "question": "Create a document with a paragraph. Use Aspose.Words for C++ and provide a complete compilable C++ program with required headers and evidence citations."
+    },
+    {
+      "query_id": "heading-table",
+      "group": "words-cpp",
+      "question": "Create a document containing a heading and a table. Use Aspose.Words for C++ and provide a complete compilable C++ program with required headers and evidence citations."
+    },
+    {
+      "query_id": "word-to-pdf",
+      "group": "words-cpp",
+      "question": "Convert DOCX to PDF. Use Aspose.Words for C++ and provide a complete compilable C++ program with required headers and evidence citations."
+    },
+    {
+      "query_id": "load-save",
+      "group": "words-cpp",
+      "question": "Open an existing document and save a copy. Use Aspose.Words for C++ and provide a complete compilable C++ program with required headers and evidence citations."
+    },
+    {
+      "query_id": "find-replace",
+      "group": "words-cpp",
+      "question": "Replace text in a document. Use Aspose.Words for C++ and provide a complete compilable C++ program with required headers and evidence citations."
+    },
+    {
+      "query_id": "mail-merge",
+      "group": "words-cpp",
+      "question": "Populate a template using simple mail merge. Use Aspose.Words for C++ and provide a complete compilable C++ program with required headers and evidence citations."
+    },
+    {
+      "query_id": "merge-documents",
+      "group": "words-cpp",
+      "question": "Append one document to another while preserving source formatting. Use Aspose.Words for C++ and provide a complete compilable C++ program with required headers and evidence citations."
+    },
+    {
+      "query_id": "headers-footers",
+      "group": "words-cpp",
+      "question": "Add a header and page numbers. Use Aspose.Words for C++ and provide a complete compilable C++ program with required headers and evidence citations."
+    },
+    {
+      "query_id": "insert-image",
+      "group": "words-cpp",
+      "question": "Insert and resize an image. Use Aspose.Words for C++ and provide a complete compilable C++ program with required headers and evidence citations."
+    },
+    {
+      "query_id": "watermark",
+      "group": "words-cpp",
+      "question": "Add a text watermark. Use Aspose.Words for C++ and provide a complete compilable C++ program with required headers and evidence citations."
+    },
+    {
+      "query_id": "page-layout",
+      "group": "words-cpp",
+      "question": "Set page size, orientation and margins. Use Aspose.Words for C++ and provide a complete compilable C++ program with required headers and evidence citations."
+    },
+    {
+      "query_id": "extract-text",
+      "group": "words-cpp",
+      "question": "Extract plain text from a document. Use Aspose.Words for C++ and provide a complete compilable C++ program with required headers and evidence citations."
+    }
+  ]
+}

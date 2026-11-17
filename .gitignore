@@ -1,0 +1,26 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.vscode/*.local.json
+# Generated output
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+build/
+out/
+CMakeFiles/
+CMakeCache.txt
+*.obj
+*.o
+*.exe
+*.pdb
+examples/.scratch/
+
+# SDK packages and generated showcase results
+examples/packages/
+examples/outputs/
+showcase/runs/
