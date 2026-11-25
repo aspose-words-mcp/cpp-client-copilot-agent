@@ -167,46 +167,6 @@
       "question": "How to load a PDF document with PdfLoadOptions?"
     },
     {
-      "query_id": "linq-reporting-01",
-      "group": "LINQ Reporting",
-      "question": "What is the LINQ Reporting Engine in Aspose.Words?"
-    },
-    {
-      "query_id": "linq-reporting-02",
-      "group": "LINQ Reporting",
-      "question": "How to generate reports using the LINQ Reporting Engine in C++?"
-    },
-    {
-      "query_id": "linq-reporting-03",
-      "group": "LINQ Reporting",
-      "question": "How to create a Word document from a LINQ Reporting template and data source using Aspose.Words ReportingEngine in C++?"
-    },
-    {
-      "query_id": "linq-reporting-04",
-      "group": "LINQ Reporting",
-      "question": "How to populate a LINQ Reporting template with data using Aspose.Words ReportingEngine.BuildReport in C++?"
-    },
-    {
-      "query_id": "linq-reporting-05",
-      "group": "LINQ Reporting",
-      "question": "How to use LINQ expressions in a Word document template?"
-    },
-    {
-      "query_id": "linq-reporting-06",
-      "group": "LINQ Reporting",
-      "question": "How to use loops and conditions in LINQ Reporting Engine templates?"
-    },
-    {
-      "query_id": "linq-reporting-07",
-      "group": "LINQ Reporting",
-      "question": "How to generate reports from JSON or XML data in C++?"
-    },
-    {
-      "query_id": "linq-reporting-08",
-      "group": "LINQ Reporting",
-      "question": "What is the difference between LINQ Reporting Engine and Mail Merge?"
-    },
-    {
       "query_id": "mail-merge-01",
       "group": "Mail Merge",
       "question": "What is Mail Merge in Aspose.Words?"

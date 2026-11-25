@@ -57,6 +57,10 @@ Missing SDK/toolchain, build timeout and dependency problems are unavailable ver
 
 Return the full program, preserve requested behavior and supporting URLs, and record the initial and repaired results. Prose-only or unsupported answers are not compilation passes. Review answer coverage independently of whether it compiles.
 
+## C9: Missing or unusable endpoint response
+
+A successful CLI exit is not enough: confirm there is a final answer and a successful `words-cpp` tool call before treating generation as complete. If the CLI fails, the answer is empty, the required MCP evidence is missing, or the answer still omits `main()` after its format retry, the showcase runner retries in a fresh CLI session (two retries by default). These attempts do not resume the earlier session. If retries are exhausted, preserve the failure and report it; do not fill gaps with guessed APIs, citations, or claims that a feature is unsupported. In interactive use, retry the failed lookup/request and state clearly when verified endpoint evidence remains unavailable.
+
 ## Approved repair data flow
 
-On future --verify-code runs, the controller may send prior generated code, compiler errors with local paths removed, and SDK-relative header names back to Copilot. Raw local diagnostics remain in results.json for local inspection. The repair prompt does not include SDK header contents or license files. Repair metadata and sanitized feedback are logged in repair-log.md. Review local artifacts before publishing them.
+On --verify-code runs, the controller may send prior generated code, compiler errors with local paths removed, and SDK-relative header names back to Copilot. Raw local diagnostics remain in results.json for local inspection. The repair prompt does not include SDK header contents or license files. Compiler-feedback repairs are separate from generation retries: --repair-attempts defaults to two, while --generation-retries defaults to two fresh sessions for unusable responses. Both limits are configurable. Repair metadata and sanitized feedback are logged in repair-log.md. Review local artifacts before publishing them.

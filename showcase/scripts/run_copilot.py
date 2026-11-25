@@ -74,9 +74,11 @@ def main():
     p.add_argument('--run',required=True);p.add_argument('--query-id');p.add_argument('--all',action='store_true');p.add_argument('--dry-run',action='store_true')
     p.add_argument('--answer-file',type=Path);p.add_argument('--verify-code',action='store_true');p.add_argument('--packages',type=Path)
     p.add_argument('--repair-attempts',type=int,default=2,help='Compiler-feedback repairs per answer, 0 disables.')
+    p.add_argument('--generation-retries',type=int,default=2,help='Retries after an unusable Copilot or MCP response.')
     p.add_argument('--model',default='auto');p.add_argument('--timeout',type=int,default=300);p.add_argument('--build-timeout',type=int,default=180)
     a=p.parse_args()
     if not 0 <= a.repair_attempts <= 5:p.error('--repair-attempts must be between 0 and 5.')
+    if not 0 <= a.generation_retries <= 5:p.error('--generation-retries must be between 0 and 5.')
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]*',a.run):p.error('Use a simple run name; paths are not allowed.')
     try:cases=select(json.loads((ROOT/'showcase/inputs/questions.json').read_text())['cases'],a.query_id,a.all)
     except ValueError as e:p.error(str(e))
@@ -101,31 +103,58 @@ def main():
                     shutil.copytree(ROOT/'.github',workspace/'.github')
                     command=[binary,'-C',str(workspace),'--trust-folder','--agent','aspose-words-cpp-mcp','--model',a.model,'--name',str(uuid.uuid4()),'--no-ask-user','--no-auto-update','--disable-builtin-mcps','--disable-mcp-server','ide','--additional-mcp-config',json.dumps({'mcpServers':{'words-cpp':server}}),'--allow-tool=words-cpp','--deny-tool=write','--deny-tool=shell','--output-format','json','-p',generation_prompt(case['question'])+sdk_header_context(a.packages)]
                     record['generation_attempts']=[]
-                    repairs=0;format_retries=0
-                    while True:
-                        proc=subprocess.run(command,cwd=workspace,capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=a.timeout)
-                        events=workspace/'events.jsonl';events.write_text(proc.stdout,encoding='utf-8');parsed=extract(events)
-                        answer=parsed['recorded_answer_markdown'];record['models']=parsed['resolved_models'];record['warnings']=parsed['warnings']
-                        evidence=any(t.get('server')=='words-cpp' and t.get('success') is True for t in parsed['tools'])
-                        verification=compile_answer(answer,a.packages,a.build_timeout) if a.verify_code and not proc.returncode and answer and evidence else {'status':'not_checked','runtime_executed':False}
-                        record['verification']=verification
-                        record['answer']=answer
-                        record['generation_attempts'].append({'answer':answer,'models':parsed['resolved_models'],'missing_main_blocks':missing_entry_points(answer),'verification':verification,'mcp_evidence':evidence})
-                        if proc.returncode or not answer or not evidence:break
-                        if verification['status']=='failed' and compiler_feedback(verification) and repairs < a.repair_attempts:
-                            repairs+=1
-                            feedback=compiler_feedback(verification)
-                            record.setdefault('repairs',[]).append({'number':repairs,'feedback':feedback,'sdk_headers':sdk_header_context(a.packages,answer,feedback)})
-                            command[-1]=repair_prompt(generation_prompt(case['question']),answer,verification,a.packages)
-                            continue
-                        if missing_entry_points(answer) and format_retries < 1:
-                            format_retries+=1
-                            command[-1]=generation_prompt(case['question'])+sdk_header_context(a.packages,answer)+'\nReturn one complete standalone program with main(), not snippets.'
-                            continue
-                        break
-                    evidence=any(t.get('server')=='words-cpp' and t.get('success') is True for t in parsed['tools'])
-                    if proc.returncode or not answer or not evidence:
-                        record['generation']='failed';record['diagnostics']=proc.stderr[-4000:];failed=True
+                    base_prompt=command[-1]
+                    name_index=command.index('--name')+1
+                    completed=False
+                    for retry_index in range(a.generation_retries+1):
+                        command[name_index]=str(uuid.uuid4())
+                        command[-1]=base_prompt
+                        repairs=0;format_retries=0
+                        while True:
+                            try:
+                                proc=subprocess.run(command,cwd=workspace,capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=a.timeout)
+                            except subprocess.TimeoutExpired:
+                                message='Copilot CLI timed out after '+str(a.timeout)+' seconds.'
+                                verification={'status':'not_checked','runtime_executed':False}
+                                record['generation_attempts'].append({'attempt':len(record['generation_attempts'])+1,'answer':'','models':[],'warnings':[message],'error':'timeout','diagnostics':message,'verification':verification,'mcp_evidence':False})
+                                record.update(answer='',models=[],warnings=[message],verification=verification,diagnostics=message)
+                                break
+                            events=workspace/'events.jsonl';events.write_text(proc.stdout,encoding='utf-8');parsed=extract(events)
+                            answer=parsed['recorded_answer_markdown'];record['models']=parsed['resolved_models'];record['warnings']=parsed['warnings']
+                            evidence=any(t.get('server')=='words-cpp' and t.get('success') is True for t in parsed['tools'])
+                            missing_blocks=missing_entry_points(answer)
+                            verification=compile_answer(answer,a.packages,a.build_timeout) if a.verify_code and not proc.returncode and answer and evidence else {'status':'not_checked','runtime_executed':False}
+                            record['verification']=verification
+                            record['answer']=answer
+                            attempt={'attempt':len(record['generation_attempts'])+1,'answer':answer,'models':parsed['resolved_models'],'warnings':parsed['warnings'],'missing_main_blocks':missing_blocks,'verification':verification,'mcp_evidence':evidence,'cli_exit_code':proc.returncode,'diagnostics':proc.stderr[-4000:]}
+                            record['generation_attempts'].append(attempt)
+                            if proc.returncode or not answer.strip() or not evidence:
+                                reason='Copilot CLI exited with code '+str(proc.returncode) if proc.returncode else ('No final assistant answer was returned.' if not answer.strip() else 'No successful words-cpp tool call was recorded.')
+                                attempt['retry_reason']=reason
+                                record.update(diagnostics=proc.stderr[-4000:] or reason)
+                                break
+                            if verification['status']=='failed' and compiler_feedback(verification) and repairs < a.repair_attempts:
+                                repairs+=1
+                                feedback=compiler_feedback(verification)
+                                record.setdefault('repairs',[]).append({'number':repairs,'feedback':feedback,'sdk_headers':sdk_header_context(a.packages,answer,feedback)})
+                                command[-1]=repair_prompt(generation_prompt(case['question']),answer,verification,a.packages)
+                                continue
+                            if missing_blocks and format_retries < 1:
+                                format_retries+=1
+                                command[-1]=generation_prompt(case['question'])+sdk_header_context(a.packages,answer)+'\nReturn one complete standalone program with main(), not snippets.'
+                                continue
+                            if missing_blocks:
+                                attempt['retry_reason']='The response still omits a standalone program entry point after the format retry.'
+                                record['diagnostics']=attempt['retry_reason']
+                                break
+                            completed=True
+                            break
+                        if completed:
+                            break
+                        if retry_index < a.generation_retries:
+                            time.sleep(1)
+                    if not completed:
+                        record['generation']='failed';failed=True
             record['format_issues']=['Block '+str(i)+' is missing main().' for i in missing_entry_points(answer)]
             record['answer']=answer
             if a.answer_file:
