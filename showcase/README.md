@@ -32,7 +32,7 @@ python -B -m unittest discover -s showcase/scripts -p 'test_*.py'
 
 ## Published C++ showcase
 
-[published-01](runs/published-01/showcase.md) matches all 99 questions and 15 categories of the .NET reference report, with C++ MCP evidence, compiled C++ examples, and preserved failures. Read the [metrics](runs/published-01/metrics.md) for shared-source counts and execution limitations. This is a Codex-authored MCP-assisted run, not GitHub Copilot CLI output.
+[published-01](runs/published-01/showcase.md) covers all 91 questions across the current 14 groups, with 91 completed Copilot CLI generations. Of these, 71 examples compiled and linked, while 20 answers contained no code to compile; see the [metrics](runs/published-01/metrics.md) for each question's status. Compilation does not execute programs, and runtime behavior was not checked. The results are Copilot CLI output, not a Codex-authored MCP-assisted run.
 
 ## Recheck an existing run
 
