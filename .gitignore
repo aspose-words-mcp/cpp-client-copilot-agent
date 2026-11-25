@@ -23,4 +23,13 @@ examples/.scratch/
 # SDK packages and generated showcase results
 examples/packages/
 examples/outputs/
-showcase/runs/
+showcase/runs/starter-check-01
+showcase/runs/published-01 backup
+# Publish only the two showcase reports from this run
+/showcase/runs/published-01/*
+/showcase/runs/copilot-full-02/*
+
+# Separate C++ build project generated files
+/examples/build-project/packages/
+/examples/build-project/outputs/
+/examples/build-project/
