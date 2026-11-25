@@ -49,7 +49,14 @@ def select(cases, query_id=None, all_cases=False):
     if not found:raise ValueError('No matching question.')
     return found if all_cases or query_id else found[:1]
 def reports(folder, records):
-    text=['# C++ answer showcase','','Runtime execution: **Not checked**. Replayed answers are not live Copilot generations.','']
+    origins={r.get('origin') for r in records}
+    if origins=={'saved-answer'}:
+        generation_note='Replayed answers are not live Copilot generations.'
+    elif origins=={'copilot-cli'}:
+        generation_note='Answers were generated in Copilot CLI sessions.'
+    else:
+        generation_note='Generation origin is listed per question; saved answers are replays, not live Copilot generations.'
+    text=['# C++ answer showcase','','Runtime execution: **Not checked**. '+generation_note,'']
     metrics=['# Run metrics','','| Question | Origin | Generation | Compilation | Models |','| --- | --- | --- | --- | --- |']
     counts={status:sum(r['verification']['status']==status for r in records) for status in sorted({r['verification']['status'] for r in records})}
     summary='; '.join(str(count)+' '+status for status,count in counts.items())

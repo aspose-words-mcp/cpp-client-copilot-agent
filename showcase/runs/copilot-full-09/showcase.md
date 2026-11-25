@@ -1,6 +1,6 @@
 # C++ answer showcase
 
-Runtime execution: **Not checked**. Replayed answers are not live Copilot generations.
+Runtime execution: **Not checked**. Answers were generated in Copilot CLI sessions.
 
 ## word-to-pdf-01
 

@@ -43,5 +43,13 @@ class ShowcaseTests(unittest.TestCase):
     def test_reports_truthful(self):
         with tempfile.TemporaryDirectory() as tmp:
             p=Path(tmp);reports(p,[{'query_id':'a','question':'Q','origin':'saved-answer','generation':'completed','answer':'A','verification':{'status':'no_code'}}])
-            self.assertIn('Not checked',(p/'showcase.md').read_text());self.assertIn('no_code',(p/'metrics.md').read_text())
+            text=(p/'showcase.md').read_text()
+            self.assertIn('Not checked',text);self.assertIn('Replayed answers are not live Copilot generations.',text)
+            self.assertIn('no_code',(p/'metrics.md').read_text())
+            records=[{'query_id':'a','question':'Q','origin':'copilot-cli','generation':'completed','answer':'A','verification':{'status':'passed'}}]
+            reports(p,records)
+            self.assertIn('Answers were generated in Copilot CLI sessions.',(p/'showcase.md').read_text())
+            records.append({'query_id':'b','question':'Q2','origin':'saved-answer','generation':'completed','answer':'B','verification':{'status':'no_code'}})
+            reports(p,records)
+            self.assertIn('Generation origin is listed per question',(p/'showcase.md').read_text())
 if __name__=='__main__':unittest.main()

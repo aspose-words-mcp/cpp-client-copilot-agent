@@ -51,7 +51,7 @@ Use the [Windows C++ build project](examples/README.md) with restored Aspose.Wor
 
 ## Showcase
 
-See [showcase generation](showcase/README.md) for the current 91 C++ questions across 14 groups, saved-answer replay, fresh Copilot CLI sessions with retries, compilation and reports. The [published showcase](showcase/runs/published-01/showcase.md) covers the current question set: all 91 generations completed, 71 examples compiled and 20 answers contained no code to compile. Compilation does not execute programs; runtime behavior has not been checked. The [starter showcase](showcase/sample/showcase.md) is a separate hand-authored example, not live Copilot evidence.
+See [showcase generation](showcase/README.md) for the current 91 C++ questions across 14 groups, saved-answer replay, fresh Copilot CLI sessions with retries, compilation and reports. The [published showcase](showcase/runs/published-01/showcase.md) covers the current question set: all 91 generations completed, 71 examples compiled and 20 answers contained no code to compile. Compilation does not execute programs; runtime behavior has not been checked.
 
 ## Contributing
 

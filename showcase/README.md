@@ -16,7 +16,7 @@ python showcase/scripts/run_copilot.py --run sample-01
 python showcase/scripts/run_copilot.py --run full-01 --all --verify-code --packages examples/build-project/packages
 ```
 
-Install/authenticate Copilot CLI separately for live generation. The invocation follows the .NET client's CLI pattern but has not been live-tested here. MCP tools are allowed; shell and write tools are denied during generation. This means saved-response shell inspection cannot run in this mode; review warnings and narrow questions if evidence is truncated. The existing instruction and agent files are copied unchanged into temporary workspaces. If the CLI exits unsuccessfully, returns no final answer, records no successful `words-cpp` tool call, or still omits `main()` after its format retry, the runner starts a fresh CLI session and retries up to two times by default. Set `--generation-retries 0` to disable these retries (the accepted range is 0–5). Each response/timeout and its retry reason is retained in `generation_attempts` in `results.json`.
+Install/authenticate Copilot CLI separately for live generation. The CLI integration has been exercised in the [published run](runs/published-01/showcase.md); availability and authentication still depend on your local environment. MCP tools are allowed; shell and write tools are denied during generation. This means saved-response shell inspection cannot run in this mode; review warnings and narrow questions if evidence is truncated. The existing instruction and agent files are copied unchanged into temporary workspaces. If the CLI exits unsuccessfully, returns no final answer, records no successful `words-cpp` tool call, or still omits `main()` after its format retry, the runner starts a fresh CLI session and retries up to two times by default. Set `--generation-retries 0` to disable these retries (the accepted range is 0–5). Each response/timeout and its retry reason is retained in `generation_attempts` in `results.json`.
 
 Compilation requires Windows C++ Build Tools, the v142 toolset and restored SDK packages 26.9.0; see [examples](../examples/README.md). No automatic SDK download occurs in the runner. Reports record compile success separately from generation. Missing tools/SDKs are unavailable verification, not passes; no-code answers are not compile passes. Use a new run name for every attempt; existing runs are not overwritten. Compiler-feedback repairs are bounded by --repair-attempts (default 2, configurable 0–5). Generation retries use fresh sessions; resuming an existing CLI session is not implemented.
 
@@ -25,10 +25,6 @@ Outputs under `runs/<name>/`: `showcase.md`, `metrics.md`, and `results.json`. R
 ```powershell
 python -B -m unittest discover -s showcase/scripts -p 'test_*.py'
 ```
-
-## Checked sample
-
-[Starter showcase](sample/showcase.md) · [Build metrics](sample/metrics.md). This is a hand-authored saved-answer replay that compiled with SDK 26.9.0; it is not a Copilot evaluation result. Generated code was not executed.
 
 ## Published C++ showcase
 
