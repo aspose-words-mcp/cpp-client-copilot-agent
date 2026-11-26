@@ -2,6 +2,143 @@
 
 Runtime execution: **Not checked**. Answers were generated in Copilot CLI sessions.
 
+## Questions
+
+### Word to PDF
+
+- [How to convert DOC/DOCX to PDF?](#word-to-pdf-01)
+- [How to convert a document to PDF?](#word-to-pdf-02)
+- [How to convert DOC/DOCX to PDF in C++?](#word-to-pdf-03)
+- [How do I convert a DOC/DOCX document to PDF in C++?](#word-to-pdf-04)
+
+### Word to HTML
+
+- [How to convert DOC/DOCX to HTML?](#word-to-html-01)
+- [How to convert a document to HTML?](#word-to-html-02)
+- [How to convert DOC/DOCX to HTML in C++?](#word-to-html-03)
+- [How do I convert a DOC/DOCX document to HTML in C++?](#word-to-html-04)
+
+### Word to Excel
+
+- [How to convert DOC/DOCX to Excel?](#word-to-excel-01)
+- [How to convert a Word document to Excel?](#word-to-excel-02)
+- [How to convert DOC/DOCX to XLSX in C++?](#word-to-excel-03)
+- [How do I convert a DOC/DOCX document to Excel in C++?](#word-to-excel-04)
+- [How to convert Word to XLSX in C++?](#word-to-excel-05)
+- [Can Aspose.Words convert DOCX to Excel?](#word-to-excel-06)
+
+### Word to Markdown
+
+- [How to convert DOC/DOCX to Markdown?](#word-to-markdown-01)
+- [How to convert a Word document to Markdown?](#word-to-markdown-02)
+- [How to convert DOC/DOCX to Markdown in C++?](#word-to-markdown-03)
+- [How do I convert a DOC/DOCX document to Markdown in C++?](#word-to-markdown-04)
+- [How to save a Word document as a Markdown file?](#word-to-markdown-05)
+- [Can Aspose.Words convert DOCX to Markdown?](#word-to-markdown-06)
+
+### Word to Image
+
+- [How to convert DOC/DOCX to an image?](#word-to-image-01)
+- [How to convert a Word document to an image?](#word-to-image-02)
+- [How to convert DOC/DOCX to PNG in C++?](#word-to-image-03)
+- [How do I convert a DOC/DOCX document to an image in C++?](#word-to-image-04)
+- [How to save a Word document as an image?](#word-to-image-05)
+- [Can Aspose.Words convert DOCX to JPG or PNG?](#word-to-image-06)
+
+### PDF to Other Formats
+
+- [How to convert PDF to other document formats?](#pdf-to-other-01)
+- [How to convert PDF to DOCX in C++?](#pdf-to-other-02)
+- [How to convert a PDF document to Word in C++?](#pdf-to-other-03)
+- [How do I convert PDF to DOC or DOCX using Aspose.Words?](#pdf-to-other-04)
+- [How to convert PDF to HTML or an image in C++?](#pdf-to-other-05)
+- [Can Aspose.Words convert PDF to other formats?](#pdf-to-other-06)
+- [How to load a PDF document with PdfLoadOptions?](#pdf-to-other-07)
+
+### Mail Merge
+
+- [What is Mail Merge in Aspose.Words?](#mail-merge-01)
+- [How to perform mail merge in C++?](#mail-merge-02)
+- [How to populate a Word template with data using Mail Merge?](#mail-merge-03)
+- [How to generate personalized documents from a template?](#mail-merge-04)
+- [How to perform mail merge with a data source in C++?](#mail-merge-05)
+- [How to use mail merge fields in a Word document?](#mail-merge-06)
+- [How to execute mail merge with regions in Aspose.Words?](#mail-merge-07)
+- [What is the difference between Mail Merge and LINQ Reporting Engine?](#mail-merge-08)
+
+### Compare Documents
+
+- [How to compare two Word documents in C++?](#compare-01)
+- [How to find differences between DOCX documents using Aspose.Words?](#compare-02)
+- [How to compare two documents and identify changes?](#compare-03)
+- [How to generate a document that shows differences between two versions?](#compare-04)
+- [How to compare Word documents programmatically?](#compare-05)
+- [Can Aspose.Words compare documents and mark revisions?](#compare-06)
+- [How to compare documents while ignoring formatting changes?](#compare-07)
+
+### Split Documents
+
+- [How to split a Word document into multiple documents in C++?](#split-01)
+- [How to split a DOCX file by pages using Aspose.Words?](#split-02)
+- [How to extract each page of a Word document into a separate file?](#split-03)
+- [How to split a Word document by sections?](#split-04)
+- [How to split a document by headings or other structural elements?](#split-05)
+- [How to save each page of a Word document separately?](#split-06)
+- [How to use DocumentSplitCriteria in Aspose.Words?](#split-07)
+
+### Merge Documents
+
+- [How to merge multiple Word documents into one document in C++?](#merge-01)
+- [How to combine DOCX files using Aspose.Words?](#merge-02)
+- [How to append one Word document to another?](#merge-03)
+- [How to insert the contents of one document into another?](#merge-04)
+- [How to merge Word documents while preserving formatting?](#merge-05)
+- [What is the difference between InsertDocument and AppendDocument?](#merge-06)
+- [How to combine several Word documents into a single DOCX file?](#merge-07)
+
+### Find and Replace
+
+- [How to find and replace text in a Word document using C++?](#find-replace-01)
+- [How to replace a string in a DOCX file with Aspose.Words?](#find-replace-02)
+- [How to replace all occurrences of a word in a document?](#find-replace-03)
+- [How to find and replace text using regular expressions?](#find-replace-04)
+- [How to perform a case-insensitive text replacement in Word documents?](#find-replace-05)
+- [How to replace text while preserving document formatting?](#find-replace-06)
+- [How to use FindReplaceOptions in Aspose.Words?](#find-replace-07)
+
+### Digital Signatures
+
+- [How to digitally sign a Word document in C++?](#digital-signatures-01)
+- [How to add a digital signature to a DOCX file using Aspose.Words?](#digital-signatures-02)
+- [How to verify digital signatures in a Word document?](#digital-signatures-03)
+- [How to check whether a Word document is digitally signed?](#digital-signatures-04)
+- [How to sign a document with a PFX certificate?](#digital-signatures-05)
+- [How to remove digital signatures from a Word document?](#digital-signatures-06)
+- [How to use DigitalSignatureUtil in Aspose.Words?](#digital-signatures-07)
+
+### Watermarks
+
+- [How to add a watermark to a Word document in C++?](#watermark-01)
+- [How to insert a text watermark into a DOCX file?](#watermark-02)
+- [How to add an image watermark to a Word document?](#watermark-03)
+- [How to remove a watermark from a Word document using Aspose.Words?](#watermark-04)
+- [How to change the font, size, or color of a text watermark?](#watermark-05)
+- [How to add a diagonal watermark to a document?](#watermark-06)
+- [How to use the Watermark class in Aspose.Words?](#watermark-07)
+
+### AI Features
+
+- [What AI-powered features are available in Aspose.Words?](#ai-01)
+- [How to use AI with Aspose.Words in C++?](#ai-02)
+- [How to summarize a document using AI in Aspose.Words?](#ai-03)
+- [How to translate a document using AI?](#ai-04)
+- [How to use a large language model to process Word documents?](#ai-05)
+- [How to integrate Aspose.Words with OpenAI?](#ai-06)
+- [How to use AI models to analyze document content?](#ai-07)
+- [What classes are available in the Aspose.Words.AI namespace?](#ai-08)
+
+## Answers
+
 ## word-to-pdf-01
 
 How to convert DOC/DOCX to PDF?
