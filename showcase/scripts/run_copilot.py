@@ -65,6 +65,7 @@ def reports(folder, records):
         text += ['## '+r['query_id'],'',r['question'],'', 'Origin: '+r['origin']+'. Compilation: '+r['verification']['status']+'.','',showcase_answer(r),'']
         if r.get('repairs'):text += ['Compiler-feedback repair requests: '+str(len(r['repairs']))+'. See repair-log.md and results.json for attempt history.', '']
         if r.get('format_issues'):text += ['Format warnings: '+'; '.join(r['format_issues']), '']
+        if r.get('example_warning'):text += ['Example warning: '+r['example_warning'], '']
         metrics.append('| '+' | '.join([r['query_id'],r['origin'],r['generation'],r['verification']['status'],', '.join(r.get('models',[])) or 'unknown'])+' |')
     (folder/'showcase.md').write_text('\n'.join(text),encoding='utf-8')
     (folder/'metrics.md').write_text('\n'.join(metrics)+'\n',encoding='utf-8')
@@ -112,10 +113,13 @@ def main():
                     record['generation_attempts']=[]
                     base_prompt=command[-1]
                     name_index=command.index('--name')+1
-                    completed=False
+                    completed=False;no_code_fallback=None
                     for retry_index in range(a.generation_retries+1):
                         command[name_index]=str(uuid.uuid4())
                         command[-1]=base_prompt
+                        if no_code_fallback:
+                            command[-1]+=(sdk_header_context(a.packages,no_code_fallback['answer'],include_symbols=True)
+                                +'\nThe previous response contained no C++ example. If the requested operation is supported and you can verify the necessary APIs, provide a complete standalone C++ example. Preserve the requested behavior and explain any unresolved evidence; do not guess APIs or headers.')
                         repairs=0;format_retries=0
                         while True:
                             try:
@@ -154,12 +158,23 @@ def main():
                                 attempt['retry_reason']='The response still omits a standalone program entry point after the format retry.'
                                 record['diagnostics']=attempt['retry_reason']
                                 break
+                            if case.get('example_required') is True and not FENCE.search(answer):
+                                if no_code_fallback is None:
+                                    no_code_fallback={key:record[key] for key in ('answer','models','warnings','verification')}
+                                attempt['retry_reason']='A C++ example was requested but no recognized C++ code fence was returned.'
+                                break
                             completed=True
                             break
                         if completed:
                             break
                         if retry_index < a.generation_retries:
                             time.sleep(1)
+                    if not completed and no_code_fallback:
+                        record.update(no_code_fallback)
+                        answer=record['answer']
+                        record['example_warning']='No C++ example was returned for this question; review the attempt history and unresolved evidence.'
+                        record.pop('diagnostics',None)
+                        completed=True
                     if not completed:
                         record['generation']='failed';failed=True
             record['format_issues']=['Block '+str(i)+' is missing main().' for i in missing_entry_points(answer)]

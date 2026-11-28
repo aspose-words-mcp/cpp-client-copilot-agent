@@ -137,18 +137,17 @@ Runtime execution: **Not checked**. Answers were generated in Copilot CLI sessio
 - [How to use AI models to analyze document content?](#ai-07)
 - [What classes are available in the Aspose.Words.AI namespace?](#ai-08)
 
-## Answers
-
 ## word-to-pdf-01
 
 How to convert DOC/DOCX to PDF?
 
 Origin: copilot-cli. Compilation: passed.
 
-Load the existing DOC/DOCX into `Document`, then save with a `.pdf` filename. Aspose.Words detects the input format and selects PDF output from the output extension. [Conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-pdf/) · [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/) · [Save API](https://reference.aspose.com/words/cpp/aspose.words/document/save/)
+Load the `.doc` or `.docx` into `Document`, then save with a `.pdf` filename. Aspose.Words detects the input format from the extension and the output format from the save filename. [Conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-pdf/) · [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/) · [Save method](https://reference.aspose.com/words/cpp/aspose.words/document/save/)
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
+#include <system/object.h>
 #include <system/smart_ptr.h>
 
 int main()
@@ -159,7 +158,7 @@ int main()
 }
 ```
 
-Put `input.docx` beside the program, or change the input path to your `.doc` file. No Microsoft Office or external service is needed. For unrestricted, unwatermarked output, apply a valid Aspose.Words license; the unlicensed trial adds a watermark and limits document size ([licensing](https://docs.aspose.com/words/cpp/licensing/)). The MCP lookup resolved to latest stable rather than 26.9.0, so I can’t confirm the signatures specifically against that pinned version. The requested `examples/error-correction.md` was not present in the workspace; I followed the C++ rules included in your prompt.
+Place the input file in the program’s working directory, or change `input.docx` to its path; use `input.doc` for a DOC file. No Microsoft Office or external service is required. For production use, apply a valid license; the evaluation version adds a watermark and has document-size limits. [Licensing details](https://docs.aspose.com/words/cpp/licensing/)
 
 ## word-to-pdf-02
 
@@ -167,7 +166,7 @@ How to convert a document to PDF?
 
 Origin: copilot-cli. Compilation: passed.
 
-Load a document and save it with a `.pdf` extension; Aspose.Words infers the output format. See the [conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-pdf/) and [`Document::Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/).
+Load a document, then save it with a `.pdf` extension; Aspose.Words determines the output format from the extension. See [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/) and [Save](https://reference.aspose.com/words/cpp/aspose.words/document/save/).
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -176,20 +175,23 @@ Load a document and save it with a `.pdf` extension; Aspose.Words infers the out
 
 int main()
 {
+    // Create a sample input document.
     auto sample = System::MakeObject<Aspose::Words::Document>();
     auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(sample);
     builder->Writeln(u"Hello from Aspose.Words!");
     sample->Save(u"sample.docx");
 
+    // Load the input and convert it to PDF.
     auto document = System::MakeObject<Aspose::Words::Document>(u"sample.docx");
     document->Save(u"output.pdf");
+
     return 0;
 }
 ```
 
-The example creates `sample.docx` and converts it to `output.pdf`, overwriting files with those names. To convert your own document, remove the sample-creation statements and replace `sample.docx` with its path. No external service is required. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
+The program overwrites `sample.docx` and `output.pdf` in the working directory. To convert your own document, omit the sample-creation lines and change the input path.
 
-The requested `examples\error-correction.md` file was not present; the guidance included in your prompt was used instead.
+No external service is needed. Without a license, evaluation restrictions apply, including a watermark; see [Aspose’s FAQ](https://docs.aspose.com/words/cpp/faq/).
 
 ## word-to-pdf-03
 
@@ -197,22 +199,21 @@ How to convert DOC/DOCX to PDF in C++?
 
 Origin: copilot-cli. Compilation: passed.
 
-Load the file as an `Aspose::Words::Document`, then save with a `.pdf` filename. Aspose.Words detects the input format from the document and the output format from the extension; this works for DOC and DOCX without Microsoft Office. ([Conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-pdf/), [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/), [Save method](https://reference.aspose.com/words/cpp/aspose.words/document/save/))
-
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
 #include <system/smart_ptr.h>
 
 int main()
 {
-    // Change to "input.doc" to convert a legacy DOC file instead.
     auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
     doc->Save(u"output.pdf");
     return 0;
 }
 ```
 
-Place `input.docx` (or `input.doc`) beside the program; an existing `output.pdf` will be overwritten. Build against Aspose.Words.Cpp and its CodePorting framework dependency. No credentials or external services are needed; use the SDK in accordance with its licensing terms. The MCP documentation index exposed only `latest-stable`, not a 26.9.0-specific API set, so exact-version compatibility could not be independently confirmed.
+Replace `input.docx` with the path to your existing `.doc` or `.docx` file. `Save` determines the output format from the `.pdf` extension. This requires Aspose.Words for C++ and the input file; conversion does not require Microsoft Office or an external service. Use a license appropriate for your deployment. [Conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-pdf/) · [Save API](https://reference.aspose.com/words/cpp/aspose.words/document/save/)
+
+The requested `examples/error-correction.md` was not present in the workspace. Also, the MCP returned latest-stable documentation rather than version-specific 26.9.0 evidence, so that version could not be independently confirmed.
 
 ## word-to-pdf-04
 
@@ -220,7 +221,7 @@ How do I convert a DOC/DOCX document to PDF in C++?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use `Document` to load the input (the file format is detected automatically), then save with a `.pdf` filename. Change `input.docx` to `input.doc` for a DOC source.
+Aspose.Words detects the input format when loading a file, and `Save` selects PDF from the output extension. [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/) · [PDF conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-pdf/)
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -228,14 +229,15 @@ Use `Document` to load the input (the file format is detected automatically), th
 
 int main()
 {
-    auto document = System::MakeObject<Aspose::Words::Document>(
-        System::String(u"input.docx"));
-    document->Save(System::String(u"output.pdf"));
+    System::SharedPtr<Aspose::Words::Document> doc =
+        System::MakeObject<Aspose::Words::Document>(u"input.docx");
+
+    doc->Save(u"output.pdf");
     return 0;
 }
 ```
 
-Place the input file where the program can find it; an existing `output.pdf` will be overwritten. Build against Aspose.Words.Cpp and CodePorting.Translator.Cs2Cpp.Framework 26.9.0. Production use requires a valid Aspose.Words license to remove evaluation limitations; no credentials or external services are needed. [Document loading](https://reference.aspose.com/words/cpp/aspose.words/document/document/) · [Saving and format detection](https://reference.aspose.com/words/cpp/aspose.words/document/save/) · [Installation and licensing](https://docs.aspose.com/words/cpp/installation/)
+Place `input.docx` (or `input.doc`) in the program’s working directory, or change the paths. Production use requires an Aspose.Words license; no external service is needed ([licensing](https://docs.aspose.com/words/cpp/installation/)). The referenced `examples/error-correction.md` was not present in the workspace; I followed the C++ rules included in your prompt.
 
 ## word-to-html-01
 
@@ -243,7 +245,7 @@ How to convert DOC/DOCX to HTML?
 
 Origin: copilot-cli. Compilation: passed.
 
-Load the `.doc` or `.docx` file, then save with an `.html` extension. Aspose.Words detects the input format from the file and chooses the output format from the extension. ([Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/), [Save](https://reference.aspose.com/words/cpp/aspose.words/document/save/))
+Load the `.doc` or `.docx` with `Document`, then save to a `.html` filename; the extension selects the output format. [Aspose.Words conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-html-mhtml-or-epub/) · [Document::Save API](https://reference.aspose.com/words/cpp/aspose.words/document/save/)
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -257,7 +259,11 @@ int main()
 }
 ```
 
-Use `input.doc` instead if that’s your source file. The input must exist; the output file is overwritten if it already exists. No credentials or external service are needed. Configure an Aspose.Words license for your intended use. The MCP reference resolved to `latest-stable`, not a 26.9.0-specific snapshot; see the [HTML conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-html-mhtml-or-epub/).
+Provide `input.docx` in the program’s working directory, or change the path to your file; for legacy DOC, use `input.doc`. No external service or credentials are needed. For production use, apply a valid license; the unlicensed trial adds an evaluation watermark and limits document size. [Licensing](https://docs.aspose.com/words/cpp/licensing/)
+
+By default, HTML font resources are written separately; `HtmlSaveOptions` can embed them as Base64. HTML also cannot represent every Word feature. [HTML export options and limitations](https://docs.aspose.com/words/cpp/convert-a-document-to-html-mhtml-or-epub/)
+
+The requested `examples/error-correction.md` was not present in the workspace, so I followed the rules included in your prompt. The MCP lookup did not provide version-specific 26.9.0 docs; the API evidence available was for `latest-stable`.
 
 ## word-to-html-02
 
@@ -265,23 +271,28 @@ How to convert a document to HTML?
 
 Origin: copilot-cli. Compilation: passed.
 
-Load the document and save it as HTML using [`Document::Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/):
+Load a document, then call [`Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/) with `SaveFormat::Html`. This example first creates a sample DOCX, then converts it:
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/DocumentBuilder.h>
 #include <Aspose.Words.Cpp/SaveFormat.h>
 #include <system/smart_ptr.h>
 
 int main()
 {
-    auto doc = System::MakeObject<Aspose::Words::Document>(
-        System::String(u"input.docx"));
+    auto sample = System::MakeObject<Aspose::Words::Document>();
+    auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(sample);
+    builder->Writeln(u"Hello from Aspose.Words!");
+    sample->Save(u"sample-input.docx");
+
+    auto doc = System::MakeObject<Aspose::Words::Document>(u"sample-input.docx");
     doc->Save(u"output.html", Aspose::Words::SaveFormat::Html);
     return 0;
 }
 ```
 
-Place `input.docx` in the working directory. Existing `output.html` is overwritten. Without a license, evaluation limitations apply; see [licensing](https://reference.aspose.com/words/cpp/aspose.words/license/). No external service is needed.
+The program overwrites `sample-input.docx` and `output.html` if they exist. To convert your own document, remove the sample-creation statements and replace the input path. See [licensing](https://docs.aspose.com/words/cpp/licensing/) for evaluation and license requirements.
 
 ## word-to-html-03
 
@@ -289,24 +300,23 @@ How to convert DOC/DOCX to HTML in C++?
 
 Origin: copilot-cli. Compilation: passed.
 
-Load the `.doc` or `.docx` into `Document`, then save it with `SaveFormat::Html`. The constructor detects the input format, and the explicit save format selects HTML. ([Document](https://reference.aspose.com/words/cpp/aspose.words/document/document/), [Save](https://reference.aspose.com/words/cpp/aspose.words/document/save/), [SaveFormat](https://reference.aspose.com/words/cpp/aspose.words/saveformat/))
+Load the `.doc` or `.docx` into `Document`, then save with an `.html` filename; Aspose.Words can infer the output format from the extension. [HTML conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-html-mhtml-or-epub/) · [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/) · [Save API](https://reference.aspose.com/words/cpp/aspose.words/document/save/)
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
-#include <Aspose.Words.Cpp/SaveFormat.h>
 #include <system/smart_ptr.h>
 
 int main()
 {
-    System::SharedPtr<Aspose::Words::Document> doc =
-        System::MakeObject<Aspose::Words::Document>(u"input.docx");
-
-    doc->Save(u"output.html", Aspose::Words::SaveFormat::Html);
+    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
+    doc->Save(u"output.html");
     return 0;
 }
 ```
 
-Set the input path to your existing DOC or DOCX file (for a legacy DOC, for example, use `input.doc`). The output file is overwritten if it already exists. This requires Aspose.Words for C++ and its CodePorting framework at the specified version, plus an appropriate license for your use; no external service or credentials are needed. Depending on save options, HTML may reference separate resource files such as fonts. ([HTML conversion and resources](https://docs.aspose.com/words/cpp/convert-a-document-to-html-mhtml-or-epub/))
+Place the input file beside the program, or change `input.docx` to its path; use `input.doc` for a DOC file. A valid Aspose.Words license is needed for production use without evaluation limitations; the conversion requires no external service. [Installation and licensing](https://docs.aspose.com/words/cpp/installation/)
+
+The MCP verified these APIs against its latest-stable reference; its version-pinned lookup for 26.9.0 was unavailable. `examples/error-correction.md` was not present in the workspace, so I followed the C++ rules included in your prompt.
 
 ## word-to-html-04
 
@@ -314,7 +324,7 @@ How do I convert a DOC/DOCX document to HTML in C++?
 
 Origin: copilot-cli. Compilation: passed.
 
-Place the source document beside the program as `input.docx` (or change the name to `input.doc`). Aspose.Words detects the input format from the file; `SaveFormat::Html` explicitly selects HTML output.
+Load the input with `Document`—its constructor detects the file format—then save it as HTML. The same code works for `.doc` and `.docx`; change the input filename as needed. [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/) · [HTML conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-html-mhtml-or-epub/)
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -323,15 +333,17 @@ Place the source document beside the program as `input.docx` (or change the name
 
 int main()
 {
-    auto document = System::MakeObject<Aspose::Words::Document>(u"input.docx");
-    document->Save(u"output.html", Aspose::Words::SaveFormat::Html);
+    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
+    doc->Save(u"output.html", Aspose::Words::SaveFormat::Html);
     return 0;
 }
 ```
 
-The program needs the Aspose.Words for C++ and CodePorting framework packages you specified, plus the input file and an Aspose license. It needs no credentials or external services. If `output.html` already exists, it will be overwritten.
+Place `input.docx` (or `input.doc`) in the program’s working directory; the output path must be writable. Saving overwrites an existing `output.html`. [Save overloads](https://reference.aspose.com/words/cpp/aspose.words/document/save/) · [Supported formats](https://docs.aspose.com/words/cpp/supported-document-formats/)
 
-Sources: [Document loading](https://reference.aspose.com/words/cpp/aspose.words/document/document/), [`Document::Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/), and [`SaveFormat`](https://reference.aspose.com/words/cpp/aspose.words/saveformat/). The MCP reference endpoint exposed its latest-stable documentation rather than a version-specific 26.9.0 snapshot.
+Build with the Aspose.Words.Cpp and CodePorting framework packages. A license file is optional for evaluation, but apply a valid license for licensed use; no external service or Microsoft Word is needed. [License API](https://reference.aspose.com/words/cpp/aspose.words/license/setlicense/) · [Product overview](https://docs.aspose.com/words/cpp/product-overview/)
+
+**Version note:** The configured MCP returned latest-stable API references, not a 26.9.0-specific snapshot.
 
 ## word-to-excel-01
 
@@ -339,7 +351,7 @@ How to convert DOC/DOCX to Excel?
 
 Origin: copilot-cli. Compilation: passed.
 
-Aspose.Words for C++ can load a DOC or DOCX and save it as XLSX. Set `input.doc` or `input.docx` to your source file; the output path’s `.xlsx` extension selects the Excel format.
+Aspose.Words for C++ can convert a DOC or DOCX to XLSX by loading the file and saving with an `.xlsx` extension. `Document` detects the input format, and `Save` selects the output format from the extension. ([Conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-excel/), [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/), [Save method](https://reference.aspose.com/words/cpp/aspose.words/document/save/))
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -347,15 +359,17 @@ Aspose.Words for C++ can load a DOC or DOCX and save it as XLSX. Set `input.doc`
 
 int main()
 {
-    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
+    System::SharedPtr<Aspose::Words::Document> doc =
+        System::MakeObject<Aspose::Words::Document>(u"input.docx");
+
     doc->Save(u"output.xlsx");
     return 0;
 }
 ```
 
-The `Document` constructor detects the input format, and `Save` writes the XLSX file. The output file is overwritten if it already exists. [Conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-excel/) · [Document API](https://reference.aspose.com/words/cpp/aspose.words/document/) · [Save API](https://reference.aspose.com/words/cpp/aspose.words/document/save/)
+Set `input.docx` to your existing DOC or DOCX file; an existing `output.xlsx` will be overwritten. A licensed Aspose.Words package is needed for production use; no external service is required. ([Licensing and conversion notes](https://docs.aspose.com/words/cpp/convert-a-document-to-excel/))
 
-Build against Aspose.Words.Cpp and CodePorting.Translator.Cs2Cpp.Framework 26.9.0. A valid Aspose.Words license is needed for production use; no credentials or external services are required. The MCP reference index resolved the 26.9.0 request to `latest-stable`, so it did not provide a distinct 26.9.0 reference set. I did not compile or run this example. The requested `examples\error-correction.md` file was not present in the workspace.
+I couldn’t access `examples/error-correction.md` because it isn’t present in the workspace; I followed the C++ build rules in your prompt.
 
 ## word-to-excel-02
 
@@ -363,119 +377,7 @@ How to convert a Word document to Excel?
 
 Origin: copilot-cli. Compilation: passed.
 
-Load the Word document and save it with an `.xlsx` extension; Aspose.Words [selects the output format from the extension](https://reference.aspose.com/words/cpp/aspose.words/document/save/). See the [Word-to-Excel guide](https://docs.aspose.com/words/cpp/convert-a-document-to-excel/).
-
-```cpp
-#include <Aspose.Words.Cpp/Document.h>
-#include <system/smart_ptr.h>
-
-int main()
-{
-    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
-    doc->Save(u"output.xlsx");
-    return 0;
-}
-```
-
-Place `input.docx` in the working directory. An existing `output.xlsx` may be overwritten. No external service is required; without a license, evaluation restrictions apply.
-
-The documentation endpoint returned latest-stable API evidence, not version-specific 26.9.0 evidence. The requested `examples\error-correction.md` file was not present in the workspace; the supplied error-correction guidance was used.
-
-## word-to-excel-03
-
-How to convert DOC/DOCX to XLSX in C++?
-
-Origin: copilot-cli. Compilation: passed.
-
-Aspose.Words can load a DOC or DOCX and save it as XLSX. Replace the input filename below with your existing document’s path.
-
-```cpp
-#include <Aspose.Words.Cpp/Document.h>
-#include <Aspose.Words.Cpp/SaveFormat.h>
-#include <system/smart_ptr.h>
-
-int main()
-{
-    System::String inputFile(u"input.docx");
-    System::String outputFile(u"output.xlsx");
-
-    auto doc = System::MakeObject<Aspose::Words::Document>(inputFile);
-    doc->Save(outputFile, Aspose::Words::SaveFormat::Xlsx);
-
-    return 0;
-}
-```
-
-The `Document` constructor detects the input format, and `Save` writes the specified format. An existing `output.xlsx` is overwritten. For unrestricted use, apply your Aspose.Words license; no external service is required. `XlsxSaveOptions` is available for additional export settings.
-
-Sources: [Convert a document to Excel](https://docs.aspose.com/words/cpp/convert-a-document-to-excel/), [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/), [Document.Save](https://reference.aspose.com/words/cpp/aspose.words/document/save/), [XlsxSaveOptions](https://reference.aspose.com/words/cpp/aspose.words.saving/xlsxsaveoptions/).
-
-## word-to-excel-04
-
-How do I convert a DOC/DOCX document to Excel in C++?
-
-Origin: copilot-cli. Compilation: passed.
-
-Aspose.Words for C++ can load a DOC or DOCX and save it as XLSX. Set `inputPath` to your source file and `outputPath` to the desired workbook path:
-
-```cpp
-#include <Aspose.Words.Cpp/Document.h>
-#include <system/smart_ptr.h>
-
-int main()
-{
-    const System::String inputPath(u"input.docx"); // Or "input.doc"
-    const System::String outputPath(u"output.xlsx");
-
-    auto document = System::MakeObject<Aspose::Words::Document>(inputPath);
-    document->Save(outputPath);
-    return 0;
-}
-```
-
-The `.xlsx` extension selects the output format. You’ll need the input document and, for production use, a valid Aspose.Words license; no external service or credentials are required. See the [Word-to-Excel guide](https://docs.aspose.com/words/cpp/convert-a-document-to-excel/), the [`Document` constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/), and [`Document.Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/).
-
-The configured API lookup did not have a 26.9.0-specific reference set, so the signatures above were checked against its latest-stable reference. I could not locate `examples/error-correction.md` in the workspace; I followed the coding rules included in your prompt.
-
-## word-to-excel-05
-
-How to convert Word to XLSX in C++?
-
-Origin: copilot-cli. Compilation: passed.
-
-Load the Word document and save it with an `.xlsx` extension; Aspose.Words determines the output format from the filename. See the [conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-excel/) and [`Document::Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/).
-
-```cpp
-#include <Aspose.Words.Cpp/Document.h>
-#include <system/smart_ptr.h>
-
-int main()
-{
-    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
-    doc->Save(u"output.xlsx");
-    return 0;
-}
-```
-
-Place `input.docx` in the working directory. An existing `output.xlsx` is overwritten. No external service or credentials are required; without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
-
-The documentation endpoint returned current API evidence, but could not independently verify version 26.9.0.
-
-## word-to-excel-06
-
-Can Aspose.Words convert DOCX to Excel?
-
-Origin: copilot-cli. Compilation: no_code.
-
-Yes. Aspose.Words for C++ can convert DOCX to Excel’s XLSX format by loading the Word file as a `Document` and saving it with an `.xlsx` extension. You can use `XlsxSaveOptions` to control XLSX-specific save settings. [Convert a document to Excel](https://docs.aspose.com/words/cpp/convert-a-document-to-excel/) · [Document.Save API](https://reference.aspose.com/words/cpp/aspose.words/document/save/)
-
-## word-to-markdown-01
-
-How to convert DOC/DOCX to Markdown?
-
-Origin: copilot-cli. Compilation: passed.
-
-Load the DOC or DOCX, then [save it](https://reference.aspose.com/words/cpp/aspose.words/document/save/) with an `.md` extension:
+Load the Word document and save it with an `.xlsx` extension. Aspose.Words determines the output format from the extension. See the [conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-excel/) and [`Document::Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/).
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -484,34 +386,35 @@ Load the DOC or DOCX, then [save it](https://reference.aspose.com/words/cpp/aspo
 
 int main()
 {
-    const System::String input = u"input.docx"; // Also accepts input.doc
-    const bool createSample = false;
+    const bool createSample = true;
+    System::String inputFile = u"input.docx";
 
     if (createSample)
     {
         auto sample = System::MakeObject<Aspose::Words::Document>();
         auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(sample);
-        builder->Writeln(u"Hello from a sample Word document.");
-        sample->Save(input);
+        builder->InsertHtml(
+            u"<table><tr><td>Item</td><td>Quantity</td></tr>"
+            u"<tr><td>Apples</td><td>3</td></tr></table>");
+        sample->Save(u"sample-input.docx");
+        inputFile = u"sample-input.docx";
     }
 
-    auto doc = System::MakeObject<Aspose::Words::Document>(input);
-    doc->Save(u"output.md");
+    auto document = System::MakeObject<Aspose::Words::Document>(inputFile);
+    document->Save(u"output.xlsx");
     return 0;
 }
 ```
 
-Place the input in the working directory, or set `createSample` to `true` to create one. **That option overwrites the input path**; saving also overwrites `output.md`. Embedded images are saved as separate files in the output folder by default ([image options](https://reference.aspose.com/words/cpp/aspose.words.saving/markdownsaveoptions/get_imagesfolder/)).
+Set `createSample` to `false` to convert `input.docx` instead. The program overwrites its output files. An Aspose.Words license removes evaluation restrictions; no external service is required.
 
-An Aspose.Words license removes evaluation limitations; no external service or Microsoft Word is required ([licensing](https://docs.aspose.com/words/cpp/insert-checkboxes-text-input-or-images-mail-merge/), [API overview](https://docs.aspose.com/words/cpp/api-reference/)).
+## word-to-excel-03
 
-## word-to-markdown-02
-
-How to convert a Word document to Markdown?
+How to convert DOC/DOCX to XLSX in C++?
 
 Origin: copilot-cli. Compilation: passed.
 
-Load the Word document and save it with a `.md` extension; Aspose.Words determines the output format from the extension ([Save reference](https://reference.aspose.com/words/cpp/aspose.words/document/save/)).
+Aspose.Words for C++ can load either DOC or DOCX and save it as XLSX. The source format is detected from the input file; the output format is selected from the `.xlsx` extension. [Conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-excel/) · [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/) · [Save overload](https://reference.aspose.com/words/cpp/aspose.words/document/save/)
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -520,22 +423,20 @@ Load the Word document and save it with a `.md` extension; Aspose.Words determin
 int main()
 {
     auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
-    doc->Save(u"output.md");
+    doc->Save(u"output.xlsx");
     return 0;
 }
 ```
 
-Place `input.docx` in the working directory. An existing `output.md` is overwritten. No external service or credentials are required. Without a license, evaluation limitations apply ([licensing](https://docs.aspose.com/words/cpp/licensing/)).
+Place the source file next to the executable as `input.docx`; for a legacy DOC, change that path to `input.doc`. `output.xlsx` is overwritten if it already exists. Build against Aspose.Words.Cpp and CodePorting.Translator.Cs2Cpp.Framework 26.9.0. Production use requires an Aspose.Words license; no credentials or external services are needed.
 
-The requested `examples/error-correction.md` file was not present; I used the guidance included in your prompt.
+## word-to-excel-04
 
-## word-to-markdown-03
-
-How to convert DOC/DOCX to Markdown in C++?
+How do I convert a DOC/DOCX document to Excel in C++?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use `Document` to load the existing Word file, then save it with a `.md` extension; `Save(fileName)` selects the output format from that extension.
+Aspose.Words loads DOC/DOCX by detecting the input format, then saves as XLSX based on the output filename’s extension. [Conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-excel/) · [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/) · [Document.Save](https://reference.aspose.com/words/cpp/aspose.words/document/save/)
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -543,27 +444,25 @@ Use `Document` to load the existing Word file, then save it with a `.md` extensi
 
 int main()
 {
-    System::String inputPath = u"input.docx"; // Use u"input.doc" for a DOC file.
-    System::String outputPath = u"output.md";
+    System::SharedPtr<Aspose::Words::Document> document =
+        System::MakeObject<Aspose::Words::Document>(u"input.docx");
 
-    auto document = System::MakeObject<Aspose::Words::Document>(inputPath);
-    document->Save(outputPath);
-
+    document->Save(u"output.xlsx");
     return 0;
 }
 ```
 
-Place `input.docx` (or `input.doc`) in the program’s working directory, or change `inputPath` to its location. The program uses the Aspose.Words C++ SDK and its CodePorting dependency; no credentials or external services are needed. For licensed use, see Aspose’s [licensing documentation](https://docs.aspose.com/words/cpp/licensing/).
+Place the source file next to the executable, or change `input.docx` to its path; use `input.doc` for a DOC file. The output file is overwritten if it already exists. This requires Aspose.Words for C++ and its CodePorting dependency (26.9.0); production use requires a valid license to remove evaluation limitations. No external service or credentials are needed. [Licensing and conversion details](https://docs.aspose.com/words/cpp/convert-a-document-to-excel/)
 
-Sources: [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/), [Document.Save](https://reference.aspose.com/words/cpp/aspose.words/document/save/) (format inferred from the file extension), and [MarkdownSaveOptions](https://reference.aspose.com/words/cpp/aspose.words.saving/markdownsaveoptions/) (Markdown save format).
+The workspace did not contain `examples/error-correction.md`; I followed the C++ rules included in your prompt.
 
-## word-to-markdown-04
+## word-to-excel-05
 
-How do I convert a DOC/DOCX document to Markdown in C++?
+How to convert Word to XLSX in C++?
 
 Origin: copilot-cli. Compilation: passed.
 
-Load the `.doc` or `.docx` into `Document`, then save with a `.md` filename. Aspose.Words detects the output format from the extension; its Markdown guide shows this conversion pattern. [Markdown conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-markdown/) · [Document.Save API](https://reference.aspose.com/words/cpp/aspose.words/document/save/) · [Supported formats](https://docs.aspose.com/words/cpp/supported-document-formats/)
+Load the Word document and save it with an `.xlsx` extension; Aspose.Words selects the output format from the extension. See the [conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-excel/) and [`Document::Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/).
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -572,22 +471,30 @@ Load the `.doc` or `.docx` into `Document`, then save with a `.md` filename. Asp
 int main()
 {
     auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
-    doc->Save(u"output.md");
+    doc->Save(u"output.xlsx");
     return 0;
 }
 ```
 
-Place `input.docx` in the program’s working directory, or change the path; use `input.doc` for a DOC file. Conversion needs no external service or credentials. Aspose’s evaluation mode is available; for licensed use, provide your local license file before processing. [License API](https://reference.aspose.com/words/cpp/aspose.words/license/)
+Place `input.docx` in the working directory. An existing `output.xlsx` is overwritten. No external service or credentials are needed; without a license, evaluation restrictions apply.
 
-The MCP verified the API against its `latest-stable` reference, but did not resolve the requested 26.9.0 version specifically.
+## word-to-excel-06
 
-## word-to-markdown-05
+Can Aspose.Words convert DOCX to Excel?
 
-How to save a Word document as a Markdown file?
+Origin: copilot-cli. Compilation: no_code.
+
+Yes. Aspose.Words for C++ can load a DOCX and save it as an Excel **`.xlsx`** workbook; its documentation includes a DOCX-to-XLSX example. [Convert Word to Excel](https://docs.aspose.com/words/cpp/convert-a-document-to-excel/) `Document::Save` can infer the output format from the filename extension. [Save API](https://reference.aspose.com/words/cpp/aspose.words/document/save/)
+
+The conversion is intended to produce a spreadsheet file; it may not automatically organize document content into the exact rows and columns you want.
+
+## word-to-markdown-01
+
+How to convert DOC/DOCX to Markdown?
 
 Origin: copilot-cli. Compilation: passed.
 
-Load the Word document and call [`Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/) with an `.md` extension; Aspose.Words determines the output format from the extension.
+Load the Word document and save it with an `.md` extension; Aspose.Words detects both formats automatically ([conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-markdown/), [Save API](https://reference.aspose.com/words/cpp/aspose.words/document/save/)).
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -599,25 +506,141 @@ int main()
     auto sample = System::MakeObject<Aspose::Words::Document>();
     auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(sample);
     builder->Writeln(u"Hello from a Word document.");
-    sample->Save(u"sample.docx");
+    sample->Save(u"sample-input.docx");
 
-    auto doc = System::MakeObject<Aspose::Words::Document>(u"sample.docx");
+    // Replace this path with your own .doc or .docx file.
+    auto doc = System::MakeObject<Aspose::Words::Document>(u"sample-input.docx");
     doc->Save(u"output.md");
     return 0;
 }
 ```
 
-The program creates `sample.docx` and converts it to `output.md`, overwriting either file if it already exists. To use your own document, remove the sample-creation statements and replace `sample.docx` in the constructor with its path.
+The program overwrites `sample-input.docx` and `output.md` if they exist. Exported images are saved alongside the Markdown file by default. An Aspose license removes evaluation restrictions; no external service is required.
 
-A license is optional; the [trial](https://docs.aspose.com/words/cpp/licensing/) adds an evaluation watermark and limits document size. No external service is required. The requested `examples/error-correction.md` file was not present; I used the guidance included in your prompt.
+## word-to-markdown-02
+
+How to convert a Word document to Markdown?
+
+Origin: copilot-cli. Compilation: passed.
+
+Load the Word document, then save it with a `.md` extension; Aspose.Words infers Markdown from the extension. See the [conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-markdown/) and [`Document::Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/).
+
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <system/smart_ptr.h>
+
+int main()
+{
+    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
+    doc->Save(u"output.md");
+    return 0;
+}
+```
+
+Place `input.docx` in the working directory. `output.md` is overwritten if it exists; exported images are saved alongside it by default. No external service is required. An Aspose license removes [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/).
+
+## word-to-markdown-03
+
+How to convert DOC/DOCX to Markdown in C++?
+
+Origin: copilot-cli. Compilation: passed.
+
+Load the `.doc` or `.docx` into `Document`, then save to a `.md` path; Aspose.Words infers Markdown from the extension. [DOC/DOCX-to-Markdown guide](https://docs.aspose.com/words/cpp/convert-a-document-to-markdown/) · [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/) · [Save overloads](https://reference.aspose.com/words/cpp/aspose.words/document/save/)
+
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <system/smart_ptr.h>
+
+int main()
+{
+    System::SharedPtr<Aspose::Words::Document> doc =
+        System::MakeObject<Aspose::Words::Document>(u"input.docx");
+
+    doc->Save(u"output.md");
+    return 0;
+}
+```
+
+Replace `input.docx` with your input path; the same code accepts `.doc`. The output file is overwritten if it already exists. If the document contains images, Aspose.Words saves them alongside the Markdown by default. [Markdown image handling](https://docs.aspose.com/words/cpp/convert-a-document-to-markdown/)
+
+No external service is needed. The input document and Aspose.Words for C++ 26.9.0 package (with its CodePorting dependency) are required. Trial use is available with evaluation limitations; an Aspose.Words license is needed for unrestricted use. [Licensing](https://docs.aspose.com/words/cpp/licensing/)
+
+## word-to-markdown-04
+
+How do I convert a DOC/DOCX document to Markdown in C++?
+
+Origin: copilot-cli. Compilation: passed.
+
+Load the DOC or DOCX, then save with a `.md` extension; Aspose.Words selects Markdown from the extension ([conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-markdown/), [Save reference](https://reference.aspose.com/words/cpp/aspose.words/document/save/)).
+
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <system/smart_ptr.h>
+
+int main()
+{
+    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
+    doc->Save(u"output.md");
+    return 0;
+}
+```
+
+Place `input.docx` in the working directory, or change the path to your `.doc` file. An existing `output.md` is overwritten; images are saved alongside it by default. No external service is required. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/faq/) apply.
+
+## word-to-markdown-05
+
+How to save a Word document as a Markdown file?
+
+Origin: copilot-cli. Compilation: passed.
+
+Load the Word document, then [save it](https://reference.aspose.com/words/cpp/aspose.words/document/save/) with an `.md` extension; Aspose.Words selects Markdown from the extension.
+
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/DocumentBuilder.h>
+#include <system/smart_ptr.h>
+
+int main()
+{
+    // Create a sample Word document.
+    auto sample = System::MakeObject<Aspose::Words::Document>();
+    auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(sample);
+    builder->Writeln(u"Hello from a Word document.");
+    sample->Save(u"sample-input.docx");
+
+    // Load the Word document and save it as Markdown.
+    auto doc = System::MakeObject<Aspose::Words::Document>(
+        System::String(u"sample-input.docx"));
+    doc->Save(u"output.md");
+    return 0;
+}
+```
+
+The example overwrites `sample-input.docx` and `output.md` in the working directory. To convert your own document, remove the sample-creation statements and replace the input path.
+
+No external service is required. Without an applied license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
 
 ## word-to-markdown-06
 
 Can Aspose.Words convert DOCX to Markdown?
 
-Origin: copilot-cli. Compilation: no_code.
+Origin: copilot-cli. Compilation: passed.
 
-Yes. Aspose.Words for C++ can load a DOCX and save it as Markdown; saving with a `.md` filename lets it determine the output format from the extension. Exported images are saved alongside the Markdown file by default, and you can configure their folder. [Convert a Document to Markdown](https://docs.aspose.com/words/cpp/convert-a-document-to-markdown/) · [`Document::Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/)
+Yes. Aspose.Words for C++ supports converting DOCX to Markdown. `Document::Save` can infer the output format from the filename extension. ([Product overview](https://docs.aspose.com/words/cpp/product-overview/), [Save API](https://reference.aspose.com/words/cpp/aspose.words/document/save/))
+
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <system/smart_ptr.h>
+
+int main()
+{
+    auto document = System::MakeObject<Aspose::Words::Document>(u"input.docx");
+    document->Save(u"output.md");
+    return 0;
+}
+```
+
+Place `input.docx` in the program’s working directory. You’ll need Aspose.Words for C++ and a valid license; trial use has limitations. No credentials or external services are required. The MCP endpoint provided API evidence for `latest-stable`, not specifically 26.9.0.
 
 ## word-to-image-01
 
@@ -625,10 +648,11 @@ How to convert DOC/DOCX to an image?
 
 Origin: copilot-cli. Compilation: passed.
 
-Load the document and save each page as a PNG using [`ImageSaveOptions`](https://docs.aspose.com/words/cpp/convert-a-document-to-an-image/). Page indices are [zero-based](https://reference.aspose.com/words/cpp/aspose.words.saving/pageset/pageset/).
+Load the document, then save each page as a PNG using a zero-based [`PageSet`](https://reference.aspose.com/words/cpp/aspose.words.saving/pageset/pageset/). See also the [conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-an-image/).
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/DocumentBuilder.h>
 #include <Aspose.Words.Cpp/SaveFormat.h>
 #include <Aspose.Words.Cpp/Saving/ImageSaveOptions.h>
 #include <Aspose.Words.Cpp/Saving/PageSet.h>
@@ -636,7 +660,19 @@ Load the document and save each page as a PNG using [`ImageSaveOptions`](https:/
 
 int main()
 {
-    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
+    // Set to false and change the path to convert an existing DOC or DOCX.
+    const bool createSample = true;
+    const System::String inputPath = u"sample-input.docx";
+
+    if (createSample)
+    {
+        auto sample = System::MakeObject<Aspose::Words::Document>();
+        auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(sample);
+        builder->Writeln(u"Sample document for image conversion.");
+        sample->Save(inputPath);
+    }
+
+    auto doc = System::MakeObject<Aspose::Words::Document>(inputPath);
     auto options = System::MakeObject<Aspose::Words::Saving::ImageSaveOptions>(
         Aspose::Words::SaveFormat::Png);
     options->set_Resolution(150.0f);
@@ -649,13 +685,12 @@ int main()
         System::String output = System::String::Format(u"page_{0}.png", i + 1);
         doc->Save(output, options);
     }
+
     return 0;
 }
 ```
 
-Place `input.docx` in the working directory; change the path to use a DOC file instead. Existing `page_*.png` files with matching names are overwritten. No external service is needed. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
-
-The referenced `examples/error-correction.md` file was unavailable; I used the guidance included in your request.
+The sample writes `sample-input.docx` and `page_1.png` in the working directory; existing files with those names are overwritten. For your own document, set `createSample` to `false` and change `inputPath`. No external service or credentials are needed. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
 
 ## word-to-image-02
 
@@ -663,71 +698,7 @@ How to convert a Word document to an image?
 
 Origin: copilot-cli. Compilation: passed.
 
-Save the document to a filename with the image extension; Aspose.Words uses that extension to choose the output format. This example converts `input.docx` to PNG:
-
-```cpp
-#include <Aspose.Words.Cpp/Document.h>
-#include <system/smart_ptr.h>
-
-int main()
-{
-    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
-    doc->Save(u"output.png");
-    return 0;
-}
-```
-
-Place `input.docx` where the program can access it. The program needs Aspose.Words for C++ and its matching CodePorting dependency; use a valid Aspose license for licensed use. No credentials or external services are needed. For rendering controls, use `ImageSaveOptions`; for a single multi-page image file, Aspose documents multi-page TIFF.
-
-Sources: [Convert a document to an image](https://docs.aspose.com/words/cpp/convert-a-document-to-an-image/), [Document.Save API](https://reference.aspose.com/words/cpp/aspose.words/document/save/), [ImageSaveOptions API](https://reference.aspose.com/words/cpp/aspose.words.saving/imagesaveoptions/), [multi-page TIFF](https://docs.aspose.com/words/cpp/saving-a-document-as-a-multipage-tiff/). The configured MCP exposed latest-stable documentation, not version-specific 26.9.0 evidence; I have not claimed a compile or runtime check.
-
-## word-to-image-03
-
-How to convert DOC/DOCX to PNG in C++?
-
-Origin: copilot-cli. Compilation: passed.
-
-Use `Document` to load either DOC or DOCX, then render each page as a separate PNG with `ImageSaveOptions` and `PageSet`. The page index is zero-based. [Image conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-an-image/) · [PageSet API](https://reference.aspose.com/words/cpp/aspose.words.saving/pageset/pageset/) · [Save API](https://reference.aspose.com/words/cpp/aspose.words/document/save/)
-
-```cpp
-#include <Aspose.Words.Cpp/Document.h>
-#include <Aspose.Words.Cpp/SaveFormat.h>
-#include <Aspose.Words.Cpp/Saving/ImageSaveOptions.h>
-#include <Aspose.Words.Cpp/Saving/PageSet.h>
-#include <system/object.h>
-#include <system/smart_ptr.h>
-
-int main()
-{
-    // Change the path to your existing .doc or .docx file.
-    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
-    auto options = System::MakeObject<Aspose::Words::Saving::ImageSaveOptions>(
-        Aspose::Words::SaveFormat::Png);
-
-    for (int page = 0; page < doc->get_PageCount(); ++page)
-    {
-        options->set_PageSet(
-            System::MakeObject<Aspose::Words::Saving::PageSet>(page));
-
-        System::String outputFile =
-            System::String::Format(u"page_{0}.png", page + 1);
-
-        doc->Save(outputFile, options);
-    }
-
-    return 0;
-}
-```
-
-This writes `page_1.png`, `page_2.png`, and so on in the current directory; existing files with those names are overwritten. Provide a valid Aspose.Words license for licensed use. No external service or credentials are required.
-
-## word-to-image-04
-
-How do I convert a DOC/DOCX document to an image in C++?
-
-Origin: copilot-cli. Compilation: passed.
-
-Use `Document` to load the DOC/DOCX, then render each page with `ImageSaveOptions`. This writes one PNG per page; `PageSet` uses zero-based page indices. The MCP reference index resolved 26.9.0 requests to `latest-stable`, so these references are not specific to the pinned patch version.
+Use `ImageSaveOptions` with `SaveFormat::Png`, then render each zero-based page separately with `PageSet` to produce one PNG per page. [Conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-an-image/) · [ImageSaveOptions](https://reference.aspose.com/words/cpp/aspose.words.saving/imagesaveoptions/) · [PageSet](https://reference.aspose.com/words/cpp/aspose.words.saving/pageset/)
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -735,8 +706,6 @@ Use `Document` to load the DOC/DOCX, then render each page with `ImageSaveOption
 #include <Aspose.Words.Cpp/Saving/ImageSaveOptions.h>
 #include <Aspose.Words.Cpp/Saving/PageSet.h>
 #include <system/smart_ptr.h>
-#include <system/string.h>
-#include <cstdint>
 
 int main()
 {
@@ -745,23 +714,104 @@ int main()
         System::MakeObject<Aspose::Words::Saving::ImageSaveOptions>(
             Aspose::Words::SaveFormat::Png);
 
-    for (int32_t pageIndex = 0; pageIndex < doc->get_PageCount(); ++pageIndex)
+    for (int pageIndex = 0; pageIndex < doc->get_PageCount(); ++pageIndex)
     {
         options->set_PageSet(
             System::MakeObject<Aspose::Words::Saving::PageSet>(pageIndex));
 
-        doc->Save(
-            System::String::Format(u"page-{0}.png", pageIndex + 1),
-            options);
+        System::String outputPath =
+            System::String::Format(u"page_{0}.png", pageIndex + 1);
+        doc->Save(outputPath, options);
     }
 
     return 0;
 }
 ```
 
-Place `input.docx` in the program’s working directory, or change the path; the `Document` constructor detects the file format. Existing `page-N.png` files are overwritten. The example uses a local file and needs no credentials or external service; build it with the Aspose.Words for C++ SDK and its required license/dependency setup.
+Place `input.docx` in the program’s working directory; the output files are `page_1.png`, `page_2.png`, and so on. Production use requires a valid Aspose.Words license to remove evaluation limitations; no external service or credentials are needed. [Licensing and installation](https://docs.aspose.com/words/cpp/installation/)
 
-Sources: [Document loading and format detection](https://reference.aspose.com/words/cpp/aspose.words/document/), [`Document::Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/), [`ImageSaveOptions`](https://reference.aspose.com/words/cpp/aspose.words.saving/imagesaveoptions/), [`PageSet`](https://reference.aspose.com/words/cpp/aspose.words.saving/pageset/), [`get_PageCount`](https://reference.aspose.com/words/cpp/aspose.words/document/get_pagecount/).
+The MCP references available here resolved to **latest stable**, not specifically 26.9.0, so version-specific verification wasn’t available. I also couldn’t locate a workspace copy of `examples/error-correction.md`; I followed the guidance included in your request.
+
+## word-to-image-03
+
+How to convert DOC/DOCX to PNG in C++?
+
+Origin: copilot-cli. Compilation: passed.
+
+Use `ImageSaveOptions` with `SaveFormat::Png`, then save each zero-based page separately with a `PageSet`. Aspose.Words detects DOC and DOCX from the input file; the conversion guide demonstrates exporting pages as distinct image files. ([conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-an-image/), [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/), [PageSet](https://reference.aspose.com/words/cpp/aspose.words.saving/pageset/pageset/))
+
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/SaveFormat.h>
+#include <Aspose.Words.Cpp/Saving/ImageSaveOptions.h>
+#include <Aspose.Words.Cpp/Saving/PageSet.h>
+#include <system/smart_ptr.h>
+#include <system/string.h>
+
+int main()
+{
+    System::SharedPtr<Aspose::Words::Document> doc =
+        System::MakeObject<Aspose::Words::Document>(u"input.docx");
+
+    System::SharedPtr<Aspose::Words::Saving::ImageSaveOptions> options =
+        System::MakeObject<Aspose::Words::Saving::ImageSaveOptions>(
+            Aspose::Words::SaveFormat::Png);
+
+    for (int pageIndex = 0; pageIndex < doc->get_PageCount(); ++pageIndex)
+    {
+        options->set_PageSet(
+            System::MakeObject<Aspose::Words::Saving::PageSet>(pageIndex));
+
+        System::String outputFile =
+            System::String::Format(u"page_{0}.png", pageIndex + 1);
+
+        doc->Save(outputFile, options);
+    }
+
+    return 0;
+}
+```
+
+Set `input.docx` to your existing DOC or DOCX file. The program writes `page_1.png`, `page_2.png`, and so on in the current directory; matching files are overwritten. It requires the Aspose.Words.Cpp and CodePorting dependencies. No credentials or external services are needed. Without a license, evaluation limitations apply; apply a valid license before processing if required ([licensing guide](https://docs.aspose.com/words/cpp/licensing/)).
+
+The configured MCP catalog exposed `latest-stable`, not a separate 26.9.0 snapshot, so the signatures were verified against its available API reference. I couldn’t locate `examples/error-correction.md` in the workspace and followed the rules included in your prompt.
+
+## word-to-image-04
+
+How do I convert a DOC/DOCX document to an image in C++?
+
+Origin: copilot-cli. Compilation: passed.
+
+Use `ImageSaveOptions` with `SaveFormat::Png`, then select each page with `PageSet` and save it under a distinct filename. This program expects an existing `input.docx` (you can use a `.doc` file instead) and writes `page_1.png`, `page_2.png`, and so on to the current directory.
+
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/SaveFormat.h>
+#include <Aspose.Words.Cpp/Saving/ImageSaveOptions.h>
+#include <Aspose.Words.Cpp/Saving/PageSet.h>
+#include <system/string.h>
+
+int main()
+{
+    auto document = System::MakeObject<Aspose::Words::Document>(u"input.docx");
+    auto options = System::MakeObject<Aspose::Words::Saving::ImageSaveOptions>(
+        Aspose::Words::SaveFormat::Png);
+
+    for (int page = 0; page < document->get_PageCount(); ++page)
+    {
+        options->set_PageSet(
+            System::MakeObject<Aspose::Words::Saving::PageSet>(page));
+
+        System::String outputFile =
+            System::String::Format(u"page_{0}.png", page + 1);
+        document->Save(outputFile, options);
+    }
+
+    return 0;
+}
+```
+
+`PageSet` uses zero-based page indexes; the loop renders each page separately. The program needs the Aspose.Words for C++ 26.9.0 and CodePorting framework packages, plus the input file. For licensed use, provide your `.lic` file and apply it before processing; no credentials or external service are needed. [Image conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-an-image/) · [PageSet API](https://reference.aspose.com/words/cpp/aspose.words.saving/pageset/pageset/) · [Document page count](https://reference.aspose.com/words/cpp/aspose.words/document/get_pagecount/) · [Licensing information](https://docs.aspose.com/words/cpp/technical-support/)
 
 ## word-to-image-05
 
@@ -769,7 +819,7 @@ How to save a Word document as an image?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [`ImageSaveOptions`](https://reference.aspose.com/words/cpp/aspose.words.saving/imagesaveoptions/) and a zero-based [`PageSet`](https://reference.aspose.com/words/cpp/aspose.words.saving/pageset/pageset/) to save each page as a PNG:
+Load the document, then save each page as a PNG using a zero-based [`PageSet`](https://reference.aspose.com/words/cpp/aspose.words.saving/pageset/pageset/). See also Aspose’s [image conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-an-image/).
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -780,16 +830,19 @@ Use [`ImageSaveOptions`](https://reference.aspose.com/words/cpp/aspose.words.sav
 #include <system/smart_ptr.h>
 
 #include <cstdint>
+#include <filesystem>
 
 int main()
 {
-    // Create a sample input document.
-    auto sample = System::MakeObject<Aspose::Words::Document>();
-    auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(sample);
-    builder->Writeln(u"Hello from Aspose.Words!");
-    sample->Save(u"sample-input.docx");
+    if (!std::filesystem::exists(L"input.docx"))
+    {
+        auto sample = System::MakeObject<Aspose::Words::Document>();
+        auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(sample);
+        builder->Writeln(u"Sample Word document.");
+        sample->Save(u"input.docx");
+    }
 
-    auto doc = System::MakeObject<Aspose::Words::Document>(u"sample-input.docx");
+    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
     auto options = System::MakeObject<Aspose::Words::Saving::ImageSaveOptions>(
         Aspose::Words::SaveFormat::Png);
     options->set_Resolution(150.0f);
@@ -799,17 +852,17 @@ int main()
     {
         options->set_PageSet(
             System::MakeObject<Aspose::Words::Saving::PageSet>(i));
-        System::String output = System::String::Format(u"page_{0}.png", i + 1);
-        doc->Save(output, options);
+        System::String filename = System::String::Format(u"page_{0}.png", i + 1);
+        doc->Save(filename, options);
     }
 
     return 0;
 }
 ```
 
-The program creates `sample-input.docx` and `page_1.png` in the working directory, overwriting files with those names. To convert your own document, remove the sample-creation statements and replace the input path.
+Place `input.docx` in the working directory; if absent, the program creates a sample. Existing `page_*.png` outputs are overwritten. A license removes [evaluation limitations](https://docs.aspose.com/words/cpp/installation/).
 
-No external service is needed. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply. The documentation service exposes latest-stable references, not a separately verifiable 26.9.0 reference.
+`examples\error-correction.md` was unavailable; the supplied error-correction guidance was followed.
 
 ## word-to-image-06
 
@@ -817,11 +870,9 @@ Can Aspose.Words convert DOCX to JPG or PNG?
 
 Origin: copilot-cli. Compilation: passed.
 
-Yes. Aspose.Words can render a DOCX as JPEG or PNG; this example saves **each page** to separate files in both formats. [Conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-an-image/) · [ImageSaveOptions reference](https://reference.aspose.com/words/cpp/aspose.words.saving/imagesaveoptions/)
+Yes. Aspose.Words can render DOCX pages as PNG or JPEG (JPG). This program writes both formats for every page as `page_1.png`, `page_1.jpg`, and so on. [Conversion guide](https://docs.aspose.com/words/cpp/convert-a-document-to-an-image/) · [ImageSaveOptions](https://reference.aspose.com/words/cpp/aspose.words.saving/imagesaveoptions/imagesaveoptions/) · [PageSet](https://reference.aspose.com/words/cpp/aspose.words.saving/pageset/pageset/)
 
 ```cpp
-#include <cstdint>
-
 #include <Aspose.Words.Cpp/Document.h>
 #include <Aspose.Words.Cpp/SaveFormat.h>
 #include <Aspose.Words.Cpp/Saving/ImageSaveOptions.h>
@@ -830,29 +881,34 @@ Yes. Aspose.Words can render a DOCX as JPEG or PNG; this example saves **each pa
 
 int main()
 {
-    auto document = System::MakeObject<Aspose::Words::Document>(u"input.docx");
+    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
 
     auto pngOptions = System::MakeObject<Aspose::Words::Saving::ImageSaveOptions>(
         Aspose::Words::SaveFormat::Png);
     auto jpegOptions = System::MakeObject<Aspose::Words::Saving::ImageSaveOptions>(
         Aspose::Words::SaveFormat::Jpeg);
 
-    for (int32_t pageIndex = 0; pageIndex < document->get_PageCount(); ++pageIndex)
+    for (int pageIndex = 0; pageIndex < doc->get_PageCount(); ++pageIndex)
     {
-        auto pageSet = System::MakeObject<Aspose::Words::Saving::PageSet>(pageIndex);
+        auto pageSet =
+            System::MakeObject<Aspose::Words::Saving::PageSet>(pageIndex);
         pngOptions->set_PageSet(pageSet);
         jpegOptions->set_PageSet(pageSet);
 
-        const int32_t pageNumber = pageIndex + 1;
-        document->Save(System::String(u"page_") + pageNumber + u".png", pngOptions);
-        document->Save(System::String(u"page_") + pageNumber + u".jpg", jpegOptions);
+        const System::String pngPath =
+            System::String::Format(u"page_{0}.png", pageIndex + 1);
+        const System::String jpegPath =
+            System::String::Format(u"page_{0}.jpg", pageIndex + 1);
+
+        doc->Save(pngPath, pngOptions);
+        doc->Save(jpegPath, jpegOptions);
     }
 
     return 0;
 }
 ```
 
-Place `input.docx` in the program’s working directory; existing output files with those names may be overwritten. Use the Aspose.Words.Cpp and CodePorting framework packages. A valid Aspose.Words license is needed for licensed use; no credentials or external services are required. The MCP documentation resolved to latest stable, so I can’t confirm the signatures specifically against 26.9.0.
+Place `input.docx` in the program’s working directory; output files are written there and overwrite matching filenames. No credentials or external service are needed; use your normal Aspose license setup for licensed use. The configured MCP resolves version-specific lookups to `latest-stable`, not a 26.9.0 snapshot, so these APIs were not independently verified against that exact package version.
 
 ## pdf-to-other-01
 
@@ -860,7 +916,7 @@ How to convert PDF to other document formats?
 
 Origin: copilot-cli. Compilation: passed.
 
-Load the PDF into a [`Document`](https://reference.aspose.com/words/cpp/aspose.words/document/document/), then [save](https://reference.aspose.com/words/cpp/aspose.words/document/save/) it with the desired output extension:
+Load the PDF with [`Document`](https://reference.aspose.com/words/cpp/aspose.words/document/document/), then [`Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/) it using the desired output extension:
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -873,11 +929,14 @@ int main()
     doc->Save(u"output.docx");
     doc->Save(u"output.html");
     doc->Save(u"output.rtf");
+
     return 0;
 }
 ```
 
-Place an unencrypted `input.pdf` in the working directory. Existing output files are overwritten. Conversion may change layout; inspect the results. No external service is required. Without a license, evaluation limitations apply; see [licensing](https://docs.aspose.com/words/cpp/licensing/).
+Place an unencrypted `input.pdf` in the working directory. Existing output files are overwritten. Review the results: PDF layout and editable document structure may differ.
+
+The example uses the evaluation mode; a license removes its [trial restrictions](https://docs.aspose.com/words/cpp/faq/). No external service is required.
 
 ## pdf-to-other-02
 
@@ -885,55 +944,7 @@ How to convert PDF to DOCX in C++?
 
 Origin: copilot-cli. Compilation: passed.
 
-Load the PDF into an Aspose `Document`, then save with a `.docx` filename; `Save` infers the output format from the extension. The conversion API follows this load-then-save pattern. ([conversion guide](https://docs.aspose.com/words/cpp/convert-a-document/), [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/), [Save](https://reference.aspose.com/words/cpp/aspose.words/document/save/))
-
-```cpp
-#include <Aspose.Words.Cpp/Document.h>
-#include <system/smart_ptr.h>
-
-int main()
-{
-    auto document = System::MakeObject<Aspose::Words::Document>(u"input.pdf");
-    document->Save(u"output.docx");
-    return 0;
-}
-```
-
-Place `input.pdf` in the program’s working directory; `output.docx` is written there. The code needs no credentials or external service. For production, apply a valid Aspose.Words license before using the library; the trial version adds an evaluation watermark and imposes document-size limits ([licensing](https://docs.aspose.com/words/cpp/licensing/)). The configured MCP exposed `latest-stable`, not a separate 26.9.0 documentation snapshot.
-
-## pdf-to-other-03
-
-How to convert a PDF document to Word in C++?
-
-Origin: copilot-cli. Compilation: passed.
-
-Load the PDF into an Aspose.Words `Document`, then save it with a `.docx` filename:
-
-```cpp
-#include <Aspose.Words.Cpp/Document.h>
-#include <system/smart_ptr.h>
-
-int main()
-{
-    auto document = System::MakeObject<Aspose::Words::Document>(u"input.pdf");
-    document->Save(u"output.docx");
-    return 0;
-}
-```
-
-Place `input.pdf` in the program’s working directory; the program writes `output.docx` there. Aspose.Words documents conversion as loading a supported format and saving to the desired format; its `Document` constructor detects the input format, and `Save` infers the output format from the filename. [Supported formats](https://docs.aspose.com/words/cpp/supported-document-formats/) · [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/) · [Document.Save](https://reference.aspose.com/words/cpp/aspose.words/document/save/)
-
-The program needs the Aspose.Words for C++ and CodePorting framework packages. No credentials or external service are required. A purchased license file is needed for licensed use; the trial works with an evaluation watermark and document-size limits. [Licensing](https://docs.aspose.com/words/cpp/licensing/)
-
-**Version note:** The MCP API evidence resolved to `latest-stable`, not a version-specific 26.9.0 snapshot.
-
-## pdf-to-other-04
-
-How do I convert PDF to DOC or DOCX using Aspose.Words?
-
-Origin: copilot-cli. Compilation: passed.
-
-Load the PDF into a `Document`, then save it with the desired filename extension; `Save(filename)` selects the output format from that extension.[1][2]
+Use `Document` to load the PDF, then save with a `.docx` extension. Aspose.Words detects the input format and infers the output format from the filename extension.[Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/) · [Document::Save](https://reference.aspose.com/words/cpp/aspose.words/document/save/) · [Conversion guide](https://docs.aspose.com/words/cpp/convert-a-document/)
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -945,15 +956,59 @@ int main()
         System::MakeObject<Aspose::Words::Document>(u"input.pdf");
 
     document->Save(u"output.docx");
-    document->Save(u"output.doc");
-
     return 0;
 }
 ```
 
-Place `input.pdf` in the program’s working directory; the outputs are written there too. Use an applicable Aspose license for licensed use; no credentials or external service are needed for this local conversion.[3] The MCP reference available to me resolved to `latest-stable`, not a 26.9.0-specific snapshot.
+Provide a readable `input.pdf`; the program writes `output.docx` and overwrites it if it already exists. PDF loading is supported by Aspose.Words; optional PDF-specific load settings are available through [`PdfLoadOptions`](https://reference.aspose.com/words/cpp/aspose.words.loading/pdfloadoptions/). Use your Aspose.Words license for licensed use (see [licensing](https://docs.aspose.com/words/cpp/licensing/)). No credentials or external conversion service are required.
 
-[1] [Document conversion](https://docs.aspose.com/words/cpp/convert-a-document/) · [2] [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/) and [Save](https://reference.aspose.com/words/cpp/aspose.words/document/save/) · [3] [Licensing](https://docs.aspose.com/words/cpp/licensing/)
+## pdf-to-other-03
+
+How to convert a PDF document to Word in C++?
+
+Origin: copilot-cli. Compilation: passed.
+
+Load the PDF into `Aspose::Words::Document` and save with a `.docx` filename; `Save` selects the output format from the extension. [Aspose’s conversion guide](https://docs.aspose.com/words/cpp/convert-a-document/) describes the load-then-save workflow, and its [format FAQ](https://docs.aspose.com/words/cpp/faq/) lists PDF as supported.
+
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <system/object.h>
+#include <system/smart_ptr.h>
+
+int main()
+{
+    System::SharedPtr<Aspose::Words::Document> document =
+        System::MakeObject<Aspose::Words::Document>(u"input.pdf");
+
+    document->Save(u"output.docx");
+    return 0;
+}
+```
+
+Place `input.pdf` in the program’s working directory or change the paths. The [Document constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/) accepts a filename; [Document::Save](https://reference.aspose.com/words/cpp/aspose.words/document/save/) determines the format from the extension. A valid Aspose.Words license avoids trial limitations ([FAQ](https://docs.aspose.com/words/cpp/faq/)); no external service or credentials are needed. The MCP reference returned latest-stable API details, not a version-specific 26.9.0 reference.
+
+## pdf-to-other-04
+
+How do I convert PDF to DOC or DOCX using Aspose.Words?
+
+Origin: copilot-cli. Compilation: passed.
+
+Load the PDF into a [`Document`](https://reference.aspose.com/words/cpp/aspose.words/document/document/), then [`Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/) it with a `.docx` or `.doc` extension:
+
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <system/smart_ptr.h>
+
+int main()
+{
+    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.pdf");
+    doc->Save(u"output.docx");
+    doc->Save(u"output.doc");
+    return 0;
+}
+```
+
+Place `input.pdf` in the working directory. Existing output files are overwritten. No external service or credentials are required. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
 
 ## pdf-to-other-05
 
@@ -961,15 +1016,15 @@ How to convert PDF to HTML or an image in C++?
 
 Origin: copilot-cli. Compilation: passed.
 
-Load the PDF with `Document`, then save it as HTML or render each page as PNG. See [PDF loading](https://reference.aspose.com/words/cpp/aspose.words.loading/pdfloadoptions/) and [image conversion](https://docs.aspose.com/words/cpp/convert-a-document-to-an-image/).
+Load the PDF as a [`Document`](https://reference.aspose.com/words/cpp/aspose.words.loading/pdfloadoptions/), save it as HTML, and render each resulting page to PNG using [`PageSet`](https://reference.aspose.com/words/cpp/aspose.words.saving/pageset/pageset/).
 
 ```cpp
-#include <cstdint>
 #include <Aspose.Words.Cpp/Document.h>
 #include <Aspose.Words.Cpp/SaveFormat.h>
 #include <Aspose.Words.Cpp/Saving/ImageSaveOptions.h>
 #include <Aspose.Words.Cpp/Saving/PageSet.h>
 #include <system/smart_ptr.h>
+#include <cstdint>
 
 int main()
 {
@@ -979,23 +1034,22 @@ int main()
 
     auto options = System::MakeObject<Aspose::Words::Saving::ImageSaveOptions>(
         Aspose::Words::SaveFormat::Png);
-    options->set_Resolution(150.0f);
 
     const int32_t pageCount = doc->get_PageCount();
     for (int32_t i = 0; i < pageCount; ++i)
     {
         options->set_PageSet(
             System::MakeObject<Aspose::Words::Saving::PageSet>(i));
-        doc->Save(System::String::Format(u"page_{0}.png", i + 1), options);
+        doc->Save(System::String::Format(u"page-{0}.png", i + 1), options);
     }
 
     return 0;
 }
 ```
 
-Place `input.pdf` in the working directory. Outputs overwrite matching files; HTML may also produce supporting files. No external service is required. The unlicensed [evaluation version](https://docs.aspose.com/words/cpp/licensing/) adds a watermark and limits document size. Conversion may alter layout or substitute missing fonts.
+Place an unencrypted `input.pdf` in the working directory. Outputs overwrite matching files; HTML may also produce supporting resources. Imported layout and pagination can differ from the original PDF.
 
-The documentation endpoint provides latest-stable API evidence, not a separately verified 26.9.0 reference.
+No external service is required. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
 
 ## pdf-to-other-06
 
@@ -1003,17 +1057,36 @@ Can Aspose.Words convert PDF to other formats?
 
 Origin: copilot-cli. Compilation: no_code.
 
-Yes. Aspose.Words for C++ can load a PDF into a `Document` and save it in another supported format. For example, you can convert it to DOCX, HTML, or an image format. The exact options depend on the supported input and output formats. [PDF load options](https://reference.aspose.com/words/cpp/aspose.words.loading/pdfloadoptions/) · [Conversion workflow](https://docs.aspose.com/words/cpp/convert-a-document/) · [Supported formats](https://docs.aspose.com/words/cpp/supported-document-formats/)
+Yes. Aspose.Words for C++ can load a supported format such as PDF and save the document in another supported format, such as DOCX, HTML, or RTF. Conversion follows the load-then-save workflow; the [conversion guide](https://docs.aspose.com/words/cpp/convert-a-document/) and [supported formats list](https://docs.aspose.com/words/cpp/supported-document-formats/) describe the available formats.
 
 ## pdf-to-other-07
 
 How to load a PDF document with PdfLoadOptions?
 
-Origin: copilot-cli. Compilation: no_code.
+Origin: copilot-cli. Compilation: passed.
 
-Create a [`PdfLoadOptions`](https://reference.aspose.com/words/cpp/aspose.words.loading/pdfloadoptions/), set `PageIndex` and `PageCount` if needed, then pass it to the [`Document` constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/). Page indexes are zero-based; by default, all pages are read.
+Create `PdfLoadOptions`, then pass it to the `Document` constructor with the path to an existing PDF:
 
-A standalone program remains **unverified**: the documentation lookup did not identify the `PdfLoadOptions` header, and access to the installed SDK headers was denied. The supplied `examples\error-correction.md` was also unavailable in the workspace.
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/Loading/PdfLoadOptions.h>
+#include <system/smart_ptr.h>
+
+int main()
+{
+    auto loadOptions =
+        System::MakeObject<Aspose::Words::Loading::PdfLoadOptions>();
+
+    auto document =
+        System::MakeObject<Aspose::Words::Document>(u"input.pdf", loadOptions);
+
+    return 0;
+}
+```
+
+`PdfLoadOptions` supplies PDF-specific load options, and `Document` accepts a filename plus load options. This example requires an accessible `input.pdf`; no external service or credentials are needed. For non-evaluation use, apply a valid Aspose.Words license; the [FAQ](https://docs.aspose.com/words/cpp/faq/) describes trial limitations. See the [PdfLoadOptions API](https://reference.aspose.com/words/cpp/aspose.words.loading/pdfloadoptions/), [Document constructors](https://reference.aspose.com/words/cpp/aspose.words/document/document/), and [load-options guide](https://docs.aspose.com/words/cpp/specify-load-options/).
+
+The requested `examples/error-correction.md` was not present in the workspace; I followed the guidance included in your prompt. The MCP lookup for version 26.9.0 was unavailable, so the signatures were verified against its latest-stable reference.
 
 ## mail-merge-01
 
@@ -1021,9 +1094,9 @@ What is Mail Merge in Aspose.Words?
 
 Origin: copilot-cli. Compilation: no_code.
 
-**Mail Merge** combines a document template with data to generate personalized documents, such as letters, invoices or labels. Merge fields in the template are replaced with values from a data source—for example, a recipient’s name. [Aspose.Words overview](https://docs.aspose.com/words/cpp/mail-merge-and-reporting/)
+**Mail Merge** combines a document template with data to produce personalized content. The template contains merge fields, such as a customer’s name, which Aspose.Words fills from a data source. It’s useful for letters, invoices, labels, and reports. [Mail Merge overview](https://docs.aspose.com/words/cpp/mail-merge-and-reporting/)
 
-A **simple merge** repeats the whole document for each record; a **merge with regions** repeats only designated sections, such as an invoice’s line items. [Types of mail merge](https://docs.aspose.com/words/cpp/types-of-mail-merge-operations/)
+A **simple mail merge** repeats the whole document for each data record. A **mail merge with regions** repeats only designated sections, such as the item rows in an order. [Types of Mail Merge](https://docs.aspose.com/words/cpp/types-of-mail-merge-operations/)
 
 ## mail-merge-02
 
@@ -1031,7 +1104,7 @@ How to perform mail merge in C++?
 
 Origin: copilot-cli. Compilation: passed.
 
-This example creates a template with two merge fields, supplies one record, and saves the merged document. `Execute(fieldNames, values)` performs a single-record merge; the names must match the template’s `MERGEFIELD` names. [Simple Mail Merge guide](https://docs.aspose.com/words/cpp/simple-mail-merge-operation/) · [Execute API](https://reference.aspose.com/words/cpp/aspose.words.mailmerging/mailmerge/execute/)
+A simple mail merge fills matching `MERGEFIELD`s in a template. This standalone example creates the template in memory, merges one record, and saves `merged.docx`:
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -1040,37 +1113,39 @@ This example creates a template with two merge fields, supplies one record, and 
 #include <system/array.h>
 #include <system/object.h>
 #include <system/smart_ptr.h>
+#include <system/string.h>
 
 int main()
 {
-    System::SharedPtr<Aspose::Words::Document> doc =
-        System::MakeObject<Aspose::Words::Document>();
-    System::SharedPtr<Aspose::Words::DocumentBuilder> builder =
-        System::MakeObject<Aspose::Words::DocumentBuilder>(doc);
+    auto doc = System::MakeObject<Aspose::Words::Document>();
+    auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(doc);
 
     builder->Write(u"Dear ");
-    builder->InsertField(u" MERGEFIELD FirstName ");
-    builder->Write(u", welcome to ");
-    builder->InsertField(u" MERGEFIELD City ");
-    builder->Write(u".");
+    builder->InsertField(u"MERGEFIELD FirstName");
+    builder->Write(u",");
+    builder->InsertParagraph();
+    builder->Write(u"Company: ");
+    builder->InsertField(u"MERGEFIELD Company");
 
     System::ArrayPtr<System::String> fieldNames =
-        System::MakeArray<System::String>({u"FirstName", u"City"});
+        System::MakeArray<System::String>({u"FirstName", u"Company"});
 
     System::ArrayPtr<System::SharedPtr<System::Object>> values =
         System::MakeArray<System::SharedPtr<System::Object>>({
-            System::ExplicitCast<System::Object>(System::String(u"Ada")),
-            System::ExplicitCast<System::Object>(System::String(u"London"))
+            System::ExplicitCast<System::Object>(System::String(u"Jordan")),
+            System::ExplicitCast<System::Object>(System::String(u"Northwind"))
         });
 
     doc->get_MailMerge()->Execute(fieldNames, values);
-    doc->Save(u"mail-merge-result.docx");
+    doc->Save(u"merged.docx");
 
     return 0;
 }
 ```
 
-The example needs no input document or external service. For production use, apply a valid license before creating Aspose.Words objects; without one, evaluation limitations apply. [Licensing guide](https://docs.aspose.com/words/cpp/licensing/). The configured MCP reference only exposed **latest-stable**, not 26.9.0, so that exact SDK version could not be independently confirmed.
+The arrays must have matching lengths and field names; this `Execute` overload merges **one record** and ignores names that don’t match template fields. For multiple records or repeated regions, use a data-source overload or mail merge with regions. [Execute API](https://reference.aspose.com/words/cpp/aspose.words.mailmerging/mailmerge/execute/) · [Simple Mail Merge guide](https://docs.aspose.com/words/cpp/simple-mail-merge-operation/) · [Mail merge operation types](https://docs.aspose.com/words/cpp/types-of-mail-merge-operations/)
+
+No input file, external service, or credentials are needed for this example; apply a valid Aspose.Words license for licensed deployment. I couldn’t locate `examples/error-correction.md` in the workspace, so I followed the correction rules included in your prompt. The MCP returned latest-stable API evidence, not a 26.9.0-specific reference; compilation and runtime are not claimed.
 
 ## mail-merge-03
 
@@ -1078,7 +1153,7 @@ How to populate a Word template with data using Mail Merge?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [MailMerge::Execute](https://reference.aspose.com/words/cpp/aspose.words.mailmerging/mailmerge/execute/) with matching field names and values. This example creates a template, reloads it, and merges one record:
+Use `MERGEFIELD` fields in the template, then call [`MailMerge::Execute`](https://reference.aspose.com/words/cpp/aspose.words.mailmerging/mailmerge/execute/) with matching names and values. This overload merges **one record**; the arrays must have equal lengths.
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -1090,6 +1165,7 @@ Use [MailMerge::Execute](https://reference.aspose.com/words/cpp/aspose.words.mai
 
 int main()
 {
+    // Create a sample template. For an existing template, skip this block.
     auto sample = System::MakeObject<Aspose::Words::Document>();
     auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(sample);
     builder->Write(u"Dear ");
@@ -1097,11 +1173,10 @@ int main()
     builder->Write(u", thank you for ordering ");
     builder->InsertField(u"MERGEFIELD Item");
     builder->Write(u".");
-
-    sample->Save(u"sample-template.docx");
+    sample->Save(u"template.docx");
 
     auto doc = System::MakeObject<Aspose::Words::Document>(
-        System::String(u"sample-template.docx"));
+        System::String(u"template.docx"));
 
     auto names = System::MakeArray<System::String>(
         {u"CustomerName", u"Item"});
@@ -1115,9 +1190,9 @@ int main()
 }
 ```
 
-The arrays must have equal lengths; field names are case-insensitive. For your own template, load its DOCX instead of creating the sample. Both output files are overwritten if present. No external service is needed; an [Aspose license](https://docs.aspose.com/words/cpp/licensing/) removes evaluation limitations.
+The example creates `template.docx` and `merged.docx` in the working directory, overwriting existing files with those names. For your own template, omit the creation block and load its path instead. See the [template guide](https://docs.aspose.com/words/cpp/mail-merge-template/) and [simple mail merge guide](https://docs.aspose.com/words/cpp/simple-mail-merge-operation/).
 
-The API documentation checked was current; version-specific documentation for 26.9.0 was unavailable.
+No external service is needed. Without a license, evaluation restrictions apply; see [licensing](https://docs.aspose.com/words/cpp/licensing/).
 
 ## mail-merge-04
 
@@ -1125,7 +1200,7 @@ How to generate personalized documents from a template?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [mail merge](https://docs.aspose.com/words/cpp/simple-mail-merge-operation/) to fill `MERGEFIELD` placeholders. This example creates a template, then reloads it for each recipient so each gets a separate document. The [`Execute`](https://reference.aspose.com/words/cpp/aspose.words.mailmerging/mailmerge/execute/) arrays must have matching lengths.
+Use [mail merge](https://docs.aspose.com/words/cpp/mail-merge-template/) to replace `MERGEFIELD` placeholders with each recipient’s values. This example creates a template, then reloads it for each recipient; [`Execute`](https://reference.aspose.com/words/cpp/aspose.words.mailmerging/mailmerge/execute/) merges one record at a time.
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -1135,41 +1210,43 @@ Use [mail merge](https://docs.aspose.com/words/cpp/simple-mail-merge-operation/)
 #include <system/object.h>
 #include <system/smart_ptr.h>
 
-struct Recipient
-{
-    const char16_t* name;
-    const char16_t* company;
-    const char16_t* output;
-};
-
 int main()
 {
-    auto templateDoc = System::MakeObject<Aspose::Words::Document>();
-    auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(templateDoc);
+    using Aspose::Words::Document;
+    using Aspose::Words::DocumentBuilder;
+
+    auto templateDoc = System::MakeObject<Document>();
+    auto builder = System::MakeObject<DocumentBuilder>(templateDoc);
 
     builder->Write(u"Dear ");
-    builder->InsertField(u"MERGEFIELD Name");
-    builder->Write(u",\n\nWelcome to ");
+    builder->InsertField(u"MERGEFIELD FirstName");
+    builder->Writeln(u",");
+    builder->Write(u"Thank you for being a customer of ");
     builder->InsertField(u"MERGEFIELD Company");
-    builder->Write(u"!");
+    builder->Writeln(u".");
 
     templateDoc->Save(u"template.docx");
 
+    struct Recipient
+    {
+        System::String firstName;
+        System::String company;
+        System::String output;
+    };
+
     const Recipient recipients[] = {
-        {u"Alice", u"Contoso", u"alice.docx"},
-        {u"Bob", u"Fabrikam", u"bob.docx"}
+        {u"Ada", u"Northwind", u"letter-ada.docx"},
+        {u"Grace", u"Contoso", u"letter-grace.docx"}
     };
 
     for (const auto& recipient : recipients)
     {
-        auto doc = System::MakeObject<Aspose::Words::Document>(
-            System::String(u"template.docx"));
-
-        auto names = System::MakeArray<System::String>({u"Name", u"Company"});
-        auto values = System::MakeArray<System::SharedPtr<System::Object>>({
-            System::ObjectExt::Box<System::String>(recipient.name),
-            System::ObjectExt::Box<System::String>(recipient.company)
-        });
+        auto doc = System::MakeObject<Document>(System::String(u"template.docx"));
+        auto names = System::MakeArray<System::String>(
+            {u"FirstName", u"Company"});
+        auto values = System::MakeArray<System::SharedPtr<System::Object>>(
+            {System::ObjectExt::Box<System::String>(recipient.firstName),
+             System::ObjectExt::Box<System::String>(recipient.company)});
 
         doc->get_MailMerge()->Execute(names, values);
         doc->Save(recipient.output);
@@ -1179,7 +1256,9 @@ int main()
 }
 ```
 
-The program needs no input files or external services. It writes `template.docx`, `alice.docx`, and `bob.docx` in the working directory, overwriting existing files. For an existing template, omit its creation and load your DOCX instead. An Aspose license removes evaluation limitations; see [licensing](https://docs.aspose.com/words/cpp/licensing/).
+The program needs no input files or external services; it writes to the working directory and **overwrites** files with these names. An unlicensed run has [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/); apply a license before document processing to remove them. For an existing template, omit its creation and load your DOCX instead.
+
+The requested `examples/error-correction.md` file was not present; the supplied error-correction guidance was used. The documentation endpoint resolved to latest stable rather than specifically 26.9.0.
 
 ## mail-merge-05
 
@@ -1187,53 +1266,7 @@ How to perform mail merge with a data source in C++?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [`MailMerge::Execute`](https://reference.aspose.com/words/cpp/aspose.words.mailmerging/mailmerge/execute/) with matching field-name and value arrays for one record:
-
-```cpp
-#include <Aspose.Words.Cpp/Document.h>
-#include <Aspose.Words.Cpp/DocumentBuilder.h>
-#include <Aspose.Words.Cpp/MailMerging/MailMerge.h>
-#include <system/array.h>
-#include <system/object.h>
-#include <system/smart_ptr.h>
-
-int main()
-{
-    auto doc = System::MakeObject<Aspose::Words::Document>();
-    auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(doc);
-
-    builder->Write(u"Dear ");
-    builder->InsertField(u"MERGEFIELD Name");
-    builder->Writeln(u",");
-    builder->Write(u"Welcome to ");
-    builder->InsertField(u"MERGEFIELD Company");
-    builder->Writeln(u".");
-
-    doc->Save(u"template.docx");
-
-    auto names = System::MakeArray<System::String>({u"Name", u"Company"});
-    auto values = System::MakeArray<System::SharedPtr<System::Object>>({
-        System::ExplicitCast<System::Object>(System::String(u"Ada")),
-        System::ExplicitCast<System::Object>(System::String(u"Example Corp"))
-    });
-
-    doc->get_MailMerge()->Execute(names, values);
-    doc->Save(u"merged.docx");
-    return 0;
-}
-```
-
-The program creates its own template and data; both output files are overwritten if present. For multiple records or database results, implement [`IMailMergeDataSource`](https://reference.aspose.com/words/cpp/aspose.words.mailmerging/imailmergedatasource/). Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
-
-The documentation endpoint returned latest-stable evidence rather than a version-specific 26.9.0 reference. The requested guidance file was not present locally; its supplied contents were used.
-
-## mail-merge-06
-
-How to use mail merge fields in a Word document?
-
-Origin: copilot-cli. Compilation: passed.
-
-Insert `MERGEFIELD` fields, then call [`MailMerge::Execute`](https://reference.aspose.com/words/cpp/aspose.words.mailmerging/mailmerge/execute/) with matching names and values. This example creates its own [template](https://docs.aspose.com/words/cpp/mail-merge-template/) and merges one record:
+Use [`MailMerge::Execute`](https://reference.aspose.com/words/cpp/aspose.words.mailmerging/mailmerge/execute/) with matching field-name and value arrays. This example creates its own template and merges one in-memory record:
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -1259,8 +1292,8 @@ int main()
     auto names = System::MakeArray<System::String>(
         {u"FirstName", u"Company"});
     auto values = System::MakeArray<System::SharedPtr<System::Object>>(
-        {System::ObjectExt::Box<System::String>(u"Ada"),
-         System::ObjectExt::Box<System::String>(u"Example Ltd")});
+        {System::ExplicitCast<System::Object>(System::String(u"Ada")),
+         System::ExplicitCast<System::Object>(System::String(u"Contoso"))});
 
     doc->get_MailMerge()->Execute(names, values);
     doc->Save(u"merged.docx");
@@ -1268,19 +1301,144 @@ int main()
 }
 ```
 
-The files are written in the working directory and overwrite existing files with those names. No input file or external service is needed. The [trial](https://docs.aspose.com/words/cpp/licensing/) adds an evaluation watermark; apply a license before document processing to remove trial limitations.
+The arrays must have equal lengths; this overload handles **one record** without regions. For multiple records, reload the template per record or implement [`IMailMergeDataSource`](https://reference.aspose.com/words/cpp/aspose.words.mailmerging/imailmergedatasource/).
 
-The documentation service exposes only `latest-stable`, so its evidence could not be pinned specifically to 26.9.0. The requested guidance file was unavailable; the rules included in your prompt were used instead.
+No input files or external services are required. The program overwrites `template.docx` and `merged.docx` in the working directory. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
+
+## mail-merge-06
+
+How to use mail merge fields in a Word document?
+
+Origin: copilot-cli. Compilation: passed.
+
+Create a Word template with `MERGEFIELD` names such as `FirstName` and `LastName`, then provide matching field names and values to `MailMerge.Execute`. In Word, insert these through **Mailings → Insert Merge Field**; the names must match the data fields. This complete example creates a template, merges one record, and saves both files:
+
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/DocumentBuilder.h>
+#include <Aspose.Words.Cpp/MailMerging/MailMerge.h>
+#include <system/array.h>
+#include <system/object.h>
+#include <system/smart_ptr.h>
+
+int main()
+{
+    auto doc = System::MakeObject<Aspose::Words::Document>();
+    auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(doc);
+
+    builder->Write(u"Hello ");
+    builder->InsertField(u"MERGEFIELD FirstName");
+    builder->Write(u" ");
+    builder->InsertField(u"MERGEFIELD LastName");
+    builder->Write(u".");
+
+    doc->Save(u"mailmerge-template.docx");
+
+    System::ArrayPtr<System::String> fieldNames =
+        System::MakeArray<System::String>({u"FirstName", u"LastName"});
+
+    System::String firstName = u"Ada";
+    System::String lastName = u"Lovelace";
+
+    System::ArrayPtr<System::SharedPtr<System::Object>> values =
+        System::MakeArray<System::SharedPtr<System::Object>>({
+            System::ExplicitCast<System::Object>(firstName),
+            System::ExplicitCast<System::Object>(lastName)
+        });
+
+    doc->get_MailMerge()->Execute(fieldNames, values);
+    doc->Save(u"mailmerge-output.docx");
+
+    return 0;
+}
+```
+
+The example uses a single record; its field names and values are paired by position. The sample needs no input files, credentials, or external services. Building requires Aspose.Words.Cpp and CodePorting.Translator.Cs2Cpp.Framework 26.9.0; use a valid Aspose license for licensed use.
+
+Sources: [Mail Merge and Reporting](https://docs.aspose.com/words/cpp/mail-merge-and-reporting/), [`InsertField`](https://reference.aspose.com/words/cpp/aspose.words/documentbuilder/insertfield/), [`MailMerge.Execute`](https://reference.aspose.com/words/cpp/aspose.words.mailmerging/mailmerge/execute/), [`Document.Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/). The configured MCP returned latest-stable API references rather than a version-specific 26.9.0 snapshot, so that exact version compatibility was not independently verified.
 
 ## mail-merge-07
 
 How to execute mail merge with regions in Aspose.Words?
 
-Origin: copilot-cli. Compilation: no_code.
+Origin: copilot-cli. Compilation: passed.
 
-Use [`ExecuteWithRegions`](https://reference.aspose.com/words/cpp/aspose.words.mailmerging/mailmerge/executewithregions/) with a custom [`IMailMergeDataSource`](https://reference.aspose.com/words/cpp/aspose.words.mailmerging/imailmergedatasource/). In the template, bracket the repeating content with merge fields named `TableStart:Orders` and `TableEnd:Orders`; the data source’s table name must match. The content is repeated for each record. See the [mail merge regions guide](https://docs.aspose.com/words/cpp/mail-merge-with-regions/).
+Use [`ExecuteWithRegions`](https://reference.aspose.com/words/cpp/aspose.words.mailmerging/mailmerge/executewithregions/) with a custom data source. The content between `TableStart:Customers` and `TableEnd:Customers` repeats for each record ([guide](https://docs.aspose.com/words/cpp/mail-merge-with-regions/)).
 
-I cannot provide the requested verified standalone program: the documentation lookup did not expose the interface’s header path, and access to the local SDK headers was denied. The available documentation was for latest stable, not independently verified against 26.9.0.
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/DocumentBuilder.h>
+#include <Aspose.Words.Cpp/MailMerging/IMailMergeDataSource.h>
+#include <Aspose.Words.Cpp/MailMerging/MailMerge.h>
+#include <system/object.h>
+#include <system/smart_ptr.h>
+
+using namespace Aspose::Words;
+using namespace Aspose::Words::MailMerging;
+
+class CustomersDataSource : public IMailMergeDataSource
+{
+public:
+    System::String get_TableName() override
+    {
+        return u"Customers";
+    }
+
+    bool MoveNext() override
+    {
+        if (next_ == 2)
+            return false;
+        current_ = next_++;
+        return true;
+    }
+
+    bool GetValue(System::String fieldName,
+                  System::SharedPtr<System::Object>& fieldValue) override
+    {
+        if (fieldName == u"Name")
+        {
+            System::String name = current_ == 0 ? u"Alice" : u"Bob";
+            fieldValue = System::ObjectExt::Box<System::String>(name);
+            return true;
+        }
+
+        fieldValue.reset();
+        return false;
+    }
+
+    System::SharedPtr<IMailMergeDataSource>
+    GetChildDataSource(System::String) override
+    {
+        return nullptr;
+    }
+
+private:
+    int next_ = 0;
+    int current_ = -1;
+};
+
+int main()
+{
+    auto doc = System::MakeObject<Document>();
+    auto builder = System::MakeObject<DocumentBuilder>(doc);
+
+    builder->Writeln(u"Customers:");
+    builder->InsertField(u"MERGEFIELD TableStart:Customers");
+    builder->InsertField(u"MERGEFIELD Name");
+    builder->Write(u"; ");
+    builder->InsertField(u"MERGEFIELD TableEnd:Customers");
+
+    doc->Save(u"template.docx");
+
+    System::SharedPtr<IMailMergeDataSource> source =
+        System::MakeObject<CustomersDataSource>();
+    doc->get_MailMerge()->ExecuteWithRegions(source);
+    doc->Save(u"merged.docx");
+    return 0;
+}
+```
+
+The program needs no input files or external services; it overwrites both output files in the working directory. Without a license, evaluation limitations apply. The MCP reference supplied latest-stable API evidence, but the 26.9.0 interface header could not be inspected locally, so its include path remains unverified. The requested `examples\error-correction.md` file was not present; the guidance supplied in the prompt was used.
 
 ## mail-merge-08
 
@@ -1288,11 +1446,11 @@ What is the difference between Mail Merge and LINQ Reporting Engine?
 
 Origin: copilot-cli. Compilation: no_code.
 
-**Mail Merge** fills Word merge fields with data, typically for personalized letters or invoices. It also supports repeating regions, images, and custom logic through callbacks. [Aspose.Words for C++ guide](https://docs.aspose.com/words/cpp/mail-merge-and-reporting/)
+**Mail Merge** fills Word merge fields with data. It suits personalized letters and straightforward reports; merge regions can repeat items such as order lines. [Aspose’s C++ guide](https://docs.aspose.com/words/cpp/types-of-mail-merge-operations/) describes both simple merges and merges with regions.
 
-**LINQ Reporting Engine** is conceptually more expression-oriented: templates describe calculations and report structure, making it suited to more complex, data-driven reports.
+**LINQ Reporting Engine** is a more expressive, template-driven approach: templates can use expressions, loops and conditions to build complex reports from structured data.
 
-**C++ caveat:** I could not verify LINQ Reporting Engine availability or its detailed capabilities in Aspose.Words for C++ 26.9.0 from the configured documentation. The [features page](https://docs.aspose.com/words/cpp/features/) lists a reporting limitation, but its wording conflicts with the Mail Merge reporting guide, so it is not conclusive about that specific engine.
+For **Aspose.Words for C++**, the configured documentation lookup confirmed Mail Merge but did not find a LINQ Reporting Engine API. The [C++ features page](https://docs.aspose.com/words/cpp/features/) also lists reporting features as unsupported, although the Mail Merge guide documents reporting capabilities. Consequently, LINQ Reporting Engine availability in C++ 26.9.0 remains unverified.
 
 ## compare-01
 
@@ -1300,7 +1458,7 @@ How to compare two Word documents in C++?
 
 Origin: copilot-cli. Compilation: passed.
 
-[`Document::Compare`](https://reference.aspose.com/words/cpp/aspose.words/document/compare/) adds differences as revisions to the original document. Neither input may already contain revisions.
+Use [`Document::Compare`](https://reference.aspose.com/words/cpp/aspose.words/document/compare/) to add tracked changes to the original document. This example creates two sample documents and saves the comparison:
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -1315,34 +1473,34 @@ int main()
     using Aspose::Words::DocumentBuilder;
 
     auto original = System::MakeObject<Document>();
-    auto originalBuilder = System::MakeObject<DocumentBuilder>(original);
-    originalBuilder->Writeln(u"The meeting is on Monday.");
-
     auto edited = System::MakeObject<Document>();
-    auto editedBuilder = System::MakeObject<DocumentBuilder>(edited);
-    editedBuilder->Writeln(u"The meeting is on Tuesday.");
 
-    original->Save(u"original.docx");
-    edited->Save(u"edited.docx");
+    auto originalBuilder = System::MakeObject<DocumentBuilder>(original);
+    originalBuilder->Writeln(u"This is the original document.");
+
+    auto editedBuilder = System::MakeObject<DocumentBuilder>(edited);
+    editedBuilder->Writeln(u"This is the edited document.");
 
     if (original->get_Revisions()->get_Count() != 0 ||
         edited->get_Revisions()->get_Count() != 0)
     {
-        std::cerr << "Both documents must be free of revisions.\n";
+        std::cerr << "Both documents must have no existing revisions.\n";
         return 1;
     }
 
     original->Compare(edited, u"Reviewer", System::DateTime::get_Now());
 
-    std::cout << "Revisions: " << original->get_Revisions()->get_Count() << '\n';
+    std::cout << "Comparison revisions: "
+              << original->get_Revisions()->get_Count() << '\n';
+
     original->Save(u"comparison.docx");
     return 0;
 }
 ```
 
-The program creates sample inputs and `comparison.docx` in the working directory, overwriting files with those names. For existing files, construct each `Document` with its filename instead. A zero revision count means no differences were represented by the comparison, not necessarily byte-identical files. See the [comparison guide](https://docs.aspose.com/words/cpp/compare-documents/).
+For existing files, replace the sample document creation and builder calls with `Document` constructors using their paths. Both inputs must have no tracked revisions; the result is written to `comparison.docx`, overwriting an existing file. Zero revisions means the comparison found no representable changes, not necessarily byte-identical files. See the [comparison guide](https://docs.aspose.com/words/cpp/compare-documents/).
 
-No external service is needed. An unlicensed installation has [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/). The available documentation is latest-stable; the 26.9.0 headers were not independently inspected.
+The example needs Aspose.Words for C++ and its CodePorting dependency; no external service is required. The unlicensed trial has [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/). The requested `examples/error-correction.md` was not present, so I used the guidance included in your prompt.
 
 ## compare-02
 
@@ -1352,32 +1510,24 @@ Origin: copilot-cli. Compilation: passed.
 
 Use [`Document::Compare`](https://reference.aspose.com/words/cpp/aspose.words/document/compare/) to record differences as revisions in the original document. Neither input may already contain revisions.
 
-This example creates two sample DOCX files, compares them, and saves the tracked changes in `comparison.docx`. It overwrites all three files if they exist.
-
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
 #include <Aspose.Words.Cpp/DocumentBuilder.h>
 #include <Aspose.Words.Cpp/RevisionCollection.h>
+#include <system/object.h>
 #include <system/smart_ptr.h>
 #include <iostream>
 
 int main()
 {
-    using Aspose::Words::Document;
-    using Aspose::Words::DocumentBuilder;
+    auto original = System::MakeObject<Aspose::Words::Document>();
+    auto edited = System::MakeObject<Aspose::Words::Document>();
 
-    auto originalSample = System::MakeObject<Document>();
-    auto originalBuilder = System::MakeObject<DocumentBuilder>(originalSample);
+    auto originalBuilder = System::MakeObject<Aspose::Words::DocumentBuilder>(original);
     originalBuilder->Writeln(u"The meeting is on Monday.");
-    originalSample->Save(u"original.docx");
 
-    auto editedSample = System::MakeObject<Document>();
-    auto editedBuilder = System::MakeObject<DocumentBuilder>(editedSample);
+    auto editedBuilder = System::MakeObject<Aspose::Words::DocumentBuilder>(edited);
     editedBuilder->Writeln(u"The meeting is on Tuesday.");
-    editedSample->Save(u"edited.docx");
-
-    auto original = System::MakeObject<Document>(System::String(u"original.docx"));
-    auto edited = System::MakeObject<Document>(System::String(u"edited.docx"));
 
     if (original->get_Revisions()->get_Count() != 0 ||
         edited->get_Revisions()->get_Count() != 0)
@@ -1390,15 +1540,14 @@ int main()
 
     std::cout << "Revisions found: "
               << original->get_Revisions()->get_Count() << '\n';
-
     original->Save(u"comparison.docx");
     return 0;
 }
 ```
 
-For existing files, replace the sample-creation section and paths. A zero revision count means no differences were represented by the comparison, not necessarily byte-identical files. See the [comparison guide](https://docs.aspose.com/words/cpp/compare-documents/).
+The example creates sample documents in memory. For existing DOCX files, construct each `Document` with its input path and omit the builder calls. Open `comparison.docx` to review tracked changes; saving overwrites an existing file of that name. A zero revision count means the comparison found no representable changes, not necessarily byte-identical files. See the [comparison guide](https://docs.aspose.com/words/cpp/compare-documents/).
 
-The example needs no external service. An unlicensed [trial](https://docs.aspose.com/words/cpp/licensing/) adds evaluation watermarks and has document-size limits. The documentation service returned latest-stable API evidence, not a separately verified 26.9.0 reference; `examples\error-correction.md` was unavailable in the workspace.
+No input files or external services are required for the sample. It uses evaluation mode unless you apply a license. The documentation service supplied latest-stable API evidence, not a separately identifiable 26.9.0 reference; the requested guidance file was not present in the workspace.
 
 ## compare-03
 
@@ -1406,7 +1555,9 @@ How to compare two documents and identify changes?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [`Document::Compare`](https://reference.aspose.com/words/cpp/aspose.words/document/compare/) to add tracked changes to the original document, then inspect the saved DOCX in Word. Both documents must have no existing revisions.
+Use [`Document::Compare`](https://reference.aspose.com/words/cpp/aspose.words/document/compare/) to add differences as tracked revisions to the original document. Neither input may already contain revisions.
+
+This example creates two documents in memory, reports the revision count, and saves the marked-up result for review:
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -1421,32 +1572,33 @@ int main()
     using Aspose::Words::DocumentBuilder;
 
     auto original = System::MakeObject<Document>();
-    auto originalBuilder = System::MakeObject<DocumentBuilder>(original);
-    originalBuilder->Writeln(u"The meeting is on Monday.");
-
     auto edited = System::MakeObject<Document>();
+
+    auto originalBuilder = System::MakeObject<DocumentBuilder>(original);
+    originalBuilder->Write(u"The delivery date is Monday.");
+
     auto editedBuilder = System::MakeObject<DocumentBuilder>(edited);
-    editedBuilder->Writeln(u"The meeting is on Tuesday.");
+    editedBuilder->Write(u"The delivery date is Tuesday.");
 
     if (original->get_Revisions()->get_Count() != 0 ||
         edited->get_Revisions()->get_Count() != 0)
     {
-        std::cerr << "Both documents must have no existing revisions.\n";
+        std::cerr << "Both documents must be free of revisions before comparison.\n";
         return 1;
     }
 
-    original->Compare(edited, u"Reviewer", System::DateTime::get_Now());
+    original->Compare(edited, u"Comparison", System::DateTime::get_Now());
 
-    std::cout << "Revisions: " << original->get_Revisions()->get_Count()
-              << "\nOpen comparison.docx and show tracked changes to inspect them.\n";
+    std::cout << "Revisions: " << original->get_Revisions()->get_Count() << '\n';
     original->Save(u"comparison.docx");
+    std::cout << "Review tracked changes in comparison.docx.\n";
     return 0;
 }
 ```
 
-The example creates both inputs in memory; `comparison.docx` is overwritten if it exists. For real files, load each using the [`Document` filename constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/). A license removes [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/); no external service is required.
+For existing files, construct the documents with filenames instead of creating them with the builders. `comparison.docx` is overwritten if it exists. No external service is required; the [trial](https://docs.aspose.com/words/cpp/faq/) has evaluation restrictions.
 
-**Version caveat:** the MCP reference supplied only `latest-stable`, not version-specific 26.9.0 evidence.
+The MCP reference returned **latest-stable** documentation, not version-specific 26.9.0 evidence.
 
 ## compare-04
 
@@ -1454,41 +1606,30 @@ How to generate a document that shows differences between two versions?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [`Document::Compare`](https://reference.aspose.com/words/cpp/aspose.words/document/compare/) to add differences as tracked revisions to the original document, then save it as DOCX.
+Use [`Document::Compare`](https://reference.aspose.com/words/cpp/aspose.words/document/compare/) to add tracked revisions to the original document, then save it as DOCX. Open the result in Word with **Review → All Markup** enabled.
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
 #include <Aspose.Words.Cpp/DocumentBuilder.h>
-#include <Aspose.Words.Cpp/RevisionCollection.h>
 #include <system/smart_ptr.h>
-#include <iostream>
 
 int main()
 {
-    using Aspose::Words::Document;
-    using Aspose::Words::DocumentBuilder;
+    auto original = System::MakeObject<Aspose::Words::Document>();
+    auto originalBuilder = System::MakeObject<Aspose::Words::DocumentBuilder>(original);
+    originalBuilder->Writeln(u"The meeting is on Monday.");
 
-    auto original = System::MakeObject<Document>();
-    auto originalBuilder = System::MakeObject<DocumentBuilder>(original);
-    originalBuilder->Writeln(u"The delivery date is Monday.");
-    original->Save(u"original.docx");
+    auto revised = System::MakeObject<Aspose::Words::Document>();
+    auto revisedBuilder = System::MakeObject<Aspose::Words::DocumentBuilder>(revised);
+    revisedBuilder->Writeln(u"The meeting is on Tuesday.");
 
-    auto edited = System::MakeObject<Document>();
-    auto editedBuilder = System::MakeObject<DocumentBuilder>(edited);
-    editedBuilder->Writeln(u"The delivery date is Friday.");
-    edited->Save(u"edited.docx");
-
-    original->Compare(edited, u"Reviewer", System::DateTime::get_Now());
-    std::cout << "Revisions: " << original->get_Revisions()->get_Count() << '\n';
-    original->Save(u"differences.docx");
-
+    original->Compare(revised, u"Reviewer", System::DateTime::get_Now());
+    original->Save(u"comparison.docx");
     return 0;
 }
 ```
 
-The program creates both sample inputs and `differences.docx` in the working directory, overwriting files with those names. Open the result with revision markup displayed. For existing files, load them with `Document` constructors instead; **neither input may contain revisions** before comparison. See the [comparison guide](https://docs.aspose.com/words/cpp/compare-documents/).
-
-No external service is needed. An unlicensed [evaluation version](https://docs.aspose.com/words/cpp/licensing/) adds a watermark and limits document size.
+The example creates both versions in memory; no input files or external services are needed. For existing files, use the [filename constructor](https://reference.aspose.com/words/cpp/aspose.words/document/document/). Neither input may contain existing revisions. `comparison.docx` is written to the working directory and [overwritten if it exists](https://reference.aspose.com/words/cpp/aspose.words/document/save/). An Aspose license is needed to remove evaluation limitations.
 
 ## compare-05
 
@@ -1496,7 +1637,7 @@ How to compare Word documents programmatically?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [`Document::Compare`](https://reference.aspose.com/words/cpp/aspose.words/document/compare/) to add tracked differences to the original document, then save it for review:
+Use [`Document::Compare`](https://reference.aspose.com/words/cpp/aspose.words/document/compare/) to add differences as tracked revisions to the original document. Neither input may already contain revisions.
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -1508,40 +1649,76 @@ Use [`Document::Compare`](https://reference.aspose.com/words/cpp/aspose.words/do
 int main()
 {
     auto original = System::MakeObject<Aspose::Words::Document>();
+    auto edited = System::MakeObject<Aspose::Words::Document>();
+
     auto originalBuilder = System::MakeObject<Aspose::Words::DocumentBuilder>(original);
     originalBuilder->Writeln(u"The meeting is on Monday.");
 
-    auto edited = System::MakeObject<Aspose::Words::Document>();
     auto editedBuilder = System::MakeObject<Aspose::Words::DocumentBuilder>(edited);
     editedBuilder->Writeln(u"The meeting is on Tuesday.");
 
     if (original->get_Revisions()->get_Count() != 0 ||
         edited->get_Revisions()->get_Count() != 0)
     {
-        std::cerr << "Both documents must be free of revisions before comparison.\n";
+        std::cerr << "Both documents must have no existing revisions.\n";
         return 1;
     }
 
-    original->Compare(edited, u"Comparison", System::DateTime::get_Now());
+    original->Compare(edited, u"Reviewer", System::DateTime::get_Now());
+
     std::cout << "Revisions: " << original->get_Revisions()->get_Count() << '\n';
     original->Save(u"comparison.docx");
     return 0;
 }
 ```
 
-The example creates both inputs in memory. For existing files, construct each `Document` with its path instead. Both inputs must have no existing revisions; the output `comparison.docx` is overwritten if it exists. See the [comparison guide](https://docs.aspose.com/words/cpp/compare-documents/) and [Save](https://reference.aspose.com/words/cpp/aspose.words/document/save/).
+The example creates both inputs in memory and overwrites `comparison.docx` in the working directory. To compare existing files, construct the documents with their paths instead and remove the builders. A zero revision count means no differences were represented as revisions, not necessarily byte-identical files. See the [comparison guide](https://docs.aspose.com/words/cpp/compare-documents/).
 
-A license removes [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/); no external service is needed. The documentation service supplied latest-stable evidence but did not confirm the pinned 26.9.0 version; the requested `examples\error-correction.md` file was not present.
+No external service is needed. Without a license, evaluation limitations apply; see [licensing](https://docs.aspose.com/words/cpp/licensing/). MCP returned latest-stable documentation; the local 26.9.0 headers could not be inspected.
 
 ## compare-06
 
 Can Aspose.Words compare documents and mark revisions?
 
-Origin: copilot-cli. Compilation: no_code.
+Origin: copilot-cli. Compilation: passed.
 
-Yes. `Document::Compare` compares two documents and records detected text and formatting differences as revisions in the document you call it on. Supply the other document, revision author, and date/time; an overload also accepts comparison options. **Neither document may already contain revisions** when you compare them. [API reference](https://reference.aspose.com/words/cpp/aspose.words/document/compare/) · [Compare Documents guide](https://docs.aspose.com/words/cpp/compare-documents/)
+Yes. `Document::Compare` compares two documents and records detected edits and formatting changes as revisions on the document being compared. Both documents must be revision-free before comparison. [Compare API](https://reference.aspose.com/words/cpp/aspose.words/document/compare/)
 
-The MCP documentation lookup resolved to **latest-stable**, not a version-specific 26.9.0 reference.
+This standalone example creates two sample documents, compares them, and saves the original with revisions to `comparison-with-revisions.docx`:
+
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/DocumentBuilder.h>
+#include <Aspose.Words.Cpp/RevisionCollection.h>
+#include <system/date_time.h>
+#include <system/smart_ptr.h>
+
+#include <iostream>
+
+int main()
+{
+    auto original = System::MakeObject<Aspose::Words::Document>();
+    auto originalBuilder = System::MakeObject<Aspose::Words::DocumentBuilder>(original);
+    originalBuilder->Writeln(u"The original text.");
+
+    auto edited = System::MakeObject<Aspose::Words::Document>();
+    auto editedBuilder = System::MakeObject<Aspose::Words::DocumentBuilder>(edited);
+    editedBuilder->Writeln(u"The revised text.");
+
+    original->Compare(edited, u"Editor", System::DateTime::get_Now());
+    original->Save(u"comparison-with-revisions.docx");
+
+    std::cout << "Revisions created: "
+              << original->get_Revisions()->get_Count()
+              << '\n';
+
+    return 0;
+}
+```
+
+The comparison result is on `original`; its revision collection contains the detected changes. [Revision collection](https://reference.aspose.com/words/cpp/aspose.words/document/get_revisions/) The example uses in-memory inputs and writes a DOCX file; an existing output file is overwritten. It requires Aspose.Words for C++ 26.9.0 and its CodePorting dependency; use a valid license for unrestricted use. No credentials or external services are needed.
+
+The referenced `examples/error-correction.md` was not present in the workspace; I followed the C++ rules included in your prompt.
 
 ## compare-07
 
@@ -1549,7 +1726,9 @@ How to compare documents while ignoring formatting changes?
 
 Origin: copilot-cli. Compilation: passed.
 
-Set [`IgnoreFormatting`](https://reference.aspose.com/words/cpp/aspose.words.comparing/compareoptions/get_ignoreformatting/) to `true`, then call [`Compare`](https://reference.aspose.com/words/cpp/aspose.words/document/compare/). Differences appear as revisions in the first document; neither input may already contain revisions.
+Set [`CompareOptions::set_IgnoreFormatting(true)`](https://reference.aspose.com/words/cpp/aspose.words.comparing/compareoptions/set_ignoreformatting/) before calling [`Compare`](https://reference.aspose.com/words/cpp/aspose.words/document/compare/). The comparison adds revisions to the first document; neither input may already contain revisions.
+
+This example creates its inputs in memory, including a bold-formatting change and a text change:
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -1563,32 +1742,28 @@ Set [`IgnoreFormatting`](https://reference.aspose.com/words/cpp/aspose.words.com
 
 int main()
 {
-    using namespace Aspose::Words;
+    auto original = System::MakeObject<Aspose::Words::Document>();
+    auto originalBuilder = System::MakeObject<Aspose::Words::DocumentBuilder>(original);
+    originalBuilder->Write(u"The delivery date is Monday.");
 
-    auto original = System::MakeObject<Document>();
-    auto originalBuilder = System::MakeObject<DocumentBuilder>(original);
-    originalBuilder->Writeln(u"The meeting is on Monday.");
-
-    auto edited = System::MakeObject<Document>();
-    auto editedBuilder = System::MakeObject<DocumentBuilder>(edited);
+    auto edited = System::MakeObject<Aspose::Words::Document>();
+    auto editedBuilder = System::MakeObject<Aspose::Words::DocumentBuilder>(edited);
     editedBuilder->get_Font()->set_Bold(true);
-    editedBuilder->Writeln(u"The meeting is on Tuesday.");
+    editedBuilder->Write(u"The delivery date is Tuesday.");
 
-    auto options = System::MakeObject<Comparing::CompareOptions>();
+    auto options = System::MakeObject<Aspose::Words::Comparing::CompareOptions>();
     options->set_IgnoreFormatting(true);
 
     original->Compare(edited, u"Reviewer", System::DateTime::get_Now(), options);
-
-    std::cout << "Revisions excluding formatting: "
-              << original->get_Revisions()->get_Count() << '\n';
+    std::cout << "Revisions: " << original->get_Revisions()->get_Count() << '\n';
     original->Save(u"comparison.docx");
     return 0;
 }
 ```
 
-The example creates inputs in memory and overwrites `comparison.docx` in the working directory. No external service is needed; an Aspose license removes [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/).
+The program writes `comparison.docx` in the working directory, overwriting an existing file of that name. No input files or external services are required. Without a license, evaluation restrictions apply ([licensing FAQ](https://docs.aspose.com/words/cpp/faq/)).
 
-**Verification gap:** MCP returned latest-stable API documentation but did not expose the `CompareOptions` or `date_time` header paths, and local SDK access was denied. Those paths and compatibility with 26.9.0 remain unverified.
+**Verification limitation:** The API signatures are documented, but the documentation lookup did not expose the `CompareOptions` or `DateTime` header paths, and the 26.9.0 SDK headers were unavailable for inspection.
 
 ## split-01
 
@@ -1596,52 +1771,84 @@ How to split a Word document into multiple documents in C++?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [`ExtractPages`](https://reference.aspose.com/words/cpp/aspose.words/document/extractpages/) to save each page as a separate document. Page indexes are zero-based.
+Use [`ExtractPages`](https://reference.aspose.com/words/cpp/aspose.words/document/extractpages/) to create a document per page; page indexes are zero-based. This example creates a sample input by default. Set `makeSample` to `false` to split an existing `input.docx`.
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
 #include <Aspose.Words.Cpp/DocumentBuilder.h>
 #include <system/smart_ptr.h>
+
 #include <cstdint>
 
 int main()
 {
-    using namespace Aspose::Words;
+    using Aspose::Words::Document;
+    using Aspose::Words::DocumentBuilder;
 
-    // Set to false to split an existing input.docx instead.
-    const bool createSample = true;
-    const System::String inputPath = createSample
-        ? System::String(u"sample-input.docx")
-        : System::String(u"input.docx");
+    const bool makeSample = true;
+    System::SharedPtr<Document> doc;
 
-    if (createSample)
+    if (makeSample)
     {
-        auto sample = System::MakeObject<Document>();
-        auto builder = System::MakeObject<DocumentBuilder>(sample);
-        builder->Write(u"Sample page 1.\fSample page 2.");
-        sample->Save(inputPath);
+        doc = System::MakeObject<Document>();
+        auto builder = System::MakeObject<DocumentBuilder>(doc);
+        builder->Write(u"Page one.\fPage two.\fPage three.");
+        doc->Save(u"sample-input.docx");
+    }
+    else
+    {
+        doc = System::MakeObject<Document>(u"input.docx");
     }
 
-    auto doc = System::MakeObject<Document>(inputPath);
     const int32_t pageCount = doc->get_PageCount();
-
-    for (int32_t page = 0; page < pageCount; ++page)
+    for (int32_t i = 0; i < pageCount; ++i)
     {
-        auto part = doc->ExtractPages(page, 1);
-        part->Save(System::String::Format(u"page-{0}.docx", page + 1));
+        auto page = doc->ExtractPages(i, 1);
+        page->Save(System::String::Format(u"page-{0}.docx", i + 1));
     }
 
     return 0;
 }
 ```
 
-The example creates a sample input by default; set `createSample` to `false` to use `input.docx`. It overwrites existing files with the same output names. A license avoids evaluation limitations; no external service is required. Layout may differ slightly for complex documents ([splitting guide](https://docs.aspose.com/words/cpp/split-a-document/), [licensing guidance](https://docs.aspose.com/words/cpp/insert-checkboxes-text-input-or-images-mail-merge/)).
+Files are written to the working directory; existing files with those names are overwritten. [`get_PageCount`](https://reference.aspose.com/words/cpp/aspose.words/document/get_pagecount/) uses the calculated page layout, and [`Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/) selects DOCX from the extension. Evaluation mode has limitations; apply a [license](https://reference.aspose.com/words/cpp/aspose.words/license/setlicense/) before creating the document if available. No external service is required.
 
-The requested guidance file was unavailable locally; the included error-correction guidance was used. The documentation service returned latest-stable evidence rather than independently confirming version 26.9.0.
+The requested `examples/error-correction.md` file was not present; the guidance supplied in the prompt was used.
 
 ## split-02
 
 How to split a DOCX file by pages using Aspose.Words?
+
+Origin: copilot-cli. Compilation: passed.
+
+Use [`ExtractPages`](https://reference.aspose.com/words/cpp/aspose.words/document/extractpages/) with a zero-based page index and a count of one.
+
+Place `input.docx` in the working directory. The program writes `page-1.docx`, `page-2.docx`, and so on, overwriting files with those names.
+
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <system/smart_ptr.h>
+
+int main()
+{
+    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
+    const int pageCount = doc->get_PageCount();
+
+    for (int page = 0; page < pageCount; ++page)
+    {
+        auto extracted = doc->ExtractPages(page, 1);
+        extracted->Save(System::String::Format(u"page-{0}.docx", page + 1));
+    }
+
+    return 0;
+}
+```
+
+The [splitting guide](https://docs.aspose.com/words/cpp/split-a-document/) notes that complex documents may have slight layout differences after extraction. Without a license, evaluation watermarks and document-size limits apply; see [licensing](https://docs.aspose.com/words/cpp/licensing/).
+
+## split-03
+
+How to extract each page of a Word document into a separate file?
 
 Origin: copilot-cli. Compilation: passed.
 
@@ -1667,63 +1874,7 @@ int main()
 }
 ```
 
-Place `input.docx` in the working directory. Output files there are overwritten if they already exist. Evaluation mode may add watermarks or limit functionality; no external service is required. Complex documents may have layout differences after extraction ([splitting guide](https://docs.aspose.com/words/cpp/split-a-document/)).
-
-The documentation endpoint resolved to latest-stable; version 26.9.0 was not separately verified.
-
-## split-03
-
-How to extract each page of a Word document into a separate file?
-
-Origin: copilot-cli. Compilation: passed.
-
-Use [`ExtractPages(index, 1)`](https://reference.aspose.com/words/cpp/aspose.words/document/extractpages/) for each zero-based page, then save each result as DOCX.
-
-```cpp
-#include <Aspose.Words.Cpp/Document.h>
-#include <Aspose.Words.Cpp/DocumentBuilder.h>
-#include <system/smart_ptr.h>
-
-#include <cstring>
-#include <iostream>
-
-int main(int argc, char* argv[])
-{
-    System::SharedPtr<Aspose::Words::Document> doc;
-
-    if (argc == 2 && std::strcmp(argv[1], "--sample") == 0)
-    {
-        doc = System::MakeObject<Aspose::Words::Document>();
-        auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(doc);
-        for (int i = 0; i < 120; ++i)
-            builder->Writeln(u"Sample paragraph for page extraction.");
-        doc->Save(u"sample-input.docx");
-    }
-    else if (argc == 1)
-    {
-        doc = System::MakeObject<Aspose::Words::Document>(
-            System::String(u"input.docx"));
-    }
-    else
-    {
-        std::cerr << "Usage: program [--sample]\n";
-        return 1;
-    }
-
-    const int pageCount = doc->get_PageCount();
-    for (int page = 0; page < pageCount; ++page)
-    {
-        auto extracted = doc->ExtractPages(page, 1);
-        extracted->Save(System::String::Format(u"page-{0}.docx", page + 1));
-    }
-
-    return 0;
-}
-```
-
-Place `input.docx` in the working directory, or use `--sample` to create and split `sample-input.docx`. Existing output files are overwritten. Complex documents may have slight layout differences after splitting ([guide](https://docs.aspose.com/words/cpp/split-a-document/)).
-
-No license is applied here; evaluation adds a watermark and limits document size ([licensing](https://docs.aspose.com/words/cpp/licensing/)). No external service is required. The documentation endpoint returned latest-stable evidence rather than version-specific confirmation for 26.9.0. The requested guidance file was absent; the inline guidance was used.
+Place `input.docx` in the working directory. Output files are written there and existing files with the same names are overwritten. Complex documents may have slight layout differences after splitting ([guide](https://docs.aspose.com/words/cpp/split-a-document/)). Without a license, evaluation limitations apply ([licensing](https://docs.aspose.com/words/cpp/licensing/)).
 
 ## split-04
 
@@ -1731,7 +1882,7 @@ How to split a Word document by sections?
 
 Origin: copilot-cli. Compilation: passed.
 
-Load the document, then [clone it](https://reference.aspose.com/words/cpp/aspose.words/document/clone/) once per section and remove the other sections:
+Clone the document once per section, then remove the other sections. [Document::Clone](https://reference.aspose.com/words/cpp/aspose.words/document/clone/) makes a deep copy.
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -1761,9 +1912,9 @@ int main()
 }
 ```
 
-Place `input.docx` in the working directory. Outputs such as `section_1.docx` are overwritten if they exist. A license is needed to avoid evaluation limitations; no external service is required.
+Place `input.docx` in the working directory. Outputs overwrite existing `section_1.docx`, etc. A section’s inherited headers or footers may be lost when its preceding sections are removed; [section inheritance](https://docs.aspose.com/words/cpp/working-with-sections/) and layout may require additional handling. A license removes [evaluation limitations](https://docs.aspose.com/words/cpp/installation/).
 
-[Linked headers and footers](https://reference.aspose.com/words/cpp/aspose.words/headerfootercollection/linktoprevious/) may depend on a removed section. Check those, cross-section fields, and pagination in the outputs.
+The requested `examples\error-correction.md` file was not available; the guidance included in the prompt was used instead.
 
 ## split-05
 
@@ -1771,7 +1922,85 @@ How to split a document by headings or other structural elements?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use `DocumentSplitCriteria::HeadingParagraph` to save separate HTML files at headings; set the maximum heading level to control where splits occur. [Heading-level documentation](https://reference.aspose.com/words/cpp/aspose.words.saving/htmlsaveoptions/get_documentsplitheadinglevel/).
+Split by **sections** by cloning the document and retaining one section per output. For heading-based HTML output, use `HtmlSaveOptions` with `DocumentSplitCriteria::HeadingParagraph`; the [heading-level setting](https://reference.aspose.com/words/cpp/aspose.words.saving/htmlsaveoptions/get_documentsplitheadinglevel/) controls which built-in heading levels split. Section, page and column breaks are also available as [split criteria](https://docs.aspose.com/words/cpp/split-a-document/).
+
+This program splits `input.docx` into separate DOCX files:
+
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/SectionCollection.h>
+#include <system/smart_ptr.h>
+
+#include <cstdint>
+
+int main()
+{
+    auto source = System::MakeObject<Aspose::Words::Document>(u"input.docx");
+    const int32_t count = source->get_Sections()->get_Count();
+
+    for (int32_t i = 0; i < count; ++i)
+    {
+        auto part = source->Clone();
+        auto sections = part->get_Sections();
+
+        for (int32_t j = count - 1; j >= 0; --j)
+        {
+            if (j != i)
+                sections->RemoveAt(j);
+        }
+
+        part->Save(System::String::Format(u"part-{0}.docx", i + 1));
+    }
+
+    return 0;
+}
+```
+
+Place `input.docx` in the working directory; existing `part-*.docx` files may be overwritten. Headers or footers linked to removed sections may need special handling. Cloning can also retain document-wide metadata, so review outputs before sharing. See [`Clone`](https://reference.aspose.com/words/cpp/aspose.words/document/clone/) and [`RemoveAt`](https://reference.aspose.com/words/cpp/aspose.words/nodecollection/removeat/).
+
+The example needs no external service. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply. The requested guidance file was not present in the workspace; the heading-specific SDK headers could not be independently verified here.
+
+## split-06
+
+How to save each page of a Word document separately?
+
+Origin: copilot-cli. Compilation: passed.
+
+Use [`ExtractPages`](https://reference.aspose.com/words/cpp/aspose.words/document/extractpages/) with a zero-based page index and a count of one. Each extracted page is saved as a separate DOCX:
+
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <system/smart_ptr.h>
+
+int main()
+{
+    auto doc = System::MakeObject<Aspose::Words::Document>(
+        System::String(u"input.docx"));
+
+    const int pageCount = doc->get_PageCount();
+    for (int page = 0; page < pageCount; ++page)
+    {
+        auto extracted = doc->ExtractPages(page, 1);
+        extracted->Save(System::String::Format(u"page_{0}.docx", page + 1));
+    }
+
+    return 0;
+}
+```
+
+Place `input.docx` in the working directory. Output files are written there and **existing `page_N.docx` files are overwritten**. No external service is required. Without a license, evaluation restrictions apply ([FAQ](https://docs.aspose.com/words/cpp/faq/)).
+
+Complex documents may have slight layout differences after extraction ([split guide](https://docs.aspose.com/words/cpp/split-a-document/)). The retrieved API documentation is for latest-stable; the documentation service did not provide a version-specific 26.9.0 reference.
+
+## split-07
+
+How to use DocumentSplitCriteria in Aspose.Words?
+
+Origin: copilot-cli. Compilation: passed.
+
+Set [`DocumentSplitCriteria`](https://reference.aspose.com/words/cpp/aspose.words.saving/documentsplitcriteria/) on `HtmlSaveOptions`, then pass the options to `Save`. This example creates a document and splits the HTML at Heading 1 paragraphs.
+
+**Header verification limitation:** the MCP reference did not expose header paths, and access to the local SDK was denied. The three headers for paragraph formatting and HTML splitting below need confirmation against your 26.9.0 package.
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -1792,110 +2021,24 @@ int main()
     builder->get_ParagraphFormat()->set_StyleName(u"Heading 1");
     builder->Writeln(u"First chapter");
     builder->get_ParagraphFormat()->set_StyleName(u"Normal");
-    builder->Writeln(u"First chapter content.");
+    builder->Writeln(u"Content of the first chapter.");
 
     builder->get_ParagraphFormat()->set_StyleName(u"Heading 1");
     builder->Writeln(u"Second chapter");
     builder->get_ParagraphFormat()->set_StyleName(u"Normal");
-    builder->Writeln(u"Second chapter content.");
+    builder->Writeln(u"Content of the second chapter.");
 
     auto options = System::MakeObject<HtmlSaveOptions>();
     options->set_DocumentSplitCriteria(DocumentSplitCriteria::HeadingParagraph);
     options->set_DocumentSplitHeadingLevel(1);
-    doc->Save(u"chapters.html", options);
+    doc->Save(u"split.html", options);
     return 0;
 }
 ```
 
-The sample creates its input in memory and writes HTML files in the current directory, overwriting matching output names. For an existing document, construct `Document` with its path instead. A license avoids [evaluation restrictions](https://docs.aspose.com/words/cpp/faq/); no external service is needed.
+The output is multiple HTML files in the working directory; existing output files may be overwritten. For EPUB, parts are stored in one package; MHTML cannot be split this way. Other criteria include section, column and page breaks ([guide](https://docs.aspose.com/words/cpp/split-a-document/)). The [heading level](https://reference.aspose.com/words/cpp/aspose.words.saving/htmlsaveoptions/get_documentsplitheadinglevel/) defaults to 2.
 
-For section, page, or column breaks, choose another [split criterion](https://docs.aspose.com/words/cpp/split-a-document/). For separate DOCX files, import sections into new documents, or extract content between selected nodes using the [documented extraction approach](https://docs.aspose.com/words/cpp/how-to-extract-selected-content-between-nodes-in-a-document/).
-
-**Verification gap:** MCP confirmed the APIs, but did not expose the 26.9.0 header paths, and local shell access was denied. The additional header paths above remain unverified.
-
-## split-06
-
-How to save each page of a Word document separately?
-
-Origin: copilot-cli. Compilation: passed.
-
-Use [`ExtractPages(index, 1)`](https://reference.aspose.com/words/cpp/aspose.words/document/extractpages/) for each zero-based page, then [save](https://reference.aspose.com/words/cpp/aspose.words/document/save/) each result as DOCX.
-
-This example creates a two-page sample. To process your document, set `createSample` to `false` and supply `input.docx` in the working directory.
-
-```cpp
-#include <Aspose.Words.Cpp/Document.h>
-#include <Aspose.Words.Cpp/DocumentBuilder.h>
-#include <system/smart_ptr.h>
-#include <cstdint>
-
-int main()
-{
-    const bool createSample = true;
-    System::SharedPtr<Aspose::Words::Document> doc;
-
-    if (createSample)
-    {
-        doc = System::MakeObject<Aspose::Words::Document>();
-        auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(doc);
-        builder->Write(u"First page.\fSecond page.");
-        doc->Save(u"sample-input.docx");
-    }
-    else
-    {
-        doc = System::MakeObject<Aspose::Words::Document>(
-            System::String(u"input.docx"));
-    }
-
-    const int32_t pageCount = doc->get_PageCount();
-    for (int32_t i = 0; i < pageCount; ++i)
-    {
-        auto page = doc->ExtractPages(i, 1);
-        page->Save(System::String::Format(u"page-{0}.docx", i + 1));
-    }
-
-    return 0;
-}
-```
-
-The sample and `page-N.docx` files are written in the working directory and overwrite existing files with those names. The example uses evaluation mode; apply an Aspose license to remove [evaluation limitations](https://docs.aspose.com/words/cpp/installation/).
-
-## split-07
-
-How to use DocumentSplitCriteria in Aspose.Words?
-
-Origin: copilot-cli. Compilation: passed.
-
-Set [`HtmlSaveOptions::DocumentSplitCriteria`](https://reference.aspose.com/words/cpp/aspose.words.saving/htmlsaveoptions/get_documentsplitcriteria/) before saving. This example creates a document and splits HTML at Heading 1 paragraphs:
-
-```cpp
-#include <Aspose.Words.Cpp/Document.h>
-#include <Aspose.Words.Cpp/DocumentBuilder.h>
-#include <Aspose.Words.Cpp/Saving/DocumentSplitCriteria.h>
-#include <Aspose.Words.Cpp/Saving/HtmlSaveOptions.h>
-#include <system/smart_ptr.h>
-
-int main()
-{
-    auto doc = System::MakeObject<Aspose::Words::Document>();
-    auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(doc);
-
-    builder->InsertHtml(
-        u"<h1>Chapter One</h1><p>First chapter.</p>"
-        u"<h1>Chapter Two</h1><p>Second chapter.</p>");
-
-    auto options = System::MakeObject<Aspose::Words::Saving::HtmlSaveOptions>();
-    options->set_DocumentSplitCriteria(
-        Aspose::Words::Saving::DocumentSplitCriteria::HeadingParagraph);
-    options->set_DocumentSplitHeadingLevel(1);
-    doc->Save(u"chapters.html", options);
-    return 0;
-}
-```
-
-The output is multiple HTML files in the working directory; existing output files may be overwritten. EPUB instead contains the parts in one package; MHTML cannot be split this way. Other criteria include section, column, and page breaks. See [splitting documents](https://docs.aspose.com/words/cpp/split-a-document/) and [heading levels](https://reference.aspose.com/words/cpp/aspose.words.saving/htmlsaveoptions/get_documentsplitheadinglevel/).
-
-No input file or external service is needed. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply. The MCP documentation did not expose the two saving-header paths, and local SDK inspection was unavailable, so those paths remain **unverified**.
+No input file or external service is needed. Without a license, evaluation limitations apply; see [licensing](https://docs.aspose.com/words/cpp/licensing/).
 
 ## merge-01
 
@@ -1903,57 +2046,54 @@ How to merge multiple Word documents into one document in C++?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [`AppendDocument`](https://reference.aspose.com/words/cpp/aspose.words/document/appenddocument/) to append each document in order. `KeepSourceFormatting` preserves the imported content’s formatting when styles conflict; use `UseDestinationStyles` to favor the first document’s styles instead ([format modes](https://reference.aspose.com/words/cpp/aspose.words/importformatmode/)).
+Use [`AppendDocument`](https://reference.aspose.com/words/cpp/aspose.words/document/appenddocument/) to add each document in order. `KeepSourceFormatting` preserves source formatting when styles conflict; `UseDestinationStyles` instead favors the destination’s styles ([format modes](https://reference.aspose.com/words/cpp/aspose.words/importformatmode/)).
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
 #include <Aspose.Words.Cpp/DocumentBuilder.h>
 #include <Aspose.Words.Cpp/ImportFormatMode.h>
-#include <system/object.h>
 #include <system/smart_ptr.h>
 
 int main()
 {
-    using Aspose::Words::Document;
-    using Aspose::Words::DocumentBuilder;
-    using Aspose::Words::ImportFormatMode;
-
-    const char16_t* inputs[] = {
-        u"merge-example-1.docx",
-        u"merge-example-2.docx",
-        u"merge-example-3.docx"
+    const System::String paths[] = {
+        u"sample_merge_1.docx",
+        u"sample_merge_2.docx",
+        u"sample_merge_3.docx"
     };
-    const char16_t* sampleText[] = {
+    const System::String texts[] = {
         u"First document.",
         u"Second document.",
         u"Third document."
     };
 
-    // Set to false and edit inputs to merge your existing documents.
+    // Set to false and change paths to merge existing documents instead.
     const bool createSamples = true;
     if (createSamples)
     {
         for (int i = 0; i < 3; ++i)
         {
-            auto sample = System::MakeObject<Document>();
-            auto builder = System::MakeObject<DocumentBuilder>(sample);
-            builder->Writeln(sampleText[i]);
-            sample->Save(inputs[i]);
+            auto sample = System::MakeObject<Aspose::Words::Document>();
+            auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(sample);
+            builder->Writeln(texts[i]);
+            sample->Save(paths[i]);
         }
     }
 
-    auto merged = System::MakeObject<Document>(System::String(inputs[0]));
+    auto merged = System::MakeObject<Aspose::Words::Document>(paths[0]);
     for (int i = 1; i < 3; ++i)
     {
-        auto source = System::MakeObject<Document>(System::String(inputs[i]));
-        merged->AppendDocument(source, ImportFormatMode::KeepSourceFormatting);
+        auto source = System::MakeObject<Aspose::Words::Document>(paths[i]);
+        merged->AppendDocument(source, Aspose::Words::ImportFormatMode::KeepSourceFormatting);
     }
     merged->Save(u"merged.docx");
     return 0;
 }
 ```
 
-The example writes three sample inputs and `merged.docx` in the working directory, **overwriting existing files with those names**. For existing documents, disable sample creation and edit the input paths. An Aspose license removes evaluation limitations; no external service is required. See [installation and licensing](https://docs.aspose.com/words/cpp/installation/).
+The sample inputs and `merged.docx` are written in the working directory and **overwritten** if present. No external service is required. Without a license, evaluation limitations apply; see [licensing](https://docs.aspose.com/words/cpp/licensing/).
+
+The requested `examples/error-correction.md` was not present; the supplied rules were used. Retrieved documentation was not independently version-specific to 26.9.0.
 
 ## merge-02
 
@@ -1961,7 +2101,9 @@ How to combine DOCX files using Aspose.Words?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [`AppendDocument`](https://reference.aspose.com/words/cpp/aspose.words/document/appenddocument/) to add each DOCX to the first. `KeepSourceFormatting` preserves the appended document’s formatting when styles conflict; use `UseDestinationStyles` to favor the first document’s styles instead ([format modes](https://reference.aspose.com/words/cpp/aspose.words/importformatmode/)).
+Use [`AppendDocument`](https://reference.aspose.com/words/cpp/aspose.words/document/appenddocument/) to append each file in order. `KeepSourceFormatting` preserves the imported content’s appearance when styles conflict; use `UseDestinationStyles` to favor the first document’s styles instead ([format modes](https://reference.aspose.com/words/cpp/aspose.words/importformatmode/)).
+
+This example creates two sample inputs, then combines them. **It overwrites** `sample1.docx`, `sample2.docx`, and `combined.docx` in the working directory.
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -1975,25 +2117,18 @@ int main()
     using Aspose::Words::DocumentBuilder;
     using Aspose::Words::ImportFormatMode;
 
-    const bool createSampleInputs = true;
-    const System::String firstPath = u"sample-first.docx";
-    const System::String secondPath = u"sample-second.docx";
+    auto first = System::MakeObject<Document>();
+    auto firstBuilder = System::MakeObject<DocumentBuilder>(first);
+    firstBuilder->Writeln(u"First document.");
+    first->Save(u"sample1.docx");
 
-    if (createSampleInputs)
-    {
-        auto first = System::MakeObject<Document>();
-        auto firstBuilder = System::MakeObject<DocumentBuilder>(first);
-        firstBuilder->Writeln(u"Content from the first document.");
-        first->Save(firstPath);
+    auto second = System::MakeObject<Document>();
+    auto secondBuilder = System::MakeObject<DocumentBuilder>(second);
+    secondBuilder->Writeln(u"Second document.");
+    second->Save(u"sample2.docx");
 
-        auto second = System::MakeObject<Document>();
-        auto secondBuilder = System::MakeObject<DocumentBuilder>(second);
-        secondBuilder->Writeln(u"Content from the second document.");
-        second->Save(secondPath);
-    }
-
-    auto combined = System::MakeObject<Document>(firstPath);
-    auto source = System::MakeObject<Document>(secondPath);
+    auto combined = System::MakeObject<Document>(u"sample1.docx");
+    auto source = System::MakeObject<Document>(u"sample2.docx");
     combined->AppendDocument(source, ImportFormatMode::KeepSourceFormatting);
     combined->Save(u"combined.docx");
 
@@ -2001,9 +2136,9 @@ int main()
 }
 ```
 
-The program creates two sample inputs and `combined.docx` in the working directory, **overwriting** files with those names. To combine existing files, set `createSampleInputs` to `false` and change the input paths. Repeat `AppendDocument` for more files. No external service is needed; without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
+For existing files, remove the sample-creation statements and replace the input paths. Repeat `AppendDocument` for additional files. The `.docx` extension selects the output format ([Save](https://reference.aspose.com/words/cpp/aspose.words/document/save/)).
 
-The requested `examples\error-correction.md` was unavailable in the workspace; the supplied inline guidance was used.
+The SDK works without credentials or external services; without a license it has evaluation limitations ([installation and licensing](https://docs.aspose.com/words/cpp/installation/)). The requested `examples/error-correction.md` was not present in the workspace; the rules supplied in the prompt were used instead.
 
 ## merge-03
 
@@ -2011,44 +2146,9 @@ How to append one Word document to another?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [`AppendDocument`](https://reference.aspose.com/words/cpp/aspose.words/document/appenddocument/) on the destination document. This example creates two sample documents in memory and preserves the source formatting:
+Use [`AppendDocument`](https://reference.aspose.com/words/cpp/aspose.words/document/appenddocument/) on the destination. `KeepSourceFormatting` preserves the source’s appearance when styles conflict; `UseDestinationStyles` instead uses matching destination styles ([details](https://reference.aspose.com/words/cpp/aspose.words/importformatmode/)).
 
-```cpp
-#include <Aspose.Words.Cpp/Document.h>
-#include <Aspose.Words.Cpp/DocumentBuilder.h>
-#include <Aspose.Words.Cpp/ImportFormatMode.h>
-#include <system/smart_ptr.h>
-
-int main()
-{
-    auto destination = System::MakeObject<Aspose::Words::Document>();
-    auto destinationBuilder =
-        System::MakeObject<Aspose::Words::DocumentBuilder>(destination);
-    destinationBuilder->Writeln(u"Destination document text.");
-
-    auto source = System::MakeObject<Aspose::Words::Document>();
-    auto sourceBuilder =
-        System::MakeObject<Aspose::Words::DocumentBuilder>(source);
-    sourceBuilder->Writeln(u"Source document text.");
-
-    destination->AppendDocument(
-        source, Aspose::Words::ImportFormatMode::KeepSourceFormatting);
-    destination->Save(u"combined.docx");
-    return 0;
-}
-```
-
-For existing files, construct each `Document` with its path instead of creating it empty. `combined.docx` is overwritten if it exists. [`UseDestinationStyles`](https://reference.aspose.com/words/cpp/aspose.words/importformatmode/) is an alternative for resolving matching styles.
-
-No input files or external services are needed for this sample. An Aspose license removes evaluation limitations; see [licensing](https://docs.aspose.com/words/cpp/licensing/). The requested `examples/error-correction.md` file was not present; the supplied error-correction guidance was used.
-
-## merge-04
-
-How to insert the contents of one document into another?
-
-Origin: copilot-cli. Compilation: passed.
-
-Use [`DocumentBuilder::InsertDocument`](https://reference.aspose.com/words/cpp/aspose.words/documentbuilder/insertdocument/) to insert at the builder’s cursor. This example creates two sample documents in memory and inserts the source at the end of the destination.
+This example creates and loads two sample inputs. **It overwrites** `first.docx`, `second.docx`, and `combined.docx` in the working directory. To use your own files, remove the sample-creation block and change the input paths.
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -2060,25 +2160,61 @@ int main()
 {
     using namespace Aspose::Words;
 
-    auto destination = System::MakeObject<Document>();
-    auto builder = System::MakeObject<DocumentBuilder>(destination);
-    builder->Writeln(u"Destination document content.");
+    // Create sample input files.
+    auto first = System::MakeObject<Document>();
+    auto firstBuilder = System::MakeObject<DocumentBuilder>(first);
+    firstBuilder->Writeln(u"First document.");
+    first->Save(u"first.docx");
 
-    auto source = System::MakeObject<Document>();
-    auto sourceBuilder = System::MakeObject<DocumentBuilder>(source);
-    sourceBuilder->Writeln(u"Content inserted from the source document.");
+    auto second = System::MakeObject<Document>();
+    auto secondBuilder = System::MakeObject<DocumentBuilder>(second);
+    secondBuilder->Writeln(u"Second document.");
+    second->Save(u"second.docx");
 
-    builder->MoveToDocumentEnd();
-    builder->InsertDocument(source, ImportFormatMode::KeepSourceFormatting);
+    auto destination = System::MakeObject<Document>(System::String(u"first.docx"));
+    auto source = System::MakeObject<Document>(System::String(u"second.docx"));
+
+    destination->AppendDocument(source, ImportFormatMode::KeepSourceFormatting);
     destination->Save(u"combined.docx");
 
     return 0;
 }
 ```
 
-To use existing files, construct each `Document` with its filename instead. For another insertion point, move the builder first, for example with [`MoveToBookmark`](https://reference.aspose.com/words/cpp/aspose.words/documentbuilder/movetobookmark/). `KeepSourceFormatting` preserves source formatting when styles conflict; `UseDestinationStyles` uses matching destination styles instead ([format modes](https://reference.aspose.com/words/cpp/aspose.words/importformatmode/)).
+No external service is needed. Without an applied license, evaluation limitations apply; see [licensing](https://docs.aspose.com/words/cpp/licensing/).
 
-`combined.docx` is written to the working directory and overwritten if it exists. No input files or external services are required. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
+## merge-04
+
+How to insert the contents of one document into another?
+
+Origin: copilot-cli. Compilation: passed.
+
+Use [`DocumentBuilder::InsertDocument`](https://reference.aspose.com/words/cpp/aspose.words/documentbuilder/insertdocument/) to insert a source document at the builder’s cursor. This example creates both documents in memory and inserts the source at the end of the destination.
+
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/DocumentBuilder.h>
+#include <Aspose.Words.Cpp/ImportFormatMode.h>
+#include <system/smart_ptr.h>
+
+int main()
+{
+    auto destination = System::MakeObject<Aspose::Words::Document>();
+    auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(destination);
+    builder->Writeln(u"Destination document.");
+
+    auto source = System::MakeObject<Aspose::Words::Document>();
+    auto sourceBuilder = System::MakeObject<Aspose::Words::DocumentBuilder>(source);
+    sourceBuilder->Writeln(u"Inserted document content.");
+
+    builder->MoveToDocumentEnd();
+    builder->InsertDocument(source, Aspose::Words::ImportFormatMode::KeepSourceFormatting);
+    destination->Save(u"combined.docx");
+    return 0;
+}
+```
+
+For existing files, construct each `Document` with its file path and omit the sample `Writeln` calls. `combined.docx` is written in the working directory and overwritten if it exists. `KeepSourceFormatting` preserves source formatting where possible; see [import format modes](https://reference.aspose.com/words/cpp/aspose.words/importformatmode/). The example needs no input files or external services; without a license, evaluation limitations apply ([licensing](https://docs.aspose.com/words/cpp/licensing/)).
 
 ## merge-05
 
@@ -2086,7 +2222,7 @@ How to merge Word documents while preserving formatting?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [`AppendDocument`](https://reference.aspose.com/words/cpp/aspose.words/document/appenddocument/) with `KeepSourceFormatting` to preserve the appended document’s appearance when styles conflict. Conflicting styles may become direct formatting rather than retained styles. See [ImportFormatMode](https://reference.aspose.com/words/cpp/aspose.words/importformatmode/).
+Use [`AppendDocument`](https://reference.aspose.com/words/cpp/aspose.words/document/appenddocument/) with [`KeepSourceFormatting`](https://reference.aspose.com/words/cpp/aspose.words/importformatmode/). The example creates two sample documents, reloads them, and merges them:
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -2099,36 +2235,32 @@ int main()
 {
     using namespace Aspose::Words;
 
-    // Set true to merge two sample documents created in memory.
-    const bool useSamples = false;
+    auto first = System::MakeObject<Document>();
+    auto firstBuilder = System::MakeObject<DocumentBuilder>(first);
+    firstBuilder->get_Font()->set_Bold(true);
+    firstBuilder->Writeln(u"First document: bold text.");
+    first->Save(u"sample-first.docx");
 
-    System::SharedPtr<Document> first;
-    System::SharedPtr<Document> second;
+    auto second = System::MakeObject<Document>();
+    auto secondBuilder = System::MakeObject<DocumentBuilder>(second);
+    secondBuilder->get_Font()->set_Italic(true);
+    secondBuilder->Writeln(u"Second document: italic text.");
+    second->Save(u"sample-second.docx");
 
-    if (useSamples)
-    {
-        first = System::MakeObject<Document>();
-        auto firstBuilder = System::MakeObject<DocumentBuilder>(first);
-        firstBuilder->Writeln(u"First document: normal text.");
+    auto destination = System::MakeObject<Document>(
+        System::String(u"sample-first.docx"));
+    auto source = System::MakeObject<Document>(
+        System::String(u"sample-second.docx"));
 
-        second = System::MakeObject<Document>();
-        auto secondBuilder = System::MakeObject<DocumentBuilder>(second);
-        secondBuilder->get_Font()->set_Bold(true);
-        secondBuilder->Writeln(u"Second document: bold text.");
-    }
-    else
-    {
-        first = System::MakeObject<Document>(System::String(u"first.docx"));
-        second = System::MakeObject<Document>(System::String(u"second.docx"));
-    }
-
-    first->AppendDocument(second, ImportFormatMode::KeepSourceFormatting);
-    first->Save(u"merged.docx");
+    destination->AppendDocument(source, ImportFormatMode::KeepSourceFormatting);
+    destination->Save(u"merged.docx");
     return 0;
 }
 ```
 
-Place `first.docx` and `second.docx` in the working directory, or set `useSamples` to `true`. `merged.docx` is overwritten if it exists. An Aspose license removes evaluation limitations; no external service is required. List numbering and section layout may require additional [import options](https://docs.aspose.com/words/cpp/insert-and-append-documents/).
+The three files are written in the working directory and **existing files with those names are overwritten**. For your own documents, remove the sample-creation statements and change the input paths.
+
+Style conflicts may be converted to direct formatting; [list-numbering conflicts](https://reference.aspose.com/words/cpp/aspose.words/importformatoptions/get_keepsourcenumbering/) can require additional import options. The program needs no external service or Microsoft Word. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
 
 ## merge-06
 
@@ -2136,9 +2268,11 @@ What is the difference between InsertDocument and AppendDocument?
 
 Origin: copilot-cli. Compilation: no_code.
 
-`DocumentBuilder::InsertDocument` inserts a source document **where the builder’s cursor is**—use it to place content in the middle or at a chosen position. `Document::AppendDocument` adds the source document **to the end of the target document**—use it for straightforward concatenation without positioning a builder. Both accept an `ImportFormatMode` to control how imported formatting is handled.
+`DocumentBuilder::InsertDocument` inserts the source document at the builder’s **current cursor position**, so you can place it between existing content. It returns the first node inserted. ([API reference](https://reference.aspose.com/words/cpp/aspose.words/documentbuilder/insertdocument/))
 
-Sources: [Insert and Append Documents guide](https://docs.aspose.com/words/cpp/insert-and-append-documents/), [InsertDocument API](https://reference.aspose.com/words/cpp/aspose.words/documentbuilder/insertdocument/), [AppendDocument API](https://reference.aspose.com/words/cpp/aspose.words/document/appenddocument/).
+`Document::AppendDocument` adds the source document to the **end** of the destination document; it does not use a builder or cursor and returns `void`. ([API reference](https://reference.aspose.com/words/cpp/aspose.words/document/appenddocument/))
+
+Both accept an `ImportFormatMode` to control how formatting is merged. Use `InsertDocument` for cursor-positioned placement and `AppendDocument` for appending/concatenating documents. ([Aspose.Words guide](https://docs.aspose.com/words/cpp/insert-and-append-documents/))
 
 ## merge-07
 
@@ -2146,31 +2280,41 @@ How to combine several Word documents into a single DOCX file?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use `Document::AppendDocument` to append each source document in order, then save the result with a `.docx` filename. This example expects three input files in the program’s working directory and overwrites `combined.docx` if it already exists.
+Use `Document::AppendDocument` to add each source document to the end of the first, then save the result as `.docx`. This example preserves each appended document’s formatting.
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
 #include <Aspose.Words.Cpp/ImportFormatMode.h>
 #include <system/smart_ptr.h>
 
+#include <vector>
+
 int main()
 {
-    auto combined = System::MakeObject<Aspose::Words::Document>(u"part1.docx");
+    auto combined = System::MakeObject<Aspose::Words::Document>(
+        System::String(u"input1.docx"));
 
-    auto second = System::MakeObject<Aspose::Words::Document>(u"part2.docx");
-    combined->AppendDocument(second, Aspose::Words::ImportFormatMode::KeepSourceFormatting);
+    const std::vector<System::String> additionalInputFiles = {
+        System::String(u"input2.docx"),
+        System::String(u"input3.docx")
+    };
 
-    auto third = System::MakeObject<Aspose::Words::Document>(u"part3.docx");
-    combined->AppendDocument(third, Aspose::Words::ImportFormatMode::KeepSourceFormatting);
+    for (const auto& inputFile : additionalInputFiles)
+    {
+        auto source = System::MakeObject<Aspose::Words::Document>(inputFile);
+        combined->AppendDocument(
+            source,
+            Aspose::Words::ImportFormatMode::KeepSourceFormatting);
+    }
 
-    combined->Save(u"combined.docx");
+    combined->Save(System::String(u"combined.docx"));
     return 0;
 }
 ```
 
-`KeepSourceFormatting` aims to retain the appended documents’ formatting; style conflicts can affect the result. The required inputs are `part1.docx`, `part2.docx`, and `part3.docx`. No credentials or external services are used; provide an Aspose.Words license as required for your deployment. The API lookup did not resolve specifically to 26.9.0 (it returned latest-stable), so confirm these signatures against your pinned SDK before compiling.
+Place the three input DOCX files in the program’s working directory, or change the paths. Add more paths to `additionalInputFiles` as needed. The output path may overwrite an existing `combined.docx`. No credentials or external services are required; use the SDK with the applicable Aspose license.
 
-Sources: [AppendDocument](https://reference.aspose.com/words/cpp/aspose.words/document/appenddocument/), [ImportFormatMode](https://reference.aspose.com/words/cpp/aspose.words/importformatmode/), [Insert and Append Documents in C++](https://docs.aspose.com/words/cpp/insert-and-append-documents/), [Document.Save](https://reference.aspose.com/words/cpp/aspose.words/document/save/).
+Aspose’s [insert and append guide](https://docs.aspose.com/words/cpp/insert-and-append-documents/) describes appending documents while retaining source formatting. The [AppendDocument API reference](https://reference.aspose.com/words/cpp/aspose.words/document/appenddocument/) documents the method, and [Document.Save](https://reference.aspose.com/words/cpp/aspose.words/document/save/) documents saving by filename. The requested `examples/error-correction.md` was not present in the workspace; the guidance included in your prompt was available.
 
 ## find-replace-01
 
@@ -2178,42 +2322,40 @@ How to find and replace text in a Word document using C++?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [`Range::Replace`](https://reference.aspose.com/words/cpp/aspose.words/range/replace/) to replace matching text and return the number of replacements. This example creates a sample document, reloads it, and saves the result separately.
+Use [`Range::Replace`](https://reference.aspose.com/words/cpp/aspose.words/range/replace/) to replace text and return the number of matches. This example creates a sample document, reloads it, and performs a case-sensitive replacement.
 
 ```cpp
-#include <Aspose.Words.Cpp/Document.h>
-#include <Aspose.Words.Cpp/DocumentBuilder.h>
-#include <Aspose.Words.Cpp/Range.h>
-#include <Aspose.Words.Cpp/Replacing/FindReplaceOptions.h>
-#include <system/object.h>
-#include <system/smart_ptr.h>
-
+#include <Aspose.Words.Cpp\Document.h>
+#include <Aspose.Words.Cpp\DocumentBuilder.h>
+#include <Aspose.Words.Cpp\Range.h>
+#include <Aspose.Words.Cpp\Replacing\FindReplaceOptions.h>
+#include <system\object.h>
+#include <system\smart_ptr.h>
 #include <iostream>
 
 int main()
 {
     auto sample = System::MakeObject<Aspose::Words::Document>();
     auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(sample);
-    builder->Writeln(u"Ruby bought a ruby necklace.");
+    builder->Writeln(u"Hello Alice. Goodbye Alice.");
     sample->Save(u"sample-input.docx");
 
-    auto doc = System::MakeObject<Aspose::Words::Document>(
-        System::String(u"sample-input.docx"));
-
+    auto doc = System::MakeObject<Aspose::Words::Document>(u"sample-input.docx");
     auto options =
         System::MakeObject<Aspose::Words::Replacing::FindReplaceOptions>();
     options->set_MatchCase(true);
     options->set_FindWholeWordsOnly(true);
 
-    const auto count = doc->get_Range()->Replace(u"Ruby", u"Jade", options);
+    int count = doc->get_Range()->Replace(u"Alice", u"Bob", options);
     doc->Save(u"replaced-output.docx");
-
     std::cout << "Replacements: " << count << '\n';
     return 0;
 }
 ```
 
-For an existing document, remove the sample-creation statements and change the input path. Both named output files are overwritten if present. No external service is needed; without a license, [evaluation restrictions](https://docs.aspose.com/words/cpp/faq/) apply. The documentation service returned latest-stable API evidence, not a separately identified 26.9.0 reference.
+Both named files are overwritten if they exist. To process an existing document, remove the sample-creation statements and change the input path. No external service is required. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
+
+The requested guidance file was not present; the inline guidance supplied in the question was used.
 
 ## find-replace-02
 
@@ -2221,40 +2363,12 @@ How to replace a string in a DOCX file with Aspose.Words?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use `Document` to load the DOCX, then call `Replace` on its `Range` and save the result. `Replace` treats the search text as a literal string, uses case-insensitive matching by default, and returns the number of replacements. ([API reference](https://reference.aspose.com/words/cpp/aspose.words/range/replace/))
-
-```cpp
-#include <Aspose.Words.Cpp/Document.h>
-#include <Aspose.Words.Cpp/Range.h>
-#include <system/smart_ptr.h>
-
-int main()
-{
-    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
-    doc->get_Range()->Replace(u"old text", u"new text");
-    doc->Save(u"output.docx");
-    return 0;
-}
-```
-
-Place `input.docx` beside the program or adjust its path. Saving chooses the format from the `.docx` extension and overwrites `output.docx` if it already exists. ([Load](https://reference.aspose.com/words/cpp/aspose.words/document/document/), [Save](https://reference.aspose.com/words/cpp/aspose.words/document/save/)) A valid license file is needed for licensed use; evaluation mode has limitations. No external service is required. ([Licensing](https://docs.aspose.com/words/cpp/licensing/))
-
-The named `examples/error-correction.md` wasn’t present in the workspace; I followed the C++ rules included in your prompt.
-
-## find-replace-03
-
-How to replace all occurrences of a word in a document?
-
-Origin: copilot-cli. Compilation: passed.
-
-Use [`Range::Replace`](https://reference.aspose.com/words/cpp/aspose.words/range/replace/) with [options](https://reference.aspose.com/words/cpp/aspose.words.replacing/findreplaceoptions/) for whole-word and case-sensitive matching:
+Use [`Range::Replace`](https://reference.aspose.com/words/cpp/aspose.words/range/replace/) to replace matching text and [`Save`](https://reference.aspose.com/words/cpp/aspose.words/document/save/) to write the result. This example creates a sample DOCX first:
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
 #include <Aspose.Words.Cpp/DocumentBuilder.h>
 #include <Aspose.Words.Cpp/Range.h>
-#include <Aspose.Words.Cpp/Replacing/FindReplaceOptions.h>
-#include <system/object.h>
 #include <system/smart_ptr.h>
 
 #include <iostream>
@@ -2263,7 +2377,43 @@ int main()
 {
     auto sample = System::MakeObject<Aspose::Words::Document>();
     auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(sample);
-    builder->Writeln(u"Ruby bought a ruby necklace. Ruby likes rubies.");
+    builder->Writeln(u"Hello, old name!");
+    sample->Save(u"sample-input.docx");
+
+    auto doc = System::MakeObject<Aspose::Words::Document>(u"sample-input.docx");
+    const auto count = doc->get_Range()->Replace(u"old name", u"new name");
+    doc->Save(u"output.docx");
+
+    std::cout << "Replacements: " << count << '\n';
+    return 0;
+}
+```
+
+The two-argument replacement is case-insensitive. Both output files are overwritten if they exist. To use your own DOCX, remove the sample-creation statements and change the input path.
+
+No external service is required. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
+
+## find-replace-03
+
+How to replace all occurrences of a word in a document?
+
+Origin: copilot-cli. Compilation: passed.
+
+Use [`Range::Replace`](https://reference.aspose.com/words/cpp/aspose.words/range/replace/) with [find-and-replace options](https://reference.aspose.com/words/cpp/aspose.words.replacing/findreplaceoptions/) to control case and whole-word matching.
+
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/DocumentBuilder.h>
+#include <Aspose.Words.Cpp/Range.h>
+#include <Aspose.Words.Cpp/Replacing/FindReplaceOptions.h>
+#include <system/smart_ptr.h>
+#include <iostream>
+
+int main()
+{
+    auto sample = System::MakeObject<Aspose::Words::Document>();
+    auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(sample);
+    builder->Writeln(u"The cat saw another cat.");
     sample->Save(u"sample-input.docx");
 
     auto doc = System::MakeObject<Aspose::Words::Document>(u"sample-input.docx");
@@ -2271,17 +2421,16 @@ int main()
     options->set_MatchCase(false);
     options->set_FindWholeWordsOnly(true);
 
-    int replacements = doc->get_Range()->Replace(u"ruby", u"jade", options);
+    int count = doc->get_Range()->Replace(u"cat", u"dog", options);
     doc->Save(u"replaced.docx");
-
-    std::cout << "Replacements: " << replacements << '\n';
+    std::cout << "Replacements: " << count << '\n';
     return 0;
 }
 ```
 
-The program creates `sample-input.docx` and `replaced.docx`, overwriting files with those names. For an existing document, remove the sample-creation statements and change the input path. Set `FindWholeWordsOnly` to `false` to replace matches inside longer words.
+The program creates `sample-input.docx` and `replaced.docx` in the working directory, overwriting existing files with those names. For your own document, remove the sample-creation statements and change the input path. Set `FindWholeWordsOnly` to `false` to replace matches inside longer words too.
 
-A [license](https://docs.aspose.com/words/cpp/licensing/) removes evaluation limitations. The MCP reference exposes latest-stable documentation, not a separately pinned 26.9.0 reference.
+No external service is needed. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/faq/) apply.
 
 ## find-replace-04
 
@@ -2289,7 +2438,7 @@ How to find and replace text using regular expressions?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use the regex overload of [`Range::Replace`](https://reference.aspose.com/words/cpp/aspose.words/range/replace/). The corrected header is `system/text/regularexpressions/regex.h`.
+Use the [`Range::Replace` regex overload](https://reference.aspose.com/words/cpp/aspose.words/range/replace/). The corrected regex header is `system/text/regularexpressions/regex.h`.
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -2302,21 +2451,17 @@ int main()
 {
     auto doc = System::MakeObject<Aspose::Words::Document>();
     auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(doc);
+    builder->Writeln(u"The gray curtains match the grey room.");
 
-    builder->Writeln(u"I chose gray curtains for the grey-accented room.");
-
-    auto pattern =
-        System::MakeObject<System::Text::RegularExpressions::Regex>(u"gr(a|e)y");
+    auto pattern = System::MakeObject<System::Text::RegularExpressions::Regex>(
+        u"gr(a|e)y");
     doc->get_Range()->Replace(pattern, u"lavender");
-
-    doc->Save(u"RegexReplace.docx");
+    doc->Save(u"replaced.docx");
     return 0;
 }
 ```
 
-The program creates its own sample and writes `RegexReplace.docx` in the current directory, overwriting an existing file. No external service is needed. Without a license, evaluation restrictions apply; see [licensing](https://docs.aspose.com/words/cpp/licensing/).
-
-The original guide citation was malformed; the correct [find-and-replace guide](https://docs.aspose.com/words/cpp/find-and-replace/) supports this approach. The documentation service returned latest-stable evidence rather than a 26.9.0-specific snapshot.
+The example needs no input file or external service. It overwrites `replaced.docx`. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
 
 Compiler-feedback repair requests: 1. See repair-log.md and results.json for attempt history.
 
@@ -2326,7 +2471,7 @@ How to perform a case-insensitive text replacement in Word documents?
 
 Origin: copilot-cli. Compilation: passed.
 
-Set [`MatchCase`](https://reference.aspose.com/words/cpp/aspose.words.replacing/findreplaceoptions/get_matchcase/) to `false` and call [`Range::Replace`](https://reference.aspose.com/words/cpp/aspose.words/range/replace/), which returns the number of replacements.
+Set [`MatchCase`](https://reference.aspose.com/words/cpp/aspose.words.replacing/findreplaceoptions/get_matchcase/) to `false`, then call [`Range::Replace`](https://reference.aspose.com/words/cpp/aspose.words/range/replace/). The string overload searches for literal text.
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -2334,7 +2479,6 @@ Set [`MatchCase`](https://reference.aspose.com/words/cpp/aspose.words.replacing/
 #include <Aspose.Words.Cpp/Range.h>
 #include <Aspose.Words.Cpp/Replacing/FindReplaceOptions.h>
 #include <system/smart_ptr.h>
-#include <cstdint>
 #include <iostream>
 
 int main()
@@ -2348,17 +2492,14 @@ int main()
         System::MakeObject<Aspose::Words::Replacing::FindReplaceOptions>();
     options->set_MatchCase(false);
 
-    int32_t count = doc->get_Range()->Replace(u"ruby", u"jade", options);
-    doc->Save(u"output.docx");
-
+    int count = doc->get_Range()->Replace(u"Ruby", u"Jade", options);
+    doc->Save(u"replaced.docx");
     std::cout << "Replacements: " << count << '\n';
     return 0;
 }
 ```
 
-The example creates its own input; for an existing document, construct `Document` with its filename instead of creating the sample. Both output files are overwritten if they exist. No external service is required. The [trial](https://docs.aspose.com/words/cpp/licensing/) adds an evaluation watermark and limits document size.
-
-The requested `examples\error-correction.md` file was not present; I used the guidance included in your prompt.
+The example creates both files in the working directory and **overwrites** existing files with those names. For an existing document, construct `Document` with its path instead of creating the sample. No external service is needed; without a license, evaluation limitations apply. See [licensing](https://docs.aspose.com/words/cpp/licensing/).
 
 ## find-replace-06
 
@@ -2366,14 +2507,13 @@ How to replace text while preserving document formatting?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [`Range::Replace`](https://reference.aspose.com/words/cpp/aspose.words/range/replace/) without applying new font settings. This example creates a document with a bold placeholder, replaces it, and saves the result.
+Use [`Range::Replace`](https://reference.aspose.com/words/cpp/aspose.words/range/replace/) without applying new formatting. The example creates a formatted document, then replaces its text.
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
 #include <Aspose.Words.Cpp/DocumentBuilder.h>
 #include <Aspose.Words.Cpp/Font.h>
 #include <Aspose.Words.Cpp/Range.h>
-#include <Aspose.Words.Cpp/Replacing/FindReplaceOptions.h>
 #include <system/smart_ptr.h>
 #include <iostream>
 
@@ -2382,31 +2522,26 @@ int main()
     auto sample = System::MakeObject<Aspose::Words::Document>();
     auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(sample);
 
-    builder->Write(u"Hello ");
+    builder->Write(u"Welcome, ");
     builder->get_Font()->set_Bold(true);
-    builder->Write(u"_CustomerName_");
+    builder->Write(u"Customer");
     builder->get_Font()->set_Bold(false);
-    builder->Write(u", welcome!");
+    builder->Write(u"!");
+
     sample->Save(u"sample-input.docx");
 
-    auto doc = System::MakeObject<Aspose::Words::Document>(
-        System::String(u"sample-input.docx"));
-    auto options =
-        System::MakeObject<Aspose::Words::Replacing::FindReplaceOptions>();
-    options->set_MatchCase(true);
-
-    const int count = doc->get_Range()->Replace(
-        u"_CustomerName_", u"James Bond", options);
-    doc->Save(u"replaced.docx");
+    auto doc = System::MakeObject<Aspose::Words::Document>(u"sample-input.docx");
+    const auto count = doc->get_Range()->Replace(u"Customer", u"Alex");
+    doc->Save(u"result.docx");
 
     std::cout << "Replacements: " << count << '\n';
     return 0;
 }
 ```
 
-Both files are written in the working directory and overwritten if they exist. For an existing document, load its path instead of creating the sample. If a match spans differently formatted text, inspect the result: preserving every formatting transition in a differently sized replacement requires a custom policy.
+The two-string overload is **case-insensitive**. For matches spanning differently formatted runs, inspect the result; preserving every internal formatting transition may require custom handling. See the [find-and-replace guide](https://docs.aspose.com/words/cpp/find-and-replace/).
 
-No external service is needed. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply. The retrieved API reference does not identify its exact SDK version.
+Both files are overwritten if present. No external service is required; without a license, evaluation limitations apply. The requested guidance file was unavailable, so the supplied inline guidance was used.
 
 ## find-replace-07
 
@@ -2414,7 +2549,7 @@ How to use FindReplaceOptions in Aspose.Words?
 
 Origin: copilot-cli. Compilation: passed.
 
-Create a [`FindReplaceOptions`](https://reference.aspose.com/words/cpp/aspose.words.replacing/findreplaceoptions/), set its properties, and pass it to [`Range::Replace`](https://reference.aspose.com/words/cpp/aspose.words/range/replace/). This example replaces only case-sensitive, whole-word matches:
+Create a [`FindReplaceOptions`](https://reference.aspose.com/words/cpp/aspose.words.replacing/findreplaceoptions/) object and pass it to [`Range::Replace`](https://reference.aspose.com/words/cpp/aspose.words/range/replace/). This example replaces only case-sensitive, whole-word matches:
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -2436,16 +2571,15 @@ int main()
     options->set_FindWholeWordsOnly(true);
 
     const auto count = doc->get_Range()->Replace(u"Ruby", u"Jade", options);
-    std::cout << "Replacements: " << count << '\n';
-
     doc->Save(u"find-replace-output.docx");
+    std::cout << "Replacements: " << count << '\n';
     return 0;
 }
 ```
 
-The sample creates its own document and overwrites `find-replace-output.docx` if it exists. No external service is needed. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
+No input file or external service is needed. The output is written in the working directory and overwrites an existing file of that name. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
 
-The requested `examples/error-correction.md` was unavailable; I used the error-correction guidance included in your prompt.
+The requested `examples\error-correction.md` file was unavailable; I used the guidance included in your prompt.
 
 ## digital-signatures-01
 
@@ -2453,30 +2587,35 @@ How to digitally sign a Word document in C++?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use `CertificateHolder::Create` to load a PKCS#12 (`.pfx`) certificate containing the private key, then `DigitalSignatureUtil::Sign` to write a signed copy. The MCP verified these C++ APIs against its latest-stable reference, but it did not provide 26.9.0-specific metadata or confirm the installed header paths; verify those paths against your 26.9.0 SDK before building.
+Use `DigitalSignatureUtil::Sign` with a PKCS#12 certificate that contains the signer’s private key. This example reads an existing DOCX and writes a signed copy:
 
 ```cpp
 #include <Aspose.Words.Cpp/DigitalSignatures/CertificateHolder.h>
 #include <Aspose.Words.Cpp/DigitalSignatures/DigitalSignatureUtil.h>
-#include <system/smart_ptr.h>
 
 int main()
 {
-    System::SharedPtr<Aspose::Words::DigitalSignatures::CertificateHolder> certificateHolder =
+    const System::String inputFile = u"C:\\input.docx";
+    const System::String outputFile = u"C:\\input.signed.docx";
+    const System::String certificateFile = u"C:\\signing-certificate.pfx";
+    const System::String certificatePassword = u"replace-with-your-pfx-password";
+
+    System::SharedPtr<Aspose::Words::DigitalSignatures::CertificateHolder> certificate =
         Aspose::Words::DigitalSignatures::CertificateHolder::Create(
-            u"signing.pfx",
-            u"REPLACE_WITH_PFX_PASSWORD");
+            certificateFile, certificatePassword);
 
     Aspose::Words::DigitalSignatures::DigitalSignatureUtil::Sign(
-        u"unsigned.docx",
-        u"signed.docx",
-        certificateHolder);
+        inputFile, outputFile, certificate);
 
     return 0;
 }
 ```
 
-Provide `unsigned.docx` and a password-protected `.pfx` with its private key; keep the certificate password out of source control. The output is written separately, preserving the input. Aspose.Words’ guide lists DOCX among the supported signing formats and says no separate digital-signature license is required, though a valid Aspose.Words license enables full functionality. [Digital-signature guide](https://docs.aspose.com/words/cpp/working-with-digital-signatures/) · [CertificateHolder::Create reference](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/certificateholder/create/) · [DigitalSignatureUtil::Sign reference](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignatureutil/sign/)
+The certificate must include a private key; the API accepts a PKCS#12 file and its password, and the file-based signing overload supports DOCX and other Word formats. ([`CertificateHolder::Create`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/certificateholder/create/), [`DigitalSignatureUtil::Sign`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignatureutil/sign/))
+
+Provide an existing Word document, a `.pfx`/`.p12` certificate, and its password. Use a valid Aspose.Words license for production, and keep the certificate password out of source control. No external service is needed for this basic signature; an RFC 3161 timestamp authority is optional. Editing a signed document can invalidate its signature, so make changes before signing. ([Digital-signature guide](https://docs.aspose.com/words/cpp/working-with-digital-signatures/))
+
+I couldn’t locate `examples/error-correction.md` in the workspace; I followed the C++ rules included in your prompt.
 
 ## digital-signatures-02
 
@@ -2484,38 +2623,34 @@ How to add a digital signature to a DOCX file using Aspose.Words?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use `CertificateHolder::Create` to load a PKCS#12 certificate (`.pfx`) containing its private key, then pass it to `DigitalSignatureUtil::Sign` with separate input and output paths. The example creates a DOCX to sign; replace that input with your document as needed.
+Use `CertificateHolder::Create` to load a password-protected PKCS#12 certificate, then `DigitalSignatureUtil::Sign` to write a signed copy. For Aspose.Words for C++ 26.9.0:
 
 ```cpp
-#include <Aspose.Words.Cpp/Document.h>
 #include <Aspose.Words.Cpp/DigitalSignatures/CertificateHolder.h>
 #include <Aspose.Words.Cpp/DigitalSignatures/DigitalSignatureUtil.h>
 #include <system/smart_ptr.h>
 
 int main()
 {
-    const System::String inputDocx = u"unsigned.docx";
-    const System::String signedDocx = u"signed.docx";
-    const System::String certificatePath = u"signing-certificate.pfx";
-    const System::String certificatePassword = u"<replace-with-pfx-password>";
-
-    auto sampleDocument = System::MakeObject<Aspose::Words::Document>();
-    sampleDocument->Save(inputDocx);
-
-    auto certificateHolder =
+    System::SharedPtr<Aspose::Words::DigitalSignatures::CertificateHolder> certificate =
         Aspose::Words::DigitalSignatures::CertificateHolder::Create(
-            certificatePath, certificatePassword);
+            u"signing-certificate.pfx",
+            u"replace-with-pfx-password");
 
     Aspose::Words::DigitalSignatures::DigitalSignatureUtil::Sign(
-        inputDocx, signedDocx, certificateHolder);
+        u"input.docx",
+        u"signed-output.docx",
+        certificate);
 
     return 0;
 }
 ```
 
-Provide a PFX file with its password and a private key; replace the password placeholder, and avoid hard-coding production credentials. The example does not use a timestamping service. Use an appropriately licensed Aspose.Words for C++ deployment.
+Provide `input.docx` and a `.pfx`/PKCS#12 certificate containing the signer’s **private key**; replace the password placeholder, and keep real credentials out of source control. The output is a separate file, so the input remains unchanged. This basic signing flow needs no external service; an RFC 3161 timestamp service is only needed if you choose to add timestamping. For non-evaluation use, apply your Aspose.Words license in the application ([license API](https://reference.aspose.com/words/cpp/aspose.words/license/setlicense/)).
 
-Sources: [CertificateHolder::Create](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/certificateholder/create/), [DigitalSignatureUtil::Sign](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignatureutil/sign/), [Working with Digital Signatures in C++](https://docs.aspose.com/words/cpp/working-with-digital-signatures/).
+Sources: [DigitalSignatureUtil.Sign](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignatureutil/sign/), [CertificateHolder.Create](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/certificateholder/create/), [Working with Digital Signatures](https://docs.aspose.com/words/cpp/working-with-digital-signatures/).
+
+The workspace did not contain `examples/error-correction.md`; I followed the C++ rules included in your prompt.
 
 ## digital-signatures-03
 
@@ -2523,34 +2658,23 @@ How to verify digital signatures in a Word document?
 
 Origin: copilot-cli. Compilation: no_code.
 
-Use [`DigitalSignatureUtil::LoadSignatures`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignatureutil/loadsignatures/) on the original file, then check each signature’s [`get_IsValid()`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignature/get_isvalid/). Check the collection count first: its [`get_IsValid()`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignaturecollection/get_isvalid/) also returns true for an unsigned document.
+Use [`LoadSignatures`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignatureutil/loadsignatures/) on the original Word file, then check the collection’s count and each signature’s [`get_IsValid()`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignature/get_isvalid/). Check the count first: the collection’s [`get_IsValid()`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignaturecollection/get_isvalid/) also returns true when there are **no signatures**.
 
-I couldn’t provide the requested standalone program: the MCP results did not identify the required header paths, and access to the local SDK was denied. The example guidance file was also unavailable in the workspace.
+I couldn’t provide the requested standalone program: the documentation lookup did not expose the required SDK header paths, and the 26.9.0 headers were unavailable for inspection. You’ll need an existing digitally signed document; verification does not require the signer’s private key.
+
+Example warning: No C++ example was returned for this question; review the attempt history and unresolved evidence.
 
 ## digital-signatures-04
 
 How to check whether a Word document is digitally signed?
 
-Origin: copilot-cli. Compilation: passed.
+Origin: copilot-cli. Compilation: no_code.
 
-Use [`DetectFileFormat`](https://reference.aspose.com/words/cpp/aspose.words/fileformatutil/detectfileformat/) and [`get_HasDigitalSignature()`](https://reference.aspose.com/words/cpp/aspose.words/fileformatinfo/get_hasdigitalsignature/):
+Use [`FileFormatUtil::DetectFileFormat`](https://reference.aspose.com/words/cpp/aspose.words/fileformatutil/detectfileformat/) and check [`get_HasDigitalSignature()`](https://reference.aspose.com/words/cpp/aspose.words/fileformatinfo/get_hasdigitalsignature/). It detects a signature’s presence, **not its validity**.
 
-```cpp
-#include <Aspose.Words.Cpp/FileFormatUtil.h>
-#include <Aspose.Words.Cpp/FileFormatInfo.h>
-#include <iostream>
+For validity, load signatures with [`DigitalSignatureUtil::LoadSignatures`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignatureutil/loadsignatures/) and check the collection’s [`get_IsValid()`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignaturecollection/get_isvalid/). Check its count first: `get_IsValid()` also returns true for an empty collection.
 
-int main()
-{
-    auto info = Aspose::Words::FileFormatUtil::DetectFileFormat(u"input.docx");
-    std::cout << (info->get_HasDigitalSignature() ? "Signed\n" : "Not signed\n");
-    return 0;
-}
-```
-
-Place `input.docx` in the working directory. This checks **presence, not validity**; signature validation is a separate operation. No certificate or external service is needed to check presence.
-
-The MCP verified the APIs against latest-stable documentation, but did not expose version-specific 26.9.0 evidence or header paths; the two include paths above remain **unverified**.
+I couldn’t verify the required SDK header paths: the documentation lookup did not provide them, and access to the local package was denied. Consequently, I can’t provide the requested fully verified standalone program without guessing.
 
 ## digital-signatures-05
 
@@ -2558,36 +2682,30 @@ How to sign a document with a PFX certificate?
 
 Origin: copilot-cli. Compilation: passed.
 
-`CertificateHolder::Create` loads the PKCS#12/PFX using its password; `DigitalSignatureUtil::Sign` writes a signed copy. The certificate must contain its private key. [CertificateHolder API](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/certificateholder/create/) · [Sign API](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignatureutil/sign/)
+Use `CertificateHolder::Create` to load the password-protected PFX, then `DigitalSignatureUtil::Sign` to write a signed copy. The PFX must contain the certificate’s **private key**. [CertificateHolder::Create](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/certificateholder/create/) · [DigitalSignatureUtil::Sign](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignatureutil/sign/)
 
 ```cpp
-#include <Aspose.Words.Cpp/Document.h>
 #include <Aspose.Words.Cpp/DigitalSignatures/CertificateHolder.h>
 #include <Aspose.Words.Cpp/DigitalSignatures/DigitalSignatureUtil.h>
 #include <system/smart_ptr.h>
 
 int main()
 {
-    const System::String inputPath = u"unsigned.docx";
-    const System::String outputPath = u"signed.docx";
-    const System::String pfxPath = u"signing-certificate.pfx";
-    const System::String pfxPassword = u"YOUR_PFX_PASSWORD";
-
-    // Create a sample DOCX. Replace this with your existing unsigned document if needed.
-    auto document = System::MakeObject<Aspose::Words::Document>();
-    document->Save(inputPath);
-
-    auto certificate =
-        Aspose::Words::DigitalSignatures::CertificateHolder::Create(pfxPath, pfxPassword);
+    System::SharedPtr<Aspose::Words::DigitalSignatures::CertificateHolder> certificate =
+        Aspose::Words::DigitalSignatures::CertificateHolder::Create(
+            u"signing.pfx",
+            u"REPLACE_WITH_PFX_PASSWORD");
 
     Aspose::Words::DigitalSignatures::DigitalSignatureUtil::Sign(
-        inputPath, outputPath, certificate);
+        u"input.docx",
+        u"signed.docx",
+        certificate);
 
     return 0;
 }
 ```
 
-Place the PFX at the specified path and replace the password placeholder; keep real credentials out of source control. The basic signing call needs no timestamp service. For licensed use, load your `.lic` before processing; trial mode has evaluation limitations ([licensing](https://docs.aspose.com/words/cpp/licensing/)). The requested `examples/error-correction.md` was not present in the workspace, so I followed the C++ rules included in your prompt.
+Provide an existing `input.docx` and `signing.pfx`; use a secure configuration source for the real password rather than committing it. For unrestricted use, load your valid Aspose license with `License::SetLicense` before using the library. [Licensing API](https://reference.aspose.com/words/cpp/aspose.words/license/setlicense/) No timestamp authority is needed for this basic signature. The requested `examples/error-correction.md` was not present in the workspace; I followed the C++ rules included in your prompt.
 
 ## digital-signatures-06
 
@@ -2595,7 +2713,7 @@ How to remove digital signatures from a Word document?
 
 Origin: copilot-cli. Compilation: passed.
 
-Loading and saving a signed document removes its digital signatures from the saved copy. This **rewrites the document**, so other content or formatting may also change. See [Aspose’s signature documentation](https://reference.aspose.com/words/cpp/aspose.words/document/get_digitalsignatures/).
+Loading and saving a document removes its digital signatures, according to [Aspose’s documentation](https://docs.aspose.com/words/cpp/working-with-digital-signatures/).
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -2610,9 +2728,9 @@ int main()
 }
 ```
 
-Place a signed `signed.docx` in the working directory. The output is `unsigned.docx`; an existing output file is overwritten. No certificate or external service is needed. An Aspose.Words license removes evaluation limitations.
+Place a signed `signed.docx` in the working directory. The output path is separate from the input; an existing `unsigned.docx` may be overwritten. Saving reserializes the document. An [Aspose.Words license](https://docs.aspose.com/words/cpp/licensing/) avoids evaluation limitations.
 
-For direct signature removal without a document-model round trip, Aspose also provides [`DigitalSignatureUtil::RemoveAllSignatures`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignatureutil/removeallsignatures/). The documentation lookup resolved to latest stable, not specifically 26.9.0.
+The dedicated [`RemoveAllSignatures`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignatureutil/removeallsignatures/) API removes signatures without loading the document model. Its header could not be verified from the available documentation; the example therefore uses the documented load-and-save approach. The documentation lookup resolved to latest stable, not specifically 26.9.0.
 
 ## digital-signatures-07
 
@@ -2620,11 +2738,11 @@ How to use DigitalSignatureUtil in Aspose.Words?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [`DigitalSignatureUtil::Sign`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignatureutil/sign/) with a PKCS#12 certificate containing a private key, then use [`LoadSignatures`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignatureutil/loadsignatures/) to inspect the result.
+Use [`DigitalSignatureUtil::Sign`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignatureutil/sign/) with a [`CertificateHolder`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/certificateholder/create/), then use [`LoadSignatures`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignatureutil/loadsignatures/) to inspect the result.
 
-The program creates `sample-input.docx` and `signed.docx` in the working directory, overwriting existing files with those names. Supply `certificate.pfx` and replace the password placeholder; use a secure credential source in production. An Aspose license is needed to avoid evaluation limitations. No external service is required.
+The example creates `sample.docx` and `signed.docx`, replacing existing files with those names. Supply `certificate.pfx` containing a private key and replace the password placeholder; keep real passwords out of source control. No external service is required. An Aspose.Words license removes evaluation limitations.
 
-**Limitations:** The MCP documentation resolved to latest stable, not specifically 26.9.0. Local SDK access was denied, so the digital-signature header paths below could not be verified against that package. The requested `examples/error-correction.md` file was not present; its guidance supplied in the prompt was used instead.
+**Header verification limitation:** the MCP references did not provide header paths, and access to the local SDK was denied. The digital-signature includes below are therefore unverified against 26.9.0.
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -2632,7 +2750,6 @@ The program creates `sample-input.docx` and `signed.docx` in the working directo
 #include <Aspose.Words.Cpp/DigitalSignatures/CertificateHolder.h>
 #include <Aspose.Words.Cpp/DigitalSignatures/DigitalSignatureCollection.h>
 #include <Aspose.Words.Cpp/DigitalSignatures/DigitalSignatureUtil.h>
-#include <Aspose.Words.Cpp/DigitalSignatures/SignOptions.h>
 #include <system/smart_ptr.h>
 
 #include <iostream>
@@ -2644,70 +2761,65 @@ int main()
 
     auto document = System::MakeObject<Document>();
     auto builder = System::MakeObject<DocumentBuilder>(document);
-    builder->Writeln(u"Example document to sign.");
-    document->Save(u"sample-input.docx");
+    builder->Writeln(u"Document to sign.");
+    document->Save(u"sample.docx");
 
     auto certificate = CertificateHolder::Create(
-        u"certificate.pfx", u"REPLACE_WITH_CERTIFICATE_PASSWORD");
+        u"certificate.pfx", u"replace-with-pfx-password");
 
-    auto options = System::MakeObject<SignOptions>();
-    options->set_Comments(u"Approved");
-
-    DigitalSignatureUtil::Sign(
-        u"sample-input.docx", u"signed.docx", certificate, options);
+    DigitalSignatureUtil::Sign(u"sample.docx", u"signed.docx", certificate);
 
     auto signatures = DigitalSignatureUtil::LoadSignatures(u"signed.docx");
     const auto count = signatures->get_Count();
-    std::cout << "Signature count: " << count << '\n';
+    const bool valid = count > 0 && signatures->get_IsValid();
 
-    if (count == 0 || !signatures->get_IsValid())
-    {
-        std::cerr << "No signature found or at least one signature is invalid.\n";
-        return 1;
-    }
-
-    std::cout << "All signatures are valid.\n";
-    return 0;
+    std::cout << "Signature count: " << count
+              << "; all valid: " << (valid ? "yes" : "no") << '\n';
+    return valid ? 0 : 1;
 }
 ```
 
-Check the count as well as `get_IsValid()`: [an empty collection also reports valid](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignaturecollection/get_isvalid/). Opening and saving a signed document with Aspose.Words can remove its signatures; sign after editing. See the [digital-signature guide](https://docs.aspose.com/words/cpp/working-with-digital-signatures/).
+Check the count as well as validity: [`get_IsValid()`](https://reference.aspose.com/words/cpp/aspose.words.digitalsignatures/digitalsignaturecollection/get_isvalid/) also returns true for an empty collection. Sign after editing: saving a signed document through Aspose.Words loses its signatures. See the [digital-signature guide](https://docs.aspose.com/words/cpp/working-with-digital-signatures/).
 
 ## watermark-01
 
 How to add a watermark to a Word document in C++?
 
-Origin: copilot-cli. Compilation: no_code.
-
-Use [`Document::get_Watermark()->SetText(...)`](https://reference.aspose.com/words/cpp/aspose.words/watermark/settext/) and then [save the document](https://reference.aspose.com/words/cpp/aspose.words/document/save/).
-
-I can’t provide the requested complete program reliably: the documentation lookup did not identify the `Watermark` header, and access to the installed SDK headers was denied. The MCP reference also could not confirm the pinned 26.9.0 version. The [watermark guide](https://docs.aspose.com/words/cpp/working-with-watermark/) shows the API usage but not the required includes.
-
-## watermark-02
-
-How to insert a text watermark into a DOCX file?
-
 Origin: copilot-cli. Compilation: passed.
 
-Load the DOCX, call [`Watermark::SetText`](https://reference.aspose.com/words/cpp/aspose.words/watermark/settext/), and save it under a new name.
+Use [`Document::get_Watermark()->SetText()`](https://reference.aspose.com/words/cpp/aspose.words/watermark/settext/) to add a text watermark.
+
+The sample creates a document in memory and saves `watermarked.docx`, overwriting that file if it exists. To use an existing document, construct `Document` with its path and remove the builder lines.
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/DocumentBuilder.h>
 #include <Aspose.Words.Cpp/Watermark.h>
 #include <system/smart_ptr.h>
 
 int main()
 {
-    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
+    auto doc = System::MakeObject<Aspose::Words::Document>();
+    auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(doc);
+    builder->Writeln(u"Sample document content.");
+
     doc->get_Watermark()->SetText(u"CONFIDENTIAL");
     doc->Save(u"watermarked.docx");
     return 0;
 }
 ```
 
-Place `input.docx` in the working directory. An existing `watermarked.docx` is overwritten. Without a license, [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/) apply.
+The API is documented, but **the `Watermark.h` header path could not be verified** from the available SDK or documentation. The sample needs Aspose.Words for C++ and its CodePorting dependency; a license removes evaluation limitations. No external service is required. See the [watermark guide](https://docs.aspose.com/words/cpp/working-with-watermark/) and [installation guide](https://docs.aspose.com/words/cpp/installation/).
 
-**Verification gap:** The documentation confirms the APIs, but I could not inspect the installed 26.9.0 SDK to verify the watermark header; the requested guidance file was also unavailable.
+## watermark-02
+
+How to insert a text watermark into a DOCX file?
+
+Origin: copilot-cli. Compilation: no_code.
+
+Use [`Document::get_Watermark()->SetText(...)`](https://reference.aspose.com/words/cpp/aspose.words/watermark/settext/), then save the document as DOCX.
+
+I couldn’t verify the required `Watermark` header for 26.9.0: the MCP reference omitted it, and access to the local SDK was denied. I can’t provide the requested standalone program without guessing that header. The requested `examples\error-correction.md` file was also unavailable locally.
 
 ## watermark-03
 
@@ -2715,21 +2827,19 @@ How to add an image watermark to a Word document?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [`Watermark::SetImage`](https://reference.aspose.com/words/cpp/aspose.words/watermark/setimage/) with an image path and [`ImageWatermarkOptions`](https://reference.aspose.com/words/cpp/aspose.words/imagewatermarkoptions/).
-
-The MCP reference confirms the APIs, but did not expose the two watermark header paths or version-specific 26.9.0 evidence; those include paths remain **unverified**.
+Use [`Watermark::SetImage`](https://reference.aspose.com/words/cpp/aspose.words/watermark/setimage/) with an image path and watermark options:
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
-#include <Aspose.Words.Cpp/ImageWatermarkOptions.h>
 #include <Aspose.Words.Cpp/Watermark.h>
+#include <Aspose.Words.Cpp/ImageWatermarkOptions.h>
 #include <system/smart_ptr.h>
 
 int main()
 {
-    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
+    auto doc = System::MakeObject<Aspose::Words::Document>(
+        System::String(u"input.docx"));
     auto options = System::MakeObject<Aspose::Words::ImageWatermarkOptions>();
-
     options->set_Scale(0);       // Automatic sizing.
     options->set_IsWashout(true);
 
@@ -2739,33 +2849,19 @@ int main()
 }
 ```
 
-Place `input.docx` and `watermark.png` in the working directory. The output path may overwrite an existing file. An Aspose license removes evaluation limitations; no external service is needed.
+Place `input.docx` and `watermark.png` in the working directory. The output file is overwritten if it exists. An unlicensed evaluation adds its own watermark; no external service is needed. See the [watermark guide](https://docs.aspose.com/words/cpp/working-with-watermark/) and [scale options](https://reference.aspose.com/words/cpp/aspose.words/imagewatermarkoptions/get_scale/).
+
+**Limitation:** The MCP documentation confirmed the APIs but did not expose the two watermark header paths, and the 26.9.0 SDK headers were unavailable locally to verify them. `examples\error-correction.md` was also unavailable in the workspace; the supplied error-correction guidance was used instead.
 
 ## watermark-04
 
 How to remove a watermark from a Word document using Aspose.Words?
 
-Origin: copilot-cli. Compilation: passed.
+Origin: copilot-cli. Compilation: no_code.
 
-Call [`Watermark::Remove()`](https://reference.aspose.com/words/cpp/aspose.words/watermark/remove/). The missing `Watermark.h` include caused the reported errors.
+Use [`Document::get_Watermark()`](https://reference.aspose.com/words/cpp/aspose.words/document/get_watermark/) and [`Watermark::Remove()`](https://reference.aspose.com/words/cpp/aspose.words/watermark/remove/), then save the document under a new name.
 
-```cpp
-#include <Aspose.Words.Cpp/Document.h>
-#include <Aspose.Words.Cpp/Watermark.h>
-#include <system/smart_ptr.h>
-
-int main()
-{
-    auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
-    doc->get_Watermark()->Remove();
-    doc->Save(u"output.docx");
-    return 0;
-}
-```
-
-Place a watermarked `input.docx` in the working directory. The program overwrites `output.docx` if it exists. For custom shape watermarks, see the [shape-removal guidance](https://docs.aspose.com/words/cpp/working-with-watermark/). An unlicensed evaluation adds its own watermark; apply a [license](https://docs.aspose.com/words/cpp/licensing/) before processing to avoid evaluation limitations.
-
-Compiler-feedback repair requests: 1. See repair-log.md and results.json for attempt history.
+I couldn’t verify the required Watermark header for SDK 26.9.0, so I can’t provide the requested standalone program without guessing. The [trial version](https://docs.aspose.com/words/cpp/licensing/) adds its own evaluation watermark; apply a license before processing to avoid it.
 
 ## watermark-05
 
@@ -2773,7 +2869,7 @@ How to change the font, size, or color of a text watermark?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use [`TextWatermarkOptions`](https://reference.aspose.com/words/cpp/aspose.words/textwatermarkoptions/) and pass it to [`SetText`](https://reference.aspose.com/words/cpp/aspose.words/watermark/settext/). The example creates a sample document and sets the watermark to Arial, size 36, black.
+Set [TextWatermarkOptions](https://reference.aspose.com/words/cpp/aspose.words/textwatermarkoptions/) and pass it to [SetText](https://reference.aspose.com/words/cpp/aspose.words/watermark/settext/) to apply the desired formatting.
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
@@ -2786,11 +2882,11 @@ int main()
 {
     auto doc = System::MakeObject<Aspose::Words::Document>();
     auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(doc);
-    builder->Writeln(u"Sample document.");
+    builder->Writeln(u"Example document.");
 
     auto options = System::MakeObject<Aspose::Words::TextWatermarkOptions>();
     options->set_FontFamily(u"Arial");
-    options->set_FontSize(36);
+    options->set_FontSize(36.0f);
     options->set_Color(System::Drawing::Color::get_Black());
     options->set_IsSemitrasparent(false);
 
@@ -2800,7 +2896,9 @@ int main()
 }
 ```
 
-The output path is relative to the working directory and an existing file may be overwritten. For an existing document, construct `Document` with its input path instead. A license is optional for evaluation; no external service is needed. The MCP reference did not establish the watermark header paths or specifically confirm SDK 26.9.0, so those remain unverified.
+The example creates its own document and writes `watermarked.docx` in the working directory, overwriting an existing file of that name. For an existing document, construct `Document` with its input path and omit the builder. Use an Aspose license to remove evaluation limitations; no external service is needed.
+
+**Limitation:** The available documentation verified the APIs but not the watermark header paths or version 26.9.0 specifically; the local SDK headers were inaccessible.
 
 ## watermark-06
 
@@ -2808,40 +2906,54 @@ How to add a diagonal watermark to a document?
 
 Origin: copilot-cli. Compilation: passed.
 
-Use `TextWatermarkOptions` with `WatermarkLayout::Diagonal`, then pass it to `SetText`. This program adds the watermark to an existing document:
+Include `Watermark.h` to resolve the incomplete-type error. [`SetText`](https://reference.aspose.com/words/cpp/aspose.words/watermark/settext/) adds the watermark; its [default layout is diagonal](https://reference.aspose.com/words/cpp/aspose.words/textwatermarkoptions/get_layout/).
 
 ```cpp
 #include <Aspose.Words.Cpp/Document.h>
-#include <Aspose.Words.Cpp/TextWatermarkOptions.h>
 #include <Aspose.Words.Cpp/Watermark.h>
-#include <Aspose.Words.Cpp/WatermarkLayout.h>
 #include <system/smart_ptr.h>
 
 int main()
 {
     auto doc = System::MakeObject<Aspose::Words::Document>(u"input.docx");
-
-    auto options = System::MakeObject<Aspose::Words::TextWatermarkOptions>();
-    options->set_Layout(Aspose::Words::WatermarkLayout::Diagonal);
-
-    doc->get_Watermark()->SetText(u"CONFIDENTIAL", options);
-    doc->Save(u"output.docx");
-
+    doc->get_Watermark()->SetText(u"CONFIDENTIAL");
+    doc->Save(u"Watermarked.docx");
     return 0;
 }
 ```
 
-Place `input.docx` in the program’s working directory; it saves the result as `output.docx`. The diagonal layout and `SetText` options overload are documented in the [watermark guide](https://docs.aspose.com/words/cpp/working-with-watermark/) and [API reference](https://reference.aspose.com/words/cpp/aspose.words/watermark/settext/). The example requires Aspose.Words for C++ 26.9.0 and its CodePorting dependency; provide a valid license as needed for your use. No credentials or external services are required.
+Place `input.docx` in the working directory. The output path may be overwritten. Use Aspose.Words and CodePorting 26.9.0; without an applied license, evaluation restrictions apply. No external service is needed. The documentation endpoint did not independently confirm the pinned version.
+
+Compiler-feedback repair requests: 1. See repair-log.md and results.json for attempt history.
 
 ## watermark-07
 
 How to use the Watermark class in Aspose.Words?
 
-Origin: copilot-cli. Compilation: no_code.
+Origin: copilot-cli. Compilation: passed.
 
-Access the document’s watermark with [`doc->get_Watermark()`](https://reference.aspose.com/words/cpp/aspose.words/document/get_watermark/). Use [`SetText`](https://reference.aspose.com/words/cpp/aspose.words/watermark/settext/) with optional `TextWatermarkOptions`, [`SetImage`](https://reference.aspose.com/words/cpp/aspose.words/watermark/setimage/) for an image, or [`Remove`](https://reference.aspose.com/words/cpp/aspose.words/watermark/remove/) to remove it. See the [watermark guide](https://docs.aspose.com/words/cpp/working-with-watermark/).
+Use `Document::get_Watermark()` to access the document’s `Watermark`, then call `SetText`. This standalone example creates a blank document and saves it with a text watermark:
 
-**Limitation:** I could not verify the required watermark headers for 26.9.0: the documentation lookup did not expose them, and access to the local SDK was denied. I therefore cannot provide the requested verified standalone program without guessing headers. The requested `examples/error-correction.md` file was also unavailable in the workspace.
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/Watermark.h>
+#include <system/smart_ptr.h>
+
+int main()
+{
+    System::SharedPtr<Aspose::Words::Document> document =
+        System::MakeObject<Aspose::Words::Document>();
+
+    document->get_Watermark()->SetText(u"CONFIDENTIAL");
+    document->Save(u"watermarked.docx");
+
+    return 0;
+}
+```
+
+For formatted text watermarks, pass a `TextWatermarkOptions` object to the `SetText` overload; its options include font family, size, color, layout, and semitransparency. `Watermark` also supports image watermarks and removing a watermark. See the [Working with Watermark guide](https://docs.aspose.com/words/cpp/working-with-watermark/), [Watermark API](https://reference.aspose.com/words/cpp/aspose.words/watermark/), and [`SetText` reference](https://reference.aspose.com/words/cpp/aspose.words/watermark/settext/).
+
+The program needs Aspose.Words for C++ 26.9.0 and its CodePorting dependency; it has no input file or external-service requirement. Saving overwrites `watermarked.docx` if it already exists. The requested `examples/error-correction.md` and local SDK headers weren’t present in the workspace, so I couldn’t verify the header paths locally or compile the example; the API signatures were checked with the configured MCP tools.
 
 ## ai-01
 
@@ -2849,79 +2961,329 @@ What AI-powered features are available in Aspose.Words?
 
 Origin: copilot-cli. Compilation: no_code.
 
-Aspose.Words for C++ documents three AI-powered tasks: [summarizing documents](https://docs.aspose.com/words/cpp/summarize-a-document/), [translating documents](https://docs.aspose.com/words/cpp/translate-a-document/), and [grammar checking](https://docs.aspose.com/words/cpp/grammar-checking/).
+Aspose.Words for C++ documents three AI-powered tasks: **summarize documents** (including summaries of multiple documents, with configurable summary length), **translate documents**, and **check grammar**. These operations are exposed through its `Aspose.Words.AI` APIs and use a connected AI model. [AI-powered features](https://docs.aspose.com/words/cpp/ai-powered-features/) · [Summarization](https://docs.aspose.com/words/cpp/summarize-a-document/) · [Translation](https://docs.aspose.com/words/cpp/translate-a-document/) · [Grammar checking](https://docs.aspose.com/words/cpp/grammar-checking/)
 
-- **Summarization:** Create summaries from one or multiple documents and adjust their length.
-- **Translation:** Translate document content into a target language. The guide describes Google generative models and support for 300+ languages.
-- **Grammar and style checking:** Analyze a document for grammar issues; an option enables stylistic improvements.
-
-The documented provider families include OpenAI, Google, and Anthropic/Claude. The docs also describe integrating self-hosted LLMs. These features call an AI provider, so you need its credentials and service access; Aspose.Words itself does not require a separate AI-feature license. See [supported AI models](https://docs.aspose.com/words/cpp/supported-ai-models/) and the [AI features overview](https://docs.aspose.com/words/cpp/ai-powered-features/).
-
-**Version note:** The configured documentation lookup could not resolve 26.9.0 and returned latest-stable documentation, so check the pinned SDK’s release documentation to confirm version-specific availability.
+The supported-models guide describes integrations with **OpenAI, Google, and Anthropic/Claude**, as well as an option to integrate a self-hosted LLM. Using a hosted provider requires its service access and credentials; the exact model choices depend on the `AiModelType` options available in your SDK version. [Supported AI models](https://docs.aspose.com/words/cpp/supported-ai-models/)
 
 ## ai-02
 
 How to use AI with Aspose.Words in C++?
 
-Origin: copilot-cli. Compilation: no_code.
+Origin: copilot-cli. Compilation: passed.
 
-Aspose.Words can use AI to **summarize, translate, and check grammar** with OpenAI, Google, or Claude models ([supported models](https://docs.aspose.com/words/cpp/supported-ai-models/)).
+Aspose.Words can use AI to [summarize](https://reference.aspose.com/words/cpp/aspose.words.ai/openaimodel/summarize/) and [translate](https://reference.aspose.com/words/cpp/aspose.words.ai/openaimodel/translate/) documents. This example creates a sample document and summarizes it with OpenAI:
 
-For summarization, create an [`OpenAiModel`](https://reference.aspose.com/words/cpp/aspose.words.ai/openaimodel/openaimodel/) with a model name and API key, then call [`Summarize`](https://reference.aspose.com/words/cpp/aspose.words.ai/openaimodel/summarize/) with a `Document` and save the returned document. This requires provider credentials and network access; document content is sent to the provider. An Aspose license removes evaluation limitations.
+```cpp
+#include <Aspose.Words.Cpp/AI/OpenAiModel.h>
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/DocumentBuilder.h>
+#include <system/smart_ptr.h>
 
-**Limitation:** I could not verify the AI header paths for 26.9.0: the documentation lookup did not provide them, and access to the installed package was denied. I therefore cannot supply the requested standalone program without guessing headers. The API evidence returned was for latest-stable, not explicitly 26.9.0.
+#include <cstdlib>
+#include <iostream>
+#include <string>
+#include <vector>
+
+int main()
+{
+    size_t size = 0;
+    if (getenv_s(&size, nullptr, 0, "OPENAI_API_KEY") != 0 || size <= 1)
+    {
+        std::cerr << "Set OPENAI_API_KEY before running.\n";
+        return 1;
+    }
+
+    std::vector<char> buffer(size);
+    if (getenv_s(&size, buffer.data(), buffer.size(), "OPENAI_API_KEY") != 0)
+    {
+        std::cerr << "Could not read OPENAI_API_KEY.\n";
+        return 1;
+    }
+
+    std::u16string key;
+    for (const char* p = buffer.data(); *p; ++p)
+    {
+        const auto c = static_cast<unsigned char>(*p);
+        if (c < 0x21 || c > 0x7e)
+        {
+            std::cerr << "OPENAI_API_KEY must contain printable ASCII characters.\n";
+            return 1;
+        }
+        key.push_back(static_cast<char16_t>(c));
+    }
+
+    auto doc = System::MakeObject<Aspose::Words::Document>();
+    auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(doc);
+    builder->Writeln(u"The team completed the first project milestone.");
+    builder->Writeln(u"The next milestone is testing, followed by a customer review.");
+
+    auto model = System::MakeObject<Aspose::Words::AI::OpenAiModel>(
+        u"gpt-4o-mini", System::String(key.c_str()));
+    auto summary = model->Summarize(doc);
+    summary->Save(u"summary.docx");
+    return 0;
+}
+```
+
+Set `OPENAI_API_KEY` in the environment. Runtime requires network access and an OpenAI account with access to the named model; document content is sent to the provider. `summary.docx` is overwritten if it exists. An unlicensed Aspose.Words installation has [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/).
+
+The MCP reference exposes latest-stable documentation, not a confirmed 26.9.0 snapshot. The requested `examples\error-correction.md` was unavailable; the guidance included in your prompt was used.
 
 ## ai-03
 
 How to summarize a document using AI in Aspose.Words?
 
-Origin: copilot-cli. Compilation: no_code.
+Origin: copilot-cli. Compilation: passed.
 
-Aspose.Words provides AI summarization through `AiModel::Create`, `WithApiKey`, `SummarizeOptions::set_SummaryLength`, and `AiModel::Summarize`; the result is a `Document` you can save. The [summarization guide](https://docs.aspose.com/words/cpp/summarize-a-document/) shows this workflow, and the [API reference](https://reference.aspose.com/words/cpp/aspose.words.ai/aimodel/summarize/) confirms the `Summarize` overload.
+Aspose.Words provides `AiModel::Create` and `Summarize` for AI-based document summaries. This example uses OpenAI’s GPT‑4o mini and writes a short summary to a new DOCX file. [Summarize a Document](https://docs.aspose.com/words/cpp/summarize-a-document/) · [API reference: `Summarize`](https://reference.aspose.com/words/cpp/aspose.words.ai/openaimodel/summarize/)
 
-I can’t provide the requested standalone program with **verified headers for Aspose.Words C++ 26.9.0**: the configured MCP exposes only `latest-stable`, and it doesn’t provide header paths. I won’t guess those includes. The OpenAI example also requires an API key and access to the external provider; see [`WithApiKey`](https://reference.aspose.com/words/cpp/aspose.words.ai/aimodel/withapikey/). The requested `examples/error-correction.md` was not present in the workspace; I followed the guidance included in your prompt.
+```cpp
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/AI/AiModel.h>
+#include <Aspose.Words.Cpp/AI/AiModelType.h>
+#include <Aspose.Words.Cpp/AI/OpenAiModel.h>
+#include <Aspose.Words.Cpp/AI/SummarizeOptions.h>
+#include <Aspose.Words.Cpp/AI/SummaryLength.h>
+#include <system/object.h>
+#include <system/smart_ptr.h>
+
+int main()
+{
+    auto sourceDocument =
+        System::MakeObject<Aspose::Words::Document>(u"input.docx");
+
+    auto model = System::ExplicitCast<Aspose::Words::AI::OpenAiModel>(
+        Aspose::Words::AI::AiModel::Create(
+            Aspose::Words::AI::AiModelType::Gpt4OMini)
+            ->WithApiKey(u"YOUR_OPENAI_API_KEY"));
+
+    auto options =
+        System::MakeObject<Aspose::Words::AI::SummarizeOptions>();
+    options->set_SummaryLength(
+        Aspose::Words::AI::SummaryLength::Short);
+
+    auto summary = model->Summarize(sourceDocument, options);
+    summary->Save(u"summary.docx");
+
+    return 0;
+}
+```
+
+Place the source document at `input.docx` and replace the API-key placeholder with a valid key; keep real credentials out of source control. The AI feature requires an account/key for the chosen provider; Aspose documents no separate AI add-on license, though normal Aspose.Words licensing still applies. [AI provider and licensing notes](https://docs.aspose.com/words/cpp/grammar-checking/) · [Model creation](https://reference.aspose.com/words/cpp/aspose.words.ai/aimodel/create/) · [Summary length option](https://reference.aspose.com/words/cpp/aspose.words.ai/summarizeoptions/set_summarylength/)
 
 ## ai-04
 
 How to translate a document using AI?
 
-Origin: copilot-cli. Compilation: no_code.
+Origin: copilot-cli. Compilation: passed.
 
-Use [AiModel::Translate](https://reference.aspose.com/words/cpp/aspose.words.ai/aimodel/translate/) to produce a new document in a target [Language](https://reference.aspose.com/words/cpp/aspose.words.ai/language/). Create a model, supply its API key, translate the loaded document, and save the result. A Google model requires a Google API key and network access.
+Use [`AiModel::Translate`](https://reference.aspose.com/words/cpp/aspose.words.ai/aimodel/translate/) to create a translated document. The compiler error is addressed by explicitly including `AiModelType.h`.
 
-**Limitation:** I can’t provide the requested standalone program reliably: the documentation lookup did not expose the AI header paths, and access to the installed SDK headers was denied. The lookup also could not confirm the API specifically for 26.9.0.
+```cpp
+#include <Aspose.Words.Cpp/AI/AiModel.h>
+#include <Aspose.Words.Cpp/AI/AiModelType.h>
+#include <Aspose.Words.Cpp/AI/Language.h>
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/DocumentBuilder.h>
+#include <system/smart_ptr.h>
+
+#include <cstdlib>
+#include <iostream>
+#include <string>
+
+int main()
+{
+    char key[4096];
+    size_t keyLength = 0;
+    if (getenv_s(&keyLength, key, sizeof(key), "GEMINI_API_KEY") != 0 ||
+        keyLength <= 1)
+    {
+        std::cerr << "Set GEMINI_API_KEY to a valid Google AI API key.\n";
+        return 1;
+    }
+
+    auto doc = System::MakeObject<Aspose::Words::Document>();
+    auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(doc);
+    builder->Writeln(u"Hello! This document demonstrates AI translation.");
+
+    auto model = Aspose::Words::AI::AiModel::Create(
+        Aspose::Words::AI::AiModelType::GeminiFlashLatest)
+        ->WithApiKey(System::String::FromUtf8(std::string(key)));
+
+    auto translated = model->Translate(doc, Aspose::Words::AI::Language::Arabic);
+    translated->Save(u"translated.docx");
+    return 0;
+}
+```
+
+Set `GEMINI_API_KEY` to a valid Google AI API key; network access is required. The program creates its input in memory and overwrites `translated.docx`. An Aspose license removes evaluation limitations. Review the result: [unrecognized fragments may remain untranslated](https://docs.aspose.com/words/cpp/translate-a-document/).
+
+The original citations were truncated; the links above replace them. The MCP reference supplied latest-stable evidence rather than a version-specific 26.9.0 reference.
+
+Compiler-feedback repair requests: 1. See repair-log.md and results.json for attempt history.
 
 ## ai-05
 
 How to use a large language model to process Word documents?
 
-Origin: copilot-cli. Compilation: no_code.
+Origin: copilot-cli. Compilation: passed.
 
-Aspose.Words can use an LLM to [summarize](https://docs.aspose.com/words/cpp/summarize-a-document/), translate, or check grammar in a Word document. For summarization, load a `Document`, create an `AiModel` for a supported provider, configure its API key, call `Summarize`, and save the returned document. See the [supported models guide](https://docs.aspose.com/words/cpp/supported-ai-models/).
+Aspose.Words can send a document to an LLM and return a new document containing its [summary](https://reference.aspose.com/words/cpp/aspose.words.ai/openaimodel/summarize/). The example creates a sample document in memory and summarizes it with OpenAI.
 
-A complete 26.9.0 program remains blocked: the documentation endpoint returned latest-stable API evidence but not the required AI header paths, and access to the local SDK was denied. An external provider account, API key and network access are required; review its data-handling terms before sending sensitive documents.
+```cpp
+#include <Aspose.Words.Cpp/AI/OpenAiModel.h>
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/DocumentBuilder.h>
+#include <system/smart_ptr.h>
+
+#include <cstdlib>
+#include <iostream>
+#include <string>
+
+int main()
+{
+    const char* key = std::getenv("OPENAI_API_KEY");
+    if (key == nullptr || *key == '\0')
+    {
+        std::cerr << "Set OPENAI_API_KEY before running.\n";
+        return 1;
+    }
+
+    auto doc = System::MakeObject<Aspose::Words::Document>();
+    auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(doc);
+    builder->Writeln(u"The project team completed the initial prototype.");
+    builder->Writeln(u"Testing found two usability issues, which will be fixed next week.");
+    builder->Writeln(u"The planned release remains scheduled for the end of the month.");
+
+    auto model = System::MakeObject<Aspose::Words::AI::OpenAiModel>(
+        u"gpt-4o-mini", System::String::FromUtf8(std::string(key)));
+    auto summary = model->Summarize(doc);
+    summary->Save(u"summary.docx");
+    return 0;
+}
+```
+
+Set `OPENAI_API_KEY` to a valid key with access to the named model; the request sends document content to OpenAI and may incur charges. `summary.docx` is overwritten if it exists. To use an existing document, replace the sample creation with `System::MakeObject<Aspose::Words::Document>(u"input.docx")`. Review AI output before relying on it. The [evaluation version](https://docs.aspose.com/words/cpp/faq/) has watermark and size limits.
+
+The documentation endpoint returned latest-stable API evidence, not a version-specific 26.9.0 reference. The requested `examples\error-correction.md` file was unavailable locally; the guidance included in your prompt was used.
 
 ## ai-06
 
 How to integrate Aspose.Words with OpenAI?
 
-Origin: copilot-cli. Compilation: no_code.
+Origin: copilot-cli. Compilation: passed.
 
-Aspose.Words can use OpenAI to [summarize documents](https://docs.aspose.com/words/cpp/summarize-a-document/): create an `AiModel` with `AiModelType::Gpt4OMini`, supply an API key with `WithApiKey`, then call `Summarize` and save the returned document.
+Use [`OpenAiModel`](https://reference.aspose.com/words/cpp/aspose.words.ai/openaimodel/openaimodel/) to connect and [`Summarize`](https://reference.aspose.com/words/cpp/aspose.words.ai/openaimodel/summarize/) to create a summary document:
 
-The standalone program is **incomplete**: the MCP documentation did not identify the required AI header paths, and access to the installed SDK headers was denied. The available reference also resolves to latest-stable, so compatibility with 26.9.0 could not be established.
+```cpp
+#include <Aspose.Words.Cpp/AI/OpenAiModel.h>
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/DocumentBuilder.h>
+#include <system/smart_ptr.h>
 
-Running the integration requires an OpenAI API key, service access and network connectivity. Document content is sent to the AI service; review its data-handling requirements before processing sensitive files. An Aspose license removes [evaluation limitations](https://docs.aspose.com/words/cpp/licensing/).
+#include <cstdlib>
+#include <iostream>
+#include <string>
+
+int main()
+{
+    const char* rawKey = std::getenv("OPENAI_API_KEY");
+    if (rawKey == nullptr || *rawKey == '\0')
+    {
+        std::cerr << "Set OPENAI_API_KEY before running.\n";
+        return 1;
+    }
+
+    std::u16string key;
+    for (const unsigned char* p =
+             reinterpret_cast<const unsigned char*>(rawKey); *p; ++p)
+    {
+        if (*p > 127)
+        {
+            std::cerr << "OPENAI_API_KEY must contain ASCII characters.\n";
+            return 1;
+        }
+        key.push_back(static_cast<char16_t>(*p));
+    }
+
+    auto doc = System::MakeObject<Aspose::Words::Document>();
+    auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(doc);
+    builder->Writeln(u"The project will replace manual reports with automated weekly summaries.");
+    builder->Writeln(u"The team will first validate the data, then test the reporting workflow.");
+    builder->Writeln(u"The initial release is planned after stakeholder review.");
+
+    auto model = System::MakeObject<Aspose::Words::AI::OpenAiModel>(
+        u"gpt-4o-mini", System::String(key.c_str()));
+    auto summary = model->Summarize(doc);
+    summary->Save(u"summary.docx");
+    return 0;
+}
+```
+
+Set `OPENAI_API_KEY` to a valid key with access to the selected model. The call sends document content to OpenAI and requires network access; charges may apply. The program overwrites `summary.docx`. An Aspose license avoids evaluation limitations; the example does not apply one.
+
+The requested guidance file was absent, so I used the guidance included in your prompt. The MCP reference returned the API but did not independently establish its **26.9.0** version resolution.
 
 ## ai-07
 
 How to use AI models to analyze document content?
 
-Origin: copilot-cli. Compilation: no_code.
+Origin: copilot-cli. Compilation: passed.
 
-Aspose.Words can analyze document content by sending it to an AI model for tasks such as [summarization](https://reference.aspose.com/words/cpp/aspose.words.ai/aimodel/summarize/) and [grammar checking](https://reference.aspose.com/words/cpp/aspose.words.ai/aimodel/checkgrammar/). Create an AI model, supply the provider’s API key, then pass a `Document` to the desired operation. Review generated results against the source.
+Use [`AiModel::Summarize`](https://reference.aspose.com/words/cpp/aspose.words.ai/aimodel/summarize/) to analyze a document by generating a summary. The correction adds the explicit `AiModelType.h` header required by the compiler feedback.
 
-**Limitation:** I couldn’t verify the AI header paths or the API specifically for SDK 26.9.0: the documentation endpoint resolved to latest-stable, and local SDK access was denied. I therefore can’t provide the requested standalone program without guessing. AI processing also requires provider credentials and sends document content to an external service.
+```cpp
+#include <Aspose.Words.Cpp/AI/AiModel.h>
+#include <Aspose.Words.Cpp/AI/AiModelType.h>
+#include <Aspose.Words.Cpp/Document.h>
+#include <Aspose.Words.Cpp/DocumentBuilder.h>
+#include <system/smart_ptr.h>
+
+#include <cstdlib>
+#include <iostream>
+#include <string>
+
+int main()
+{
+    const char* rawKey = std::getenv("OPENAI_API_KEY");
+    if (rawKey == nullptr || *rawKey == '\0')
+    {
+        std::cerr << "Set OPENAI_API_KEY before running.\n";
+        return 1;
+    }
+
+    std::u16string key;
+    for (const unsigned char* p =
+             reinterpret_cast<const unsigned char*>(rawKey); *p; ++p)
+    {
+        if (*p > 127)
+        {
+            std::cerr << "The API key must contain ASCII characters.\n";
+            return 1;
+        }
+        key.push_back(static_cast<char16_t>(*p));
+    }
+
+    auto doc = System::MakeObject<Aspose::Words::Document>();
+    auto builder = System::MakeObject<Aspose::Words::DocumentBuilder>(doc);
+    builder->Writeln(u"The project reduced delivery time by automating reviews.");
+    builder->Writeln(u"The team plans to expand automation next quarter.");
+
+    auto model = Aspose::Words::AI::AiModel::Create(
+        Aspose::Words::AI::AiModelType::Gpt4OMini);
+    model->WithApiKey(System::String(key.c_str()));
+
+    auto summary = model->Summarize(doc);
+    summary->Save(u"summary.docx");
+    return 0;
+}
+```
+
+Set `OPENAI_API_KEY` to a valid provider key. The request sends document content to an external service; review the summary for accuracy. `summary.docx` is overwritten if it exists. An Aspose license removes evaluation limitations. See the [summarization guide](https://docs.aspose.com/words/cpp/summarize-a-document/) and [model types](https://reference.aspose.com/words/cpp/aspose.words.ai/aimodeltype/).
+
+The documentation service did not establish version-specific 26.9.0 evidence, and `examples/error-correction.md` was unavailable in the workspace; the supplied error-correction guidance was used instead.
+
+Compiler-feedback repair requests: 1. See repair-log.md and results.json for attempt history.
 
 ## ai-08
 
@@ -2929,13 +3291,13 @@ What classes are available in the Aspose.Words.AI namespace?
 
 Origin: copilot-cli. Compilation: no_code.
 
-The C++ reference lists six classes in [`Aspose::Words::AI`](https://reference.aspose.com/words/cpp/aspose.words.ai/):
+The [Aspose.Words.AI C++ namespace](https://reference.aspose.com/words/cpp/aspose.words.ai/) lists six classes:
 
-- [`AiModel`](https://reference.aspose.com/words/cpp/aspose.words.ai/aimodel/) — abstract base for AI model integration.
-- [`AnthropicAiModel`](https://reference.aspose.com/words/cpp/aspose.words.ai/anthropicaimodel/) — Anthropic model integration.
-- [`GoogleAiModel`](https://reference.aspose.com/words/cpp/aspose.words.ai/googleaimodel/) — Google Gemini model integration.
-- [`OpenAiModel`](https://reference.aspose.com/words/cpp/aspose.words.ai/openaimodel/) — OpenAI model integration.
-- [`CheckGrammarOptions`](https://reference.aspose.com/words/cpp/aspose.words.ai/checkgrammaroptions/) — options for grammar checking.
-- [`SummarizeOptions`](https://reference.aspose.com/words/cpp/aspose.words.ai/summarizeoptions/) — options for document summarization.
+- [AiModel](https://reference.aspose.com/words/cpp/aspose.words.ai/aimodel/) — abstract base for AI model integration.
+- [AnthropicAiModel](https://reference.aspose.com/words/cpp/aspose.words.ai/anthropicaimodel/) — abstract base for Anthropic models.
+- [GoogleAiModel](https://reference.aspose.com/words/cpp/aspose.words.ai/googleaimodel/) — Google Gemini model integration.
+- [OpenAiModel](https://reference.aspose.com/words/cpp/aspose.words.ai/openaimodel/) — OpenAI model integration.
+- [CheckGrammarOptions](https://reference.aspose.com/words/cpp/aspose.words.ai/checkgrammaroptions/) — grammar-checking options.
+- [SummarizeOptions](https://reference.aspose.com/words/cpp/aspose.words.ai/summarizeoptions/) — document summarization options.
 
-The namespace also contains the enums `AiModelType`, `Language`, and `SummaryLength`. The available documentation did not independently confirm the list specifically for version 26.9.0.
+The namespace also contains the enums [AiModelType](https://reference.aspose.com/words/cpp/aspose.words.ai/aimodeltype/), [Language](https://reference.aspose.com/words/cpp/aspose.words.ai/language/), and [SummaryLength](https://reference.aspose.com/words/cpp/aspose.words.ai/summarylength/).

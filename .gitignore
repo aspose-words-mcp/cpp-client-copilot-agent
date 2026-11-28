@@ -26,7 +26,7 @@ examples/outputs/
 showcase/runs/starter-check-01
 showcase/runs/published-01 backup
 # Publish only the two showcase reports from this run
-
+showcase/runs/full-retry-01/
 # Separate C++ build project generated files
 /examples/build-project/packages/
 /examples/build-project/outputs/

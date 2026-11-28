@@ -1,6 +1,6 @@
 # Run metrics
 
-Compilation results: 20 no_code; 71 passed.
+Compilation results: 11 no_code; 80 passed.
 
 Passed means compiled and linked, including a recorded harness where needed. Failed means no tested compilation unit succeeded; it does not establish that an incomplete fragment has invalid APIs. Runtime execution: **Not checked**.
 
@@ -23,9 +23,9 @@ Passed means compiled and linked, including a recorded harness where needed. Fai
 | word-to-markdown-01 | copilot-cli | completed | passed | gpt-6.1-terra |
 | word-to-markdown-02 | copilot-cli | completed | passed | gpt-6.1-terra |
 | word-to-markdown-03 | copilot-cli | completed | passed | gpt-6-luna |
-| word-to-markdown-04 | copilot-cli | completed | passed | gpt-6-luna |
+| word-to-markdown-04 | copilot-cli | completed | passed | gpt-6.1-terra |
 | word-to-markdown-05 | copilot-cli | completed | passed | gpt-6.1-terra |
-| word-to-markdown-06 | copilot-cli | completed | no_code | gpt-6-luna |
+| word-to-markdown-06 | copilot-cli | completed | passed | gpt-6-luna |
 | word-to-image-01 | copilot-cli | completed | passed | gpt-6.1-terra |
 | word-to-image-02 | copilot-cli | completed | passed | gpt-6-luna |
 | word-to-image-03 | copilot-cli | completed | passed | gpt-6-luna |
@@ -35,24 +35,24 @@ Passed means compiled and linked, including a recorded harness where needed. Fai
 | pdf-to-other-01 | copilot-cli | completed | passed | gpt-6.1-terra |
 | pdf-to-other-02 | copilot-cli | completed | passed | gpt-6-luna |
 | pdf-to-other-03 | copilot-cli | completed | passed | gpt-6-luna |
-| pdf-to-other-04 | copilot-cli | completed | passed | gpt-6-luna |
+| pdf-to-other-04 | copilot-cli | completed | passed | gpt-6.1-terra |
 | pdf-to-other-05 | copilot-cli | completed | passed | gpt-6.1-terra |
 | pdf-to-other-06 | copilot-cli | completed | no_code | gpt-6-luna |
-| pdf-to-other-07 | copilot-cli | completed | no_code | gpt-6.1-terra |
+| pdf-to-other-07 | copilot-cli | completed | passed | gpt-6-luna |
 | mail-merge-01 | copilot-cli | completed | no_code | gpt-6.1-terra |
 | mail-merge-02 | copilot-cli | completed | passed | gpt-6-luna |
 | mail-merge-03 | copilot-cli | completed | passed | gpt-6.1-terra |
 | mail-merge-04 | copilot-cli | completed | passed | gpt-6.1-terra |
 | mail-merge-05 | copilot-cli | completed | passed | gpt-6.1-terra |
-| mail-merge-06 | copilot-cli | completed | passed | gpt-6.1-terra |
-| mail-merge-07 | copilot-cli | completed | no_code | gpt-6.1-terra |
+| mail-merge-06 | copilot-cli | completed | passed | gpt-6-luna |
+| mail-merge-07 | copilot-cli | completed | passed | gpt-6.1-terra |
 | mail-merge-08 | copilot-cli | completed | no_code | gpt-6.1-terra |
 | compare-01 | copilot-cli | completed | passed | gpt-6.1-terra |
 | compare-02 | copilot-cli | completed | passed | gpt-6.1-terra |
 | compare-03 | copilot-cli | completed | passed | gpt-6.1-terra |
 | compare-04 | copilot-cli | completed | passed | gpt-6.1-terra |
 | compare-05 | copilot-cli | completed | passed | gpt-6.1-terra |
-| compare-06 | copilot-cli | completed | no_code | gpt-6-luna |
+| compare-06 | copilot-cli | completed | passed | gpt-6-luna |
 | compare-07 | copilot-cli | completed | passed | gpt-6.1-terra |
 | split-01 | copilot-cli | completed | passed | gpt-6.1-terra |
 | split-02 | copilot-cli | completed | passed | gpt-6.1-terra |
@@ -69,7 +69,7 @@ Passed means compiled and linked, including a recorded harness where needed. Fai
 | merge-06 | copilot-cli | completed | no_code | gpt-6-luna |
 | merge-07 | copilot-cli | completed | passed | gpt-6-luna |
 | find-replace-01 | copilot-cli | completed | passed | gpt-6.1-terra |
-| find-replace-02 | copilot-cli | completed | passed | gpt-6-luna |
+| find-replace-02 | copilot-cli | completed | passed | gpt-6.1-terra |
 | find-replace-03 | copilot-cli | completed | passed | gpt-6.1-terra |
 | find-replace-04 | copilot-cli | completed | passed | gpt-6.1-terra |
 | find-replace-05 | copilot-cli | completed | passed | gpt-6.1-terra |
@@ -78,22 +78,22 @@ Passed means compiled and linked, including a recorded harness where needed. Fai
 | digital-signatures-01 | copilot-cli | completed | passed | gpt-6-luna |
 | digital-signatures-02 | copilot-cli | completed | passed | gpt-6-luna |
 | digital-signatures-03 | copilot-cli | completed | no_code | gpt-6.1-terra |
-| digital-signatures-04 | copilot-cli | completed | passed | gpt-6.1-terra |
+| digital-signatures-04 | copilot-cli | completed | no_code | gpt-6.1-terra |
 | digital-signatures-05 | copilot-cli | completed | passed | gpt-6-luna |
 | digital-signatures-06 | copilot-cli | completed | passed | gpt-6.1-terra |
 | digital-signatures-07 | copilot-cli | completed | passed | gpt-6.1-terra |
-| watermark-01 | copilot-cli | completed | no_code | gpt-6.1-terra |
-| watermark-02 | copilot-cli | completed | passed | gpt-6.1-terra |
+| watermark-01 | copilot-cli | completed | passed | gpt-6.1-terra |
+| watermark-02 | copilot-cli | completed | no_code | gpt-6.1-terra |
 | watermark-03 | copilot-cli | completed | passed | gpt-6.1-terra |
-| watermark-04 | copilot-cli | completed | passed | gpt-6.1-terra |
+| watermark-04 | copilot-cli | completed | no_code | gpt-6.1-terra |
 | watermark-05 | copilot-cli | completed | passed | gpt-6.1-terra |
-| watermark-06 | copilot-cli | completed | passed | gpt-6-luna |
-| watermark-07 | copilot-cli | completed | no_code | gpt-6.1-terra |
+| watermark-06 | copilot-cli | completed | passed | gpt-6.1-terra |
+| watermark-07 | copilot-cli | completed | passed | gpt-6-luna |
 | ai-01 | copilot-cli | completed | no_code | gpt-6-luna |
-| ai-02 | copilot-cli | completed | no_code | gpt-6.1-terra |
-| ai-03 | copilot-cli | completed | no_code | gpt-6-luna |
-| ai-04 | copilot-cli | completed | no_code | gpt-6.1-terra |
-| ai-05 | copilot-cli | completed | no_code | gpt-6.1-terra |
-| ai-06 | copilot-cli | completed | no_code | gpt-6.1-terra |
-| ai-07 | copilot-cli | completed | no_code | gpt-6.1-terra |
+| ai-02 | copilot-cli | completed | passed | gpt-6.1-terra |
+| ai-03 | copilot-cli | completed | passed | gpt-6-luna |
+| ai-04 | copilot-cli | completed | passed | gpt-6.1-terra |
+| ai-05 | copilot-cli | completed | passed | gpt-6.1-terra |
+| ai-06 | copilot-cli | completed | passed | gpt-6.1-terra |
+| ai-07 | copilot-cli | completed | passed | gpt-6.1-terra |
 | ai-08 | copilot-cli | completed | no_code | gpt-6.1-terra |

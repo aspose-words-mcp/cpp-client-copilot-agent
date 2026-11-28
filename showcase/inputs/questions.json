@@ -164,7 +164,8 @@
     {
       "query_id": "pdf-to-other-07",
       "group": "PDF to Other Formats",
-      "question": "How to load a PDF document with PdfLoadOptions?"
+      "question": "How to load a PDF document with PdfLoadOptions?",
+      "example_required": true
     },
     {
       "query_id": "mail-merge-01",
@@ -199,7 +200,8 @@
     {
       "query_id": "mail-merge-07",
       "group": "Mail Merge",
-      "question": "How to execute mail merge with regions in Aspose.Words?"
+      "question": "How to execute mail merge with regions in Aspose.Words?",
+      "example_required": true
     },
     {
       "query_id": "mail-merge-08",
@@ -359,7 +361,8 @@
     {
       "query_id": "digital-signatures-03",
       "group": "Digital Signatures",
-      "question": "How to verify digital signatures in a Word document?"
+      "question": "How to verify digital signatures in a Word document?",
+      "example_required": true
     },
     {
       "query_id": "digital-signatures-04",
@@ -384,7 +387,8 @@
     {
       "query_id": "watermark-01",
       "group": "Watermarks",
-      "question": "How to add a watermark to a Word document in C++?"
+      "question": "How to add a watermark to a Word document in C++?",
+      "example_required": true
     },
     {
       "query_id": "watermark-02",
@@ -414,7 +418,8 @@
     {
       "query_id": "watermark-07",
       "group": "Watermarks",
-      "question": "How to use the Watermark class in Aspose.Words?"
+      "question": "How to use the Watermark class in Aspose.Words?",
+      "example_required": true
     },
     {
       "query_id": "ai-01",
@@ -424,32 +429,38 @@
     {
       "query_id": "ai-02",
       "group": "AI Features",
-      "question": "How to use AI with Aspose.Words in C++?"
+      "question": "How to use AI with Aspose.Words in C++?",
+      "example_required": true
     },
     {
       "query_id": "ai-03",
       "group": "AI Features",
-      "question": "How to summarize a document using AI in Aspose.Words?"
+      "question": "How to summarize a document using AI in Aspose.Words?",
+      "example_required": true
     },
     {
       "query_id": "ai-04",
       "group": "AI Features",
-      "question": "How to translate a document using AI?"
+      "question": "How to translate a document using AI?",
+      "example_required": true
     },
     {
       "query_id": "ai-05",
       "group": "AI Features",
-      "question": "How to use a large language model to process Word documents?"
+      "question": "How to use a large language model to process Word documents?",
+      "example_required": true
     },
     {
       "query_id": "ai-06",
       "group": "AI Features",
-      "question": "How to integrate Aspose.Words with OpenAI?"
+      "question": "How to integrate Aspose.Words with OpenAI?",
+      "example_required": true
     },
     {
       "query_id": "ai-07",
       "group": "AI Features",
-      "question": "How to use AI models to analyze document content?"
+      "question": "How to use AI models to analyze document content?",
+      "example_required": true
     },
     {
       "query_id": "ai-08",
